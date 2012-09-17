@@ -38,7 +38,8 @@ function tqlAggregateSearch(tql, success){
 	$.ajax({
 		url: searchUrl,
 		type: "GET",		
-		data: "tql=" + escape(tql), 
+		data: "tql=" + escape(tql),
+		dataType: "json",
 	    xhrFields: {
 	       withCredentials: true
 	    },
@@ -53,6 +54,7 @@ function tqlSearch(tql, top, format, success){
 		url: searchUrl,
 		type: "GET",
 		data: "tql=" + escape(tql)  + "&$top=" + top + "&format=" + format, 
+		dataType: "json",
 	    xhrFields: {
 	       withCredentials: true
 	    },

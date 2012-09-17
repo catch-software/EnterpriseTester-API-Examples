@@ -33,14 +33,15 @@ function readableEntityName(type) {
 function tqlAggregateSearch(tql, success){
 	$.ajax({
 		url: searchUrl,
-		type: "GET",
-		username: login,
-			password: pass,
-			data: "tql=" + escape(tql), 
+		type: "GET",		
+		data: "tql=" + escape(tql), 
 	    xhrFields: {
 	       withCredentials: true
 	    },
 	    crossDomain: true,
+	    beforeSend: function(xhr) {
+			xhr.setRequestHeader("Authorization", "Basic " + encodeBase64(login + ":" + password)
+		},
 		success: success
 	});
 }
@@ -49,13 +50,14 @@ function tqlSearch(tql, top, format, success){
 	$.ajax({
 		url: searchUrl,
 		type: "GET",
-		username: login,
-			password: pass,
-			data: "tql=" + escape(tql)  + "&$top=" + top + "&format=" + format, 
+		data: "tql=" + escape(tql)  + "&$top=" + top + "&format=" + format, 
 	    xhrFields: {
 	       withCredentials: true
 	    },
 	    crossDomain: true,
+	    beforeSend: function(xhr) {
+			xhr.setRequestHeader("Authorization", "Basic " + encodeBase64(login + ":" + password)
+		},
 		success: success
 	});
 }

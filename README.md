@@ -19,7 +19,7 @@ Examples
 * .Net (C#)
  * Creating multiple scripts (as you would when importing from another system).
 * Javascript
- * Multi-project dashboard example (demonstrates using CORS). [Live demo][7]
+ * Multi-project dashboard example (demonstrates using CORS). [Live demo, currently on supports Chrome][7]
 
 API Documentation
 =================

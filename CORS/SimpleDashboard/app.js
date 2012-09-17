@@ -2,7 +2,7 @@ $(document).ready(function(){
 	$.ajaxSetup({ accepts: "application/json" });						   
 });
 
-etUrl = "https://ettrial.catchsoftware.net";
+etUrl = "http://ettrial.catchsoftware.net";
 apiUrl = etUrl + "/api";
 searchUrl = apiUrl + "/search";
 login = "viewonly";

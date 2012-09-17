@@ -6,7 +6,7 @@ etUrl = "http://ettrial.catchsoftware.net";
 apiUrl = etUrl + "/api";
 searchUrl = apiUrl + "/search";
 login = "viewonly";
-pass = "view2012";
+password = "view2012";
 
 function readableEntityName(type) {
 	switch (type)

@@ -2,11 +2,11 @@ $(document).ready(function(){
 	$.ajaxSetup({ accepts: "application/json" });						   
 });
 
-etUrl = "https://ettrial.catchsoftware.net";
+etUrl = "http://ettrial.catchsoftware.net";
 apiUrl = etUrl + "/api";
 searchUrl = apiUrl + "/search";
 login = "viewonly";
-pass = "view2012";
+password = "view2012";
 
 function readableEntityName(type) {
 	switch (type)
@@ -30,17 +30,21 @@ function readableEntityName(type) {
 	}
 }
 
+function addBasicAuthHeader(xhr) {
+	xhr.setRequestHeader("Authorization", "Basic " + Base64.encode(login + ":" + password));
+}
+
 function tqlAggregateSearch(tql, success){
 	$.ajax({
 		url: searchUrl,
-		type: "GET",
-		username: login,
-			password: pass,
-			data: "tql=" + escape(tql), 
+		type: "GET",		
+		data: "tql=" + escape(tql),
+		dataType: "json",
 	    xhrFields: {
 	       withCredentials: true
 	    },
 	    crossDomain: true,
+	    beforeSend: addBasicAuthHeader,
 		success: success
 	});
 }
@@ -49,13 +53,13 @@ function tqlSearch(tql, top, format, success){
 	$.ajax({
 		url: searchUrl,
 		type: "GET",
-		username: login,
-			password: pass,
-			data: "tql=" + escape(tql)  + "&$top=" + top + "&format=" + format, 
+		data: "tql=" + escape(tql)  + "&$top=" + top + "&format=" + format, 
+		dataType: "json",
 	    xhrFields: {
 	       withCredentials: true
 	    },
 	    crossDomain: true,
+	    beforeSend: addBasicAuthHeader,
 		success: success
 	});
 }

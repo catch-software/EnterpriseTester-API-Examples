@@ -1,0 +1,126 @@
+/**
+* Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+* http://cssreset.com
+*/
+ 
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Application-specific CSS */
+
+.results {
+	width: 910px;
+}
+.totals-chart {
+	display: inline-block;
+}
+.recently {
+	width: 300px;
+	float: right;
+	display: inline-block;			
+}
+
+.recently-updated {
+	padding-top: 60px;
+}
+
+.recently-failed {
+	padding-top: 30px;			
+}
+
+.recently-updated span.title, .recently-failed span.title {
+	font-family: "Segoe UI";
+	font-size: 14pt;
+	color: #888;
+	display: block;
+	padding-bottom: 10px;
+}
+
+.recently-updated > ul,.recently-failed > ul {
+	list-style: none;			
+	position: relative;			
+}
+
+.recently-updated > ul > li,.recently-failed > ul > li {
+	font-family: "Segoe UI";
+	font-size: 8pt;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: block;
+	padding-bottom: 3px;
+}
+
+.recently-updated a,.recently-failed a {
+	color: #0588EF;
+	text-decoration: none;
+}
+
+span.no-data {
+	color: #888;
+	font-family: "Segoe UI";
+	font-size: 8pt;
+	font-style: italic;
+}
+
+h1 {
+	font-size: 50px;
+	line-height: 55px;
+	font-family: "Segoe UI","Helvetica",Garuda,Arial,sans-serif;
+	color: #666;
+}
+
+p.overview {
+	font-family: "Segoe UI","Helvetica",Garuda,Arial,sans-serif;
+	font-family: "Segoe UI";
+	font-size: 10pt;
+	color: #999;
+	padding: 20px;
+}
+
+body {
+	padding: 5px;
+}

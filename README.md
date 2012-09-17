@@ -18,7 +18,8 @@ Examples
  * Bulk-create users with permission assignments.
 * .Net (C#)
  * Creating multiple scripts (as you would when importing from another system).
-
+* Javascript
+ * Multi-project dashboard example (demonstrates using CORS). [Live demo][7]
 API Documentation
 =================
 
@@ -42,3 +43,4 @@ For general support questions about Enterprise Tester, please contact [support@c
   [4]: http://dev.enterprisetester.com/help/#API_Resources
   [5]: http://dev.enterprisetester.com/help/#API_Permissions
   [6]: http://www.enterprisetester.com/
+  [7]: http://catch-software.github.com/EnterpriseTester-API-Examples/CORS/SimpleDashboard/example.html

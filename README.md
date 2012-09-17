@@ -19,6 +19,14 @@ Examples
 * .Net (C#)
  * Creating multiple scripts (as you would when importing from another system).
 
+API Documentation
+=================
+
+The most recent API documentation is available from the in-application help of your Enterprise Tester installation, but we also publish the API help documentation here, if you need to link to a API help topic on the web:
+
+* [API Topic][3]
+* [Resources List][4]
+* [Permissions matrix][5]
 
 Support
 ========
@@ -30,3 +38,6 @@ For general support questions about Enterprise Tester, please contact [support@c
 
   [1]: http://i.stack.imgur.com/Jmgo8.png
   [2]: mailto:support@catchlimited.com
+  [3]: http://dev.enterprisetester.com/help/#API
+  [4]: http://dev.enterprisetester.com/help/#API_Resources
+  [5]: http://dev.enterprisetester.com/help/#API_Permissions

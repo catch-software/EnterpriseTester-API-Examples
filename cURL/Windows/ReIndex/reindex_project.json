@@ -1,0 +1,7 @@
+{ 
+	"Type": "Reindex", 
+	"Parameters": { 
+		"Optimize": true,
+		"ProjectId": "c651ed19-5375-475a-a539-9f6401467130"
+	}
+}

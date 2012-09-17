@@ -1,0 +1,6 @@
+{ 
+	"Type": "Reindex", 
+	"Parameters": { 
+		"Optimize": true
+	}
+}

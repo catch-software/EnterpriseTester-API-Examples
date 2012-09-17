@@ -3,7 +3,7 @@
 Enterprise Tester REST API Examples
 ===================================
 
-This is a collection of code samples demonstrating the use of the Enterprise Tester API from various languages.
+This is a collection of code samples demonstrating the use of the [Enterprise Tester][6] API from various languages.
 
 Examples
 ========
@@ -41,3 +41,4 @@ For general support questions about Enterprise Tester, please contact [support@c
   [3]: http://dev.enterprisetester.com/help/#API
   [4]: http://dev.enterprisetester.com/help/#API_Resources
   [5]: http://dev.enterprisetester.com/help/#API_Permissions
+  [6]: http://www.enterprisetester.com/

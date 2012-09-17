@@ -43,7 +43,7 @@ function tqlAggregateSearch(tql, success){
 	       withCredentials: true
 	    },
 	    crossDomain: true,
-	    beforeSend: addBasicAuthHeader
+	    beforeSend: addBasicAuthHeader,
 		success: success
 	});
 }
@@ -57,7 +57,7 @@ function tqlSearch(tql, top, format, success){
 	       withCredentials: true
 	    },
 	    crossDomain: true,
-	    beforeSend: addBasicAuthHeader
+	    beforeSend: addBasicAuthHeader,
 		success: success
 	});
 }

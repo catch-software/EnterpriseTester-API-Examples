@@ -30,6 +30,10 @@ function readableEntityName(type) {
 	}
 }
 
+function addBasicAuthHeader(xhr) {
+	xhr.setRequestHeader("Authorization", "Basic " + Base64.encode(login + ":" + password));
+}
+
 function tqlAggregateSearch(tql, success){
 	$.ajax({
 		url: searchUrl,
@@ -39,9 +43,7 @@ function tqlAggregateSearch(tql, success){
 	       withCredentials: true
 	    },
 	    crossDomain: true,
-	    beforeSend: function(xhr) {
-			xhr.setRequestHeader("Authorization", "Basic " + encodeBase64(login + ":" + password));
-		},
+	    beforeSend: addBasicAuthHeader
 		success: success
 	});
 }
@@ -55,9 +57,7 @@ function tqlSearch(tql, top, format, success){
 	       withCredentials: true
 	    },
 	    crossDomain: true,
-	    beforeSend: function(xhr) {
-			xhr.setRequestHeader("Authorization", "Basic " + encodeBase64(login + ":" + password));
-		},
+	    beforeSend: addBasicAuthHeader
 		success: success
 	});
 }

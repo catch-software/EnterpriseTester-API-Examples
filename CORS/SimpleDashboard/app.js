@@ -40,7 +40,7 @@ function tqlAggregateSearch(tql, success){
 	    },
 	    crossDomain: true,
 	    beforeSend: function(xhr) {
-			xhr.setRequestHeader("Authorization", "Basic " + encodeBase64(login + ":" + password)
+			xhr.setRequestHeader("Authorization", "Basic " + encodeBase64(login + ":" + password));
 		},
 		success: success
 	});
@@ -56,7 +56,7 @@ function tqlSearch(tql, top, format, success){
 	    },
 	    crossDomain: true,
 	    beforeSend: function(xhr) {
-			xhr.setRequestHeader("Authorization", "Basic " + encodeBase64(login + ":" + password)
+			xhr.setRequestHeader("Authorization", "Basic " + encodeBase64(login + ":" + password));
 		},
 		success: success
 	});

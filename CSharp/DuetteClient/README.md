@@ -1,9 +1,20 @@
-DuetteClient
-============
+Duette Command Line Client
+==========================
 
 This example demonstrates how to build a command line client for posting automated test results to Enterprise Tester using C# and .Net 4.0.
 
-Though provided as example, this tool will be useful to any customers using Enterprise Tester for automated testing to automated to updating of test results e.g. as part of a continuous integration server build.
+Though provided as example, this tool will be useful to any customers using Enterprise Tester who want to automatically update test results, say as part of a continuous integration server build process.
+
+Download
+--------
+
+You can download a zip file of the DuetteClient from here:
+
+[DuetteClient_v1.0.zip][0]
+
+To install once download, just unzip all the files into a folder, and then invoke "DuetteClient.exe" using the full path to the folder where you unzipped it.
+
+The DuetteClient does not need to be installed on the same machine as Enterprise Tester, but does require that the [Full .Net Framework 4.0 be installed][1].
 
 Usage
 -----
@@ -65,3 +76,6 @@ The above example will:
 * Places an automated test assignment in the execution sets -> cycle 1 -> automated tests package (Note: the path is specified using the "package path separator", which defaults to pipe "|" but is configurable via the ET application configuration file).
 * Uploads all the NUnit xml output files from the directory test1output and test2output.
 
+
+[0]: https://github.com/downloads/catch-software/EnterpriseTester-API-Examples/DuetteClient_v1.0.zip
+[1]: http://www.microsoft.com/en-us/download/details.aspx?id=17851

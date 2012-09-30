@@ -1,6 +1,18 @@
 # Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
-bin
-obj
+/src/**/bin/
+/src/**/obj/
+*.log
+logs/
+_ReSharper*/
+output/
+release/
+*.suo
+*.user
+*.cache
+App_Data/
+/src/GlobalAssemblyInfo.cs
+/SetupVersion.inf
+Thumbs.db
 
 # mstest test results
 TestResults

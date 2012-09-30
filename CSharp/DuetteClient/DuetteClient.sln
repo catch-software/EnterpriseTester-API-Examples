@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuetteClient", "DuetteClient\DuetteClient.csproj", "{848CD14D-F5B3-4395-AC17-86A0150D61E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuetteClient", "src\DuetteClient.csproj", "{848CD14D-F5B3-4395-AC17-86A0150D61E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

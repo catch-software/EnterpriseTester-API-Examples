@@ -3,7 +3,7 @@ Duette Command Line Client
 
 This example demonstrates how to build a command line client for posting automated test results to Enterprise Tester using C# and .Net 4.0.
 
-Though provided as example, this tool will be useful to any customers using Enterprise Tester who want to automatically update test results, say as part of a continuous integration server build process.
+Though provided as an example, this tool will be useful to any customers using Enterprise Tester who want to automatically update test results, say as part of a continuous integration server build process.
 
 Download
 --------

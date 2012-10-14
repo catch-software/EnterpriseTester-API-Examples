@@ -19,9 +19,6 @@ The DuetteClient does not need to be installed on the same machine as Enterprise
 Usage
 -----
 
-	-s/--server required option is missing.
-
-
 	-s, --server               Required. URL to Enterprise Tester server e.g.
 	                         http://localhost/EnterpriseTester
 

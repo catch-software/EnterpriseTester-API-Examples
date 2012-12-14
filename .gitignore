@@ -16,3 +16,5 @@ Thumbs.db
 
 # mstest test results
 TestResults
+/CSharp/RelationshipCreator/src/bin
+/CSharp/RelationshipCreator/src/obj

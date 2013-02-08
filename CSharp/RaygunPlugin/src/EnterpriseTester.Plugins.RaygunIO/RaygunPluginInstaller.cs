@@ -6,8 +6,8 @@ using MonoRail.ModuleFramework.Modules;
 namespace EnterpriseTester.Plugins.RaygunIO
 {
     [PluginDetails(
-        Name = "Raygun IO Exception Handling",
-        Description = "Provides logging of unhandled exception to RaygunIO",
+        Name = "Raygun Exception Handling",
+        Description = "Provides logging of unhandled exceptions to Raygun",
         VendorName = "Catch Software",
         VendorUrl = "http://www.catchsoftware.com/",
         InitialState = InitialiModuleState.Enabled)]

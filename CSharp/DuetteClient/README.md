@@ -10,7 +10,7 @@ Download
 
 You can download a zip file of the DuetteClient from here:
 
-[DuetteClient_v1.0.zip][0]
+[DuetteClient_1.1.zip][0]
 
 To install once download, just unzip all the files into a folder, and then invoke "DuetteClient.exe" using the full path to the folder where you unzipped it.
 
@@ -74,5 +74,5 @@ The above example will:
 * Uploads all the NUnit xml output files from the directory test1output and test2output.
 
 
-[0]: https://github.com/downloads/catch-software/EnterpriseTester-API-Examples/DuetteClient_v1.0.zip
+[0]: http://www.enterprisetester.com/downloads/DuetteClient-v1.1.zip
 [1]: http://www.microsoft.com/en-us/download/details.aspx?id=17851

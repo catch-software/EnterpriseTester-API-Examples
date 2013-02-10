@@ -20,6 +20,8 @@ Examples
  * Creating multiple scripts (as you would when importing from another system).
 * Javascript
  * Multi-project dashboard example (demonstrates using CORS). [Live demo, currently on supports Chrome][7]
+* Ruby
+ * Example of using rest-client gem to update script-run custom fields.
 
 API Documentation
 =================

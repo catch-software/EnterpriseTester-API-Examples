@@ -185,9 +185,9 @@ namespace EnterpriseTester.DuetteClient
                     break;
                 }
 
-                if (!string.IsNullOrEmpty(progress.ErrorMessage))
+                if (!string.IsNullOrEmpty(progress.Data.Error))
                 {
-                    Console.WriteLine("Error occured executing task: {0}", progress.ErrorMessage);
+                    Console.WriteLine("Error occured executing task: {0}", progress.Data.Error);
                     Environment.Exit(2);
                 }
 

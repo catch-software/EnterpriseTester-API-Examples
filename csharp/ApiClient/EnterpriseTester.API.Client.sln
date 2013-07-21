@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnterpriseTester.API.Client", "EnterpriseTester.API.Client\EnterpriseTester.API.Client.csproj", "{A5ED6274-4B20-4200-9197-C9A13DFF2A91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnterpriseTester.API.Client.Tests", "EnterpriseTester.API.Client.Tests\EnterpriseTester.API.Client.Tests.csproj", "{6432DF64-8C0E-41A1-B23E-4B7F5B4E9F0E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5ED6274-4B20-4200-9197-C9A13DFF2A91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5ED6274-4B20-4200-9197-C9A13DFF2A91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5ED6274-4B20-4200-9197-C9A13DFF2A91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5ED6274-4B20-4200-9197-C9A13DFF2A91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6432DF64-8C0E-41A1-B23E-4B7F5B4E9F0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6432DF64-8C0E-41A1-B23E-4B7F5B4E9F0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6432DF64-8C0E-41A1-B23E-4B7F5B4E9F0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6432DF64-8C0E-41A1-B23E-4B7F5B4E9F0E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

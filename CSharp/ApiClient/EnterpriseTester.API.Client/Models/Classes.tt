@@ -1,0 +1,174 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="Newtonsoft.Json.Linq" #>
+<#@ import namespace="Newtonsoft.Json.Schema" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Runtime.Remoting.Messaging" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="Newtonsoft.Json" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".designer.cs" #>
+<#
+
+
+    JObject swagger = JObject.Load(new JsonTextReader(File.OpenText(Host.ResolvePath("../Swagger.json"))));
+    var modelsHash = (JObject) swagger.Property("models").Value;
+    var modelSchemas = modelsHash.PropertyValues().OfType<JObject>();
+    var resolver = LoadSchemas(modelSchemas);
+
+    var schemata = resolver.LoadedSchemas.Where(x=>x.Id != null).Where(x=>!x.Id.StartsWith("QueryResultsOf")).OrderBy(x => x.Id);
+
+#>
+using System.Collections.Generic;
+using System.Linq;
+
+namespace <#=CallContext.GetData("NamespaceHint")#>
+{
+<#
+foreach (var jsonSchema in schemata)
+{
+    var p = jsonSchema.Properties.AsEnumerable() ?? Enumerable.Empty<KeyValuePair<string, JsonSchema>>();
+    var properties = p.ToDictionary(x => x.Key, x => TypeName(x.Value)).Where(x=>x.Key != "Links").OrderBy(x=>x.Key);
+    var listProperties = properties.Where(x => x.Value.StartsWith("List<"));
+
+	if (jsonSchema.Id.Equals("FormDataCollection")) continue;
+
+    if (jsonSchema.Id.StartsWith("QueryResultsOf"))
+    {
+#>
+    public partial class <#= jsonSchema.Id #> : QueryResults<<#=jsonSchema.Id.Replace("QueryResultsOf", "") #>>
+    {
+
+    }
+
+<#
+    }
+    else
+    {
+#>
+    public partial class <#= jsonSchema.Id #> : EtRestEntityBase<# if(properties.Contains(new KeyValuePair<string, string>("Id", "string"))){ #>, IHasId<# } #> 
+    {
+<#
+        if (listProperties.Any())
+        {
+#>
+        public <#= jsonSchema.Id #>()
+        {
+<#
+        foreach (var prop in listProperties)
+        {
+#>
+            <#=prop.Key #> = new <#=prop.Value #>();
+<#
+        }
+#>
+        }
+
+<#
+        }
+        foreach (var prop in properties)
+        {
+#>
+        public <#=prop.Value #> <#=prop.Key #> { get; set; }
+<#
+        }
+#>
+        
+        public <#= jsonSchema.Id #> Clone(bool includeLocalProperties)
+        {
+            var c = new <#= jsonSchema.Id #>
+                    {
+<#
+        foreach (var prop in properties.Except(listProperties))
+        {
+#>
+                        <#=prop.Key #> = <#=prop.Key #>,
+<#
+        }
+        var uncloneable = new[] {"List<string>", "List<object>"};
+        foreach (var prop in listProperties)
+        {
+            var selectClone = uncloneable.Contains(prop.Value) ? "":".Select(x=>x.Clone(includeLocalProperties))";
+#>
+                        <#=prop.Key #> = <#=prop.Key + selectClone #>.ToList(),
+<#
+        }
+#>
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(<#= jsonSchema.Id #> clone, bool includeLocalProperties);
+    }
+
+<#
+    }
+#>
+
+<#
+} 
+#>
+}
+
+
+<#+
+
+string TypeName(JsonSchema schema)
+{
+    if (schema.Id != null)
+    {
+        return schema.Id;
+    }
+    switch (schema.Type.Value)
+    {
+        case JsonSchemaType.String:
+            return "string";
+        case JsonSchemaType.Float:
+            return "double";
+        case JsonSchemaType.Integer:
+            return "int";
+        case JsonSchemaType.Boolean:
+            return "bool";
+        case JsonSchemaType.None:
+        case JsonSchemaType.Null:
+        case JsonSchemaType.Any:
+        case JsonSchemaType.Object:
+            return "object";
+        case JsonSchemaType.Array:
+            return "List<" + TypeName(schema.Items.First()) + ">";
+        default:
+            throw new ArgumentOutOfRangeException();
+    }
+}
+
+    static JsonSchemaResolver LoadSchemas(IEnumerable<JObject> modelSchemas)
+    {
+        var resolver = new JsonSchemaResolver();
+        foreach (JObject model in modelSchemas)
+        {
+            var noProps = (JObject) model.DeepClone();
+            var property = noProps.Property("properties");
+            if (property != null)
+            {
+                property.Remove();
+            }
+            JsonSchema.Read(noProps.CreateReader(), resolver);
+        }
+
+        foreach (JObject model in modelSchemas)
+        {
+            var id = model.Property("id").Value.ToString();
+            var oldSchema = resolver.GetSchema(id);
+            resolver.LoadedSchemas.Remove(oldSchema);
+            var newSchema = JsonSchema.Read(model.CreateReader(), resolver);
+            oldSchema.Properties = newSchema.Properties;
+            resolver.LoadedSchemas.Remove(newSchema);
+            resolver.LoadedSchemas.Add(oldSchema);
+        }
+        return resolver;
+    }
+
+#>

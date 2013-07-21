@@ -9,7 +9,7 @@ Enterprise Tester Version 4.8 and above support generating a swagger definition 
 
 As part of this work we have developed a simple API client for .Net (Written in CSharp) which generates all the necessary models and operations from the Swagger JSON produced by the ET v4.8 API.
 
-The API client has a "swagger.json" file in the root, which is copied from the response of a GET request to http://<ET_Server>/api/swagger/api.
+The API client has a "swagger.json" file in the root, which is copied from the response of a GET request to http://my.et.server/EnterpriseTester/api/swagger/api.
 
 Basic Usage
 -----------
@@ -40,7 +40,7 @@ The client also supports asynchronous execution - so every method has an asynchr
 Methods that return HttpResponseMessage
 ---------------------------------------
 
-For API resources that are difficult to represent in swagger (such as search queries, TQL aggregate queries etc.) you may find that the method returns an HttpResponseMessage - this allows you to then deserialized the response any way you like.
+For API resources that have responses which are difficult to represent in swagger (such as search queries, TQL aggregate queries etc.) you may find that the method returns an HttpResponseMessage - this allows you to then deserialize the response any way you like.
 
 Here is an example of retrieving the results of a GROUP BY TQL query:
 
@@ -54,7 +54,7 @@ Here is an example of retrieving the results of a GROUP BY TQL query:
 	    Console.WriteLine("EntityType: {0}, Count: {1}", group.Key, group.Value["COUNT"].Value<int>());
 	}
 
-In the above example we are using the Newtonsoft JSON.Net JObject class, which can represent an JSON response - this is a good way to work with the results of an aggregate query.
+In the above example we are using the Newtonsoft JSON.Net JObject class, which can represent an JSON response - this is a good way to work with the results of an aggregate query (which is returned as a Tree of JSON objects).
 
 Operations
 ----------

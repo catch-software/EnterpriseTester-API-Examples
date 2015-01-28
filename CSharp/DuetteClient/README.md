@@ -74,5 +74,5 @@ The above example will:
 * Uploads all the NUnit xml output files from the directory test1output and test2output.
 
 
-[0]: http://www.enterprisetester.com/downloads/DuetteClient-v1.1.zip
+[0]: http://catchsoftware.com/downloads/DuetteClient-v1.1.zip 
 [1]: http://www.microsoft.com/en-us/download/details.aspx?id=17851

@@ -3,11 +3,56 @@ using System.Linq;
 
 namespace EnterpriseTester.API.Client.Models
 {
+    public partial class AbstractWidget : EtRestEntityBase 
+    {
+        public string Description { get; set; }
+        public string FieldCategory { get; set; }
+        public string FormName { get; set; }
+        public string HandlerType { get; set; }
+        public bool Hidden { get; set; }
+        public string ImplementationType { get; set; }
+        public string ItemId { get; set; }
+        public string Label { get; set; }
+        public string Name { get; set; }
+        public bool ReadOnly { get; set; }
+        public bool Required { get; set; }
+        public int TabIndex { get; set; }
+        public string ValueType { get; set; }
+        public string WidgetType { get; set; }
+        
+        public AbstractWidget Clone(bool includeLocalProperties)
+        {
+            var c = new AbstractWidget
+                    {
+                        Description = Description,
+                        FieldCategory = FieldCategory,
+                        FormName = FormName,
+                        HandlerType = HandlerType,
+                        Hidden = Hidden,
+                        ImplementationType = ImplementationType,
+                        ItemId = ItemId,
+                        Label = Label,
+                        Name = Name,
+                        ReadOnly = ReadOnly,
+                        Required = Required,
+                        TabIndex = TabIndex,
+                        ValueType = ValueType,
+                        WidgetType = WidgetType,
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(AbstractWidget clone, bool includeLocalProperties);
+    }
+
+
     public partial class AgileRun : EtRestEntityBase, IHasId 
     {
         public AgileRun()
         {
             Steps = new List<AgileRunStep>();
+            Widgets = new List<AbstractWidget>();
         }
 
         public string ActualDuration { get; set; }
@@ -17,7 +62,6 @@ namespace EnterpriseTester.API.Client.Models
         public string Description { get; set; }
         public string EstimatedDuration { get; set; }
         public string ExecutionStatus { get; set; }
-        public object FieldControls { get; set; }
         public object FieldValues { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
@@ -29,15 +73,19 @@ namespace EnterpriseTester.API.Client.Models
         public string PackageName { get; set; }
         public string PostCondition { get; set; }
         public string PreCondition { get; set; }
+        public Picklist Priority { get; set; }
         public string PriorityId { get; set; }
         public Project Project { get; set; }
         public string ProjectId { get; set; }
         public string ProjectName { get; set; }
         public string SourceContainerId { get; set; }
         public string SourceId { get; set; }
+        public Picklist Status { get; set; }
         public string StatusId { get; set; }
         public List<AgileRunStep> Steps { get; set; }
+        public Picklist Type { get; set; }
         public string TypeId { get; set; }
+        public List<AbstractWidget> Widgets { get; set; }
         
         public AgileRun Clone(bool includeLocalProperties)
         {
@@ -50,7 +98,6 @@ namespace EnterpriseTester.API.Client.Models
                         Description = Description,
                         EstimatedDuration = EstimatedDuration,
                         ExecutionStatus = ExecutionStatus,
-                        FieldControls = FieldControls,
                         FieldValues = FieldValues,
                         Id = Id,
                         Name = Name,
@@ -62,15 +109,19 @@ namespace EnterpriseTester.API.Client.Models
                         PackageName = PackageName,
                         PostCondition = PostCondition,
                         PreCondition = PreCondition,
+                        Priority = Priority,
                         PriorityId = PriorityId,
                         Project = Project,
                         ProjectId = ProjectId,
                         ProjectName = ProjectName,
                         SourceContainerId = SourceContainerId,
                         SourceId = SourceId,
+                        Status = Status,
                         StatusId = StatusId,
+                        Type = Type,
                         TypeId = TypeId,
                         Steps = Steps.Select(x=>x.Clone(includeLocalProperties)).ToList(),
+                        Widgets = Widgets.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                     };
             CopyExtraPropertiesToClone(c, includeLocalProperties);
             return c;
@@ -113,6 +164,64 @@ namespace EnterpriseTester.API.Client.Models
         }
 
         partial void CopyExtraPropertiesToClone(AgileRunStep clone, bool includeLocalProperties);
+    }
+
+
+    public partial class AgileRunStepAttachment : EtRestEntityBase, IHasId 
+    {
+        public string ContentType { get; set; }
+        public string CreatedAt { get; set; }
+        public string CreatedById { get; set; }
+        public string FileName { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string RunId { get; set; }
+        public int Size { get; set; }
+        public string SourceId { get; set; }
+        public string StepId { get; set; }
+        
+        public AgileRunStepAttachment Clone(bool includeLocalProperties)
+        {
+            var c = new AgileRunStepAttachment
+                    {
+                        ContentType = ContentType,
+                        CreatedAt = CreatedAt,
+                        CreatedById = CreatedById,
+                        FileName = FileName,
+                        Id = Id,
+                        Name = Name,
+                        RunId = RunId,
+                        Size = Size,
+                        SourceId = SourceId,
+                        StepId = StepId,
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(AgileRunStepAttachment clone, bool includeLocalProperties);
+    }
+
+
+    public partial class AgileRunStepIncident : EtRestEntityBase 
+    {
+        public string IncidentId { get; set; }
+        public string RunId { get; set; }
+        public string StepId { get; set; }
+        
+        public AgileRunStepIncident Clone(bool includeLocalProperties)
+        {
+            var c = new AgileRunStepIncident
+                    {
+                        IncidentId = IncidentId,
+                        RunId = RunId,
+                        StepId = StepId,
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(AgileRunStepIncident clone, bool includeLocalProperties);
     }
 
 
@@ -239,64 +348,6 @@ namespace EnterpriseTester.API.Client.Models
         }
 
         partial void CopyExtraPropertiesToClone(AutomatedTestAssignment clone, bool includeLocalProperties);
-    }
-
-
-    public partial class AutomatedTestingScheduleConfiguration : EtRestEntityBase 
-    {
-        public int HourOfDay { get; set; }
-        public int MinuteOfDay { get; set; }
-        public int PeriodInMinutes { get; set; }
-        public string Type { get; set; }
-        
-        public AutomatedTestingScheduleConfiguration Clone(bool includeLocalProperties)
-        {
-            var c = new AutomatedTestingScheduleConfiguration
-                    {
-                        HourOfDay = HourOfDay,
-                        MinuteOfDay = MinuteOfDay,
-                        PeriodInMinutes = PeriodInMinutes,
-                        Type = Type,
-                    };
-            CopyExtraPropertiesToClone(c, includeLocalProperties);
-            return c;
-        }
-
-        partial void CopyExtraPropertiesToClone(AutomatedTestingScheduleConfiguration clone, bool includeLocalProperties);
-    }
-
-
-    public partial class AutomatedTestingScheduleInfo : EtRestEntityBase, IHasId 
-    {
-        public AutomatedTestingScheduleConfiguration Configuration { get; set; }
-        public string Description { get; set; }
-        public bool Enabled { get; set; }
-        public string Id { get; set; }
-        public bool IsRunning { get; set; }
-        public string LastRun { get; set; }
-        public string NextRun { get; set; }
-        public string ScheduleId { get; set; }
-        public string StatusMessage { get; set; }
-        
-        public AutomatedTestingScheduleInfo Clone(bool includeLocalProperties)
-        {
-            var c = new AutomatedTestingScheduleInfo
-                    {
-                        Configuration = Configuration,
-                        Description = Description,
-                        Enabled = Enabled,
-                        Id = Id,
-                        IsRunning = IsRunning,
-                        LastRun = LastRun,
-                        NextRun = NextRun,
-                        ScheduleId = ScheduleId,
-                        StatusMessage = StatusMessage,
-                    };
-            CopyExtraPropertiesToClone(c, includeLocalProperties);
-            return c;
-        }
-
-        partial void CopyExtraPropertiesToClone(AutomatedTestingScheduleInfo clone, bool includeLocalProperties);
     }
 
 
@@ -459,53 +510,6 @@ namespace EnterpriseTester.API.Client.Models
     }
 
 
-    public partial class AutomatedTestSubType : EtRestEntityBase 
-    {
-        public string FriendlyName { get; set; }
-        public string Name { get; set; }
-        
-        public AutomatedTestSubType Clone(bool includeLocalProperties)
-        {
-            var c = new AutomatedTestSubType
-                    {
-                        FriendlyName = FriendlyName,
-                        Name = Name,
-                    };
-            CopyExtraPropertiesToClone(c, includeLocalProperties);
-            return c;
-        }
-
-        partial void CopyExtraPropertiesToClone(AutomatedTestSubType clone, bool includeLocalProperties);
-    }
-
-
-    public partial class AutomatedTestType : EtRestEntityBase 
-    {
-        public AutomatedTestType()
-        {
-            Types = new List<AutomatedTestSubType>();
-        }
-
-        public string FriendlyName { get; set; }
-        public string Name { get; set; }
-        public List<AutomatedTestSubType> Types { get; set; }
-        
-        public AutomatedTestType Clone(bool includeLocalProperties)
-        {
-            var c = new AutomatedTestType
-                    {
-                        FriendlyName = FriendlyName,
-                        Name = Name,
-                        Types = Types.Select(x=>x.Clone(includeLocalProperties)).ToList(),
-                    };
-            CopyExtraPropertiesToClone(c, includeLocalProperties);
-            return c;
-        }
-
-        partial void CopyExtraPropertiesToClone(AutomatedTestType clone, bool includeLocalProperties);
-    }
-
-
     public partial class BackgroundTask : EtRestEntityBase, IHasId 
     {
         public bool Complete { get; set; }
@@ -542,6 +546,52 @@ namespace EnterpriseTester.API.Client.Models
     }
 
 
+    public partial class CopyExternalSystemLink : EtRestEntityBase 
+    {
+        public string CopyFromLinkId { get; set; }
+        public CreateExternalSystemLinkEnd Destination { get; set; }
+        public string Name { get; set; }
+        public CreateExternalSystemLinkEnd Source { get; set; }
+        
+        public CopyExternalSystemLink Clone(bool includeLocalProperties)
+        {
+            var c = new CopyExternalSystemLink
+                    {
+                        CopyFromLinkId = CopyFromLinkId,
+                        Destination = Destination,
+                        Name = Name,
+                        Source = Source,
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(CopyExternalSystemLink clone, bool includeLocalProperties);
+    }
+
+
+    public partial class CreateAgileRunStepIncident : EtRestEntityBase 
+    {
+        public string IncidentId { get; set; }
+        public string RunId { get; set; }
+        public string StepId { get; set; }
+        
+        public CreateAgileRunStepIncident Clone(bool includeLocalProperties)
+        {
+            var c = new CreateAgileRunStepIncident
+                    {
+                        IncidentId = IncidentId,
+                        RunId = RunId,
+                        StepId = StepId,
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(CreateAgileRunStepIncident clone, bool includeLocalProperties);
+    }
+
+
     public partial class CreateAutomatedTestRunResultNodeIncident : EtRestEntityBase 
     {
         public string IncidentId { get; set; }
@@ -563,6 +613,7 @@ namespace EnterpriseTester.API.Client.Models
     public partial class CreateBackgroundTask : EtRestEntityBase 
     {
         public object Parameters { get; set; }
+        public bool StreamProgress { get; set; }
         public string Type { get; set; }
         
         public CreateBackgroundTask Clone(bool includeLocalProperties)
@@ -570,6 +621,7 @@ namespace EnterpriseTester.API.Client.Models
             var c = new CreateBackgroundTask
                     {
                         Parameters = Parameters,
+                        StreamProgress = StreamProgress,
                         Type = Type,
                     };
             CopyExtraPropertiesToClone(c, includeLocalProperties);
@@ -626,19 +678,55 @@ namespace EnterpriseTester.API.Client.Models
     }
 
 
+    public partial class CreateMailSenderSettings : EtRestEntityBase 
+    {
+        public string EmailPrefix { get; set; }
+        public bool Enabled { get; set; }
+        public string FromAddress { get; set; }
+        public string HostName { get; set; }
+        public string Password { get; set; }
+        public int Port { get; set; }
+        public bool SSL { get; set; }
+        public int Timeout { get; set; }
+        public string Type { get; set; }
+        public string UserName { get; set; }
+        
+        public CreateMailSenderSettings Clone(bool includeLocalProperties)
+        {
+            var c = new CreateMailSenderSettings
+                    {
+                        EmailPrefix = EmailPrefix,
+                        Enabled = Enabled,
+                        FromAddress = FromAddress,
+                        HostName = HostName,
+                        Password = Password,
+                        Port = Port,
+                        SSL = SSL,
+                        Timeout = Timeout,
+                        Type = Type,
+                        UserName = UserName,
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(CreateMailSenderSettings clone, bool includeLocalProperties);
+    }
+
+
     public partial class CreateNewRun : EtRestEntityBase 
     {
-        public object FieldControlValues { get; set; }
         public object FieldValues { get; set; }
         public string TesterId { get; set; }
+        public object WidgetValues { get; set; }
         
         public CreateNewRun Clone(bool includeLocalProperties)
         {
             var c = new CreateNewRun
                     {
-                        FieldControlValues = FieldControlValues,
                         FieldValues = FieldValues,
                         TesterId = TesterId,
+                        WidgetValues = WidgetValues,
                     };
             CopyExtraPropertiesToClone(c, includeLocalProperties);
             return c;
@@ -679,7 +767,6 @@ namespace EnterpriseTester.API.Client.Models
         public string AssignedToId { get; set; }
         public string Description { get; set; }
         public string EstimatedDuration { get; set; }
-        public object FieldControlValues { get; set; }
         public object FieldValues { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
@@ -695,6 +782,7 @@ namespace EnterpriseTester.API.Client.Models
         public string StatusId { get; set; }
         public List<AgileRunStep> Steps { get; set; }
         public string TypeId { get; set; }
+        public object WidgetValues { get; set; }
         
         public CreateOrUpdateAgileRun Clone(bool includeLocalProperties)
         {
@@ -704,7 +792,6 @@ namespace EnterpriseTester.API.Client.Models
                         AssignedToId = AssignedToId,
                         Description = Description,
                         EstimatedDuration = EstimatedDuration,
-                        FieldControlValues = FieldControlValues,
                         FieldValues = FieldValues,
                         Id = Id,
                         Name = Name,
@@ -719,6 +806,7 @@ namespace EnterpriseTester.API.Client.Models
                         ProjectId = ProjectId,
                         StatusId = StatusId,
                         TypeId = TypeId,
+                        WidgetValues = WidgetValues,
                         Steps = Steps.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                     };
             CopyExtraPropertiesToClone(c, includeLocalProperties);
@@ -782,30 +870,6 @@ namespace EnterpriseTester.API.Client.Models
         }
 
         partial void CopyExtraPropertiesToClone(CreateOrUpdateAutomatedTestAssignment clone, bool includeLocalProperties);
-    }
-
-
-    public partial class CreateOrUpdateAutomatedTestingScheduleInfo : EtRestEntityBase, IHasId 
-    {
-        public AutomatedTestingScheduleConfiguration Configuration { get; set; }
-        public bool Enabled { get; set; }
-        public string Id { get; set; }
-        public string ScheduleId { get; set; }
-        
-        public CreateOrUpdateAutomatedTestingScheduleInfo Clone(bool includeLocalProperties)
-        {
-            var c = new CreateOrUpdateAutomatedTestingScheduleInfo
-                    {
-                        Configuration = Configuration,
-                        Enabled = Enabled,
-                        Id = Id,
-                        ScheduleId = ScheduleId,
-                    };
-            CopyExtraPropertiesToClone(c, includeLocalProperties);
-            return c;
-        }
-
-        partial void CopyExtraPropertiesToClone(CreateOrUpdateAutomatedTestingScheduleInfo clone, bool includeLocalProperties);
     }
 
 
@@ -892,6 +956,8 @@ namespace EnterpriseTester.API.Client.Models
             AffectedVersionIds = new List<string>();
             Comments = new List<CreateOrUpdateIncidentComment>();
             ComponentIds = new List<string>();
+            ExternalSystemLinkIds = new List<string>();
+            ExternalSystemLinks = new List<IdOrName>();
             FixedVersionIds = new List<string>();
         }
 
@@ -900,8 +966,8 @@ namespace EnterpriseTester.API.Client.Models
         public List<CreateOrUpdateIncidentComment> Comments { get; set; }
         public List<string> ComponentIds { get; set; }
         public string Description { get; set; }
-        public string EstimatedDuration { get; set; }
-        public object FieldControlValues { get; set; }
+        public List<string> ExternalSystemLinkIds { get; set; }
+        public List<IdOrName> ExternalSystemLinks { get; set; }
         public object FieldValues { get; set; }
         public List<string> FixedVersionIds { get; set; }
         public string Id { get; set; }
@@ -913,6 +979,7 @@ namespace EnterpriseTester.API.Client.Models
         public string Summary { get; set; }
         public string TemporaryId { get; set; }
         public string TypeId { get; set; }
+        public object WidgetValues { get; set; }
         
         public CreateOrUpdateIncident Clone(bool includeLocalProperties)
         {
@@ -920,8 +987,6 @@ namespace EnterpriseTester.API.Client.Models
                     {
                         AssignedToId = AssignedToId,
                         Description = Description,
-                        EstimatedDuration = EstimatedDuration,
-                        FieldControlValues = FieldControlValues,
                         FieldValues = FieldValues,
                         Id = Id,
                         Number = Number,
@@ -932,9 +997,12 @@ namespace EnterpriseTester.API.Client.Models
                         Summary = Summary,
                         TemporaryId = TemporaryId,
                         TypeId = TypeId,
+                        WidgetValues = WidgetValues,
                         AffectedVersionIds = AffectedVersionIds.ToList(),
                         Comments = Comments.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                         ComponentIds = ComponentIds.ToList(),
+                        ExternalSystemLinkIds = ExternalSystemLinkIds.ToList(),
+                        ExternalSystemLinks = ExternalSystemLinks.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                         FixedVersionIds = FixedVersionIds.ToList(),
                     };
             CopyExtraPropertiesToClone(c, includeLocalProperties);
@@ -1106,7 +1174,6 @@ namespace EnterpriseTester.API.Client.Models
         public string Description { get; set; }
         public string DifficultyLevelId { get; set; }
         public string EstimatedDuration { get; set; }
-        public object FieldControlValues { get; set; }
         public object FieldValues { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
@@ -1118,6 +1185,7 @@ namespace EnterpriseTester.API.Client.Models
         public string StatusId { get; set; }
         public string TemporaryId { get; set; }
         public string TypeId { get; set; }
+        public object WidgetValues { get; set; }
         
         public CreateOrUpdateRequirement Clone(bool includeLocalProperties)
         {
@@ -1128,7 +1196,6 @@ namespace EnterpriseTester.API.Client.Models
                         Description = Description,
                         DifficultyLevelId = DifficultyLevelId,
                         EstimatedDuration = EstimatedDuration,
-                        FieldControlValues = FieldControlValues,
                         FieldValues = FieldValues,
                         Id = Id,
                         Name = Name,
@@ -1140,6 +1207,7 @@ namespace EnterpriseTester.API.Client.Models
                         StatusId = StatusId,
                         TemporaryId = TemporaryId,
                         TypeId = TypeId,
+                        WidgetValues = WidgetValues,
                     };
             CopyExtraPropertiesToClone(c, includeLocalProperties);
             return c;
@@ -1186,7 +1254,6 @@ namespace EnterpriseTester.API.Client.Models
         public string ChangeComment { get; set; }
         public string Description { get; set; }
         public string EstimatedDuration { get; set; }
-        public object FieldControlValues { get; set; }
         public object FieldValues { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
@@ -1202,6 +1269,7 @@ namespace EnterpriseTester.API.Client.Models
         public List<Step> Steps { get; set; }
         public string TemporaryId { get; set; }
         public string TypeId { get; set; }
+        public object WidgetValues { get; set; }
         
         public CreateOrUpdateScript Clone(bool includeLocalProperties)
         {
@@ -1211,7 +1279,6 @@ namespace EnterpriseTester.API.Client.Models
                         ChangeComment = ChangeComment,
                         Description = Description,
                         EstimatedDuration = EstimatedDuration,
-                        FieldControlValues = FieldControlValues,
                         FieldValues = FieldValues,
                         Id = Id,
                         Name = Name,
@@ -1226,6 +1293,7 @@ namespace EnterpriseTester.API.Client.Models
                         StatusId = StatusId,
                         TemporaryId = TemporaryId,
                         TypeId = TypeId,
+                        WidgetValues = WidgetValues,
                         Steps = Steps.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                     };
             CopyExtraPropertiesToClone(c, includeLocalProperties);
@@ -1288,6 +1356,7 @@ namespace EnterpriseTester.API.Client.Models
 
     public partial class CreateOrUpdateSynchronizationScheduleInfo : EtRestEntityBase, IHasId 
     {
+        public string Condition { get; set; }
         public SynchronizationScheduleConfiguration Configuration { get; set; }
         public string Direction { get; set; }
         public bool Enabled { get; set; }
@@ -1299,6 +1368,7 @@ namespace EnterpriseTester.API.Client.Models
         {
             var c = new CreateOrUpdateSynchronizationScheduleInfo
                     {
+                        Condition = Condition,
                         Configuration = Configuration,
                         Direction = Direction,
                         Enabled = Enabled,
@@ -1357,8 +1427,10 @@ namespace EnterpriseTester.API.Client.Models
     public partial class CreateOrUpdateUser : EtRestEntityBase, IHasId 
     {
         public string Email { get; set; }
+        public bool Enabled { get; set; }
         public string FirstName { get; set; }
         public string Id { get; set; }
+        public bool IsExternal { get; set; }
         public string LastName { get; set; }
         public string Password { get; set; }
         public string Phone { get; set; }
@@ -1369,8 +1441,10 @@ namespace EnterpriseTester.API.Client.Models
             var c = new CreateOrUpdateUser
                     {
                         Email = Email,
+                        Enabled = Enabled,
                         FirstName = FirstName,
                         Id = Id,
+                        IsExternal = IsExternal,
                         LastName = LastName,
                         Password = Password,
                         Phone = Phone,
@@ -1407,26 +1481,6 @@ namespace EnterpriseTester.API.Client.Models
         }
 
         partial void CopyExtraPropertiesToClone(CreateRelationship clone, bool includeLocalProperties);
-    }
-
-
-    public partial class CreateSchedule : EtRestEntityBase 
-    {
-        public string Name { get; set; }
-        public string ProjectId { get; set; }
-        
-        public CreateSchedule Clone(bool includeLocalProperties)
-        {
-            var c = new CreateSchedule
-                    {
-                        Name = Name,
-                        ProjectId = ProjectId,
-                    };
-            CopyExtraPropertiesToClone(c, includeLocalProperties);
-            return c;
-        }
-
-        partial void CopyExtraPropertiesToClone(CreateSchedule clone, bool includeLocalProperties);
     }
 
 
@@ -1566,67 +1620,58 @@ namespace EnterpriseTester.API.Client.Models
     }
 
 
-    public partial class EditScheduleConfigurationDTO : EtRestEntityBase, IHasId 
+    public partial class EntityTypeWidgets : EtRestEntityBase 
     {
-        public bool CombineResults { get; set; }
-        public string ExecutionPackageId { get; set; }
-        public object FieldControlValues { get; set; }
-        public object FieldValues { get; set; }
-        public string Id { get; set; }
-        public int MaximumNumberOfResultsRetained { get; set; }
-        public string Name { get; set; }
-        public string NameTemplate { get; set; }
-        public string ScheduleId { get; set; }
-        public string ScriptPackageId { get; set; }
-        public bool SkipIfFilesUnchanged { get; set; }
-        public string SourcePath { get; set; }
-        public string SubType { get; set; }
-        public string Type { get; set; }
+        public EntityWidgets AgileRun { get; set; }
+        public EntityWidgets Incident { get; set; }
+        public string ProjectId { get; set; }
+        public string ProjectName { get; set; }
+        public EntityWidgets Requirement { get; set; }
+        public EntityWidgets ScriptRun { get; set; }
+        public EntityWidgets TestScript { get; set; }
         
-        public EditScheduleConfigurationDTO Clone(bool includeLocalProperties)
+        public EntityTypeWidgets Clone(bool includeLocalProperties)
         {
-            var c = new EditScheduleConfigurationDTO
+            var c = new EntityTypeWidgets
                     {
-                        CombineResults = CombineResults,
-                        ExecutionPackageId = ExecutionPackageId,
-                        FieldControlValues = FieldControlValues,
-                        FieldValues = FieldValues,
-                        Id = Id,
-                        MaximumNumberOfResultsRetained = MaximumNumberOfResultsRetained,
-                        Name = Name,
-                        NameTemplate = NameTemplate,
-                        ScheduleId = ScheduleId,
-                        ScriptPackageId = ScriptPackageId,
-                        SkipIfFilesUnchanged = SkipIfFilesUnchanged,
-                        SourcePath = SourcePath,
-                        SubType = SubType,
-                        Type = Type,
+                        AgileRun = AgileRun,
+                        Incident = Incident,
+                        ProjectId = ProjectId,
+                        ProjectName = ProjectName,
+                        Requirement = Requirement,
+                        ScriptRun = ScriptRun,
+                        TestScript = TestScript,
                     };
             CopyExtraPropertiesToClone(c, includeLocalProperties);
             return c;
         }
 
-        partial void CopyExtraPropertiesToClone(EditScheduleConfigurationDTO clone, bool includeLocalProperties);
+        partial void CopyExtraPropertiesToClone(EntityTypeWidgets clone, bool includeLocalProperties);
     }
 
 
-    public partial class EditScheduleDTO : EtRestEntityBase, IHasId 
+    public partial class EntityWidgets : EtRestEntityBase 
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        
-        public EditScheduleDTO Clone(bool includeLocalProperties)
+        public EntityWidgets()
         {
-            var c = new EditScheduleDTO
+            Widgets = new List<AbstractWidget>();
+        }
+
+        public string EntityType { get; set; }
+        public List<AbstractWidget> Widgets { get; set; }
+        
+        public EntityWidgets Clone(bool includeLocalProperties)
+        {
+            var c = new EntityWidgets
                     {
-                        Id = Id,
-                        Name = Name,
+                        EntityType = EntityType,
+                        Widgets = Widgets.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                     };
             CopyExtraPropertiesToClone(c, includeLocalProperties);
             return c;
         }
 
-        partial void CopyExtraPropertiesToClone(EditScheduleDTO clone, bool includeLocalProperties);
+        partial void CopyExtraPropertiesToClone(EntityWidgets clone, bool includeLocalProperties);
     }
 
 
@@ -1687,22 +1732,22 @@ namespace EnterpriseTester.API.Client.Models
 
         public List<string> CompatibleWithSourceKeys { get; set; }
         public string End { get; set; }
-        public Object FieldControls { get; set; }
         public string Id { get; set; }
         public Object InitialFieldValues { get; set; }
         public string Key { get; set; }
         public string Name { get; set; }
+        public Object Widgets { get; set; }
         
         public ExternalSourceMetadata Clone(bool includeLocalProperties)
         {
             var c = new ExternalSourceMetadata
                     {
                         End = End,
-                        FieldControls = FieldControls,
                         Id = Id,
                         InitialFieldValues = InitialFieldValues,
                         Key = Key,
                         Name = Name,
+                        Widgets = Widgets,
                         CompatibleWithSourceKeys = CompatibleWithSourceKeys.ToList(),
                     };
             CopyExtraPropertiesToClone(c, includeLocalProperties);
@@ -1721,7 +1766,7 @@ namespace EnterpriseTester.API.Client.Models
             Categories = new List<string>();
             ConfigurationProblems = new List<string>();
             ExternalSystemLinks = new List<ExternalSystemLink>();
-            FieldControls = new List<object>();
+            Widgets = new List<object>();
         }
 
         public List<Link> AdditionalConfigurationLinks { get; set; }
@@ -1733,7 +1778,6 @@ namespace EnterpriseTester.API.Client.Models
         public string ConnectionType { get; set; }
         public bool Enabled { get; set; }
         public List<ExternalSystemLink> ExternalSystemLinks { get; set; }
-        public List<object> FieldControls { get; set; }
         public object FieldValues { get; set; }
         public bool HasPassword { get; set; }
         public string Id { get; set; }
@@ -1744,6 +1788,7 @@ namespace EnterpriseTester.API.Client.Models
         public string Type { get; set; }
         public string TypeDescription { get; set; }
         public string UserName { get; set; }
+        public List<object> Widgets { get; set; }
         
         public ExternalSystem Clone(bool includeLocalProperties)
         {
@@ -1768,7 +1813,7 @@ namespace EnterpriseTester.API.Client.Models
                         Categories = Categories.ToList(),
                         ConfigurationProblems = ConfigurationProblems.ToList(),
                         ExternalSystemLinks = ExternalSystemLinks.Select(x=>x.Clone(includeLocalProperties)).ToList(),
-                        FieldControls = FieldControls.ToList(),
+                        Widgets = Widgets.ToList(),
                     };
             CopyExtraPropertiesToClone(c, includeLocalProperties);
             return c;
@@ -1813,6 +1858,7 @@ namespace EnterpriseTester.API.Client.Models
             ConfigurationProblems = new List<string>();
         }
 
+        public string AutoSelect { get; set; }
         public string Configuration { get; set; }
         public bool ConfigurationComplete { get; set; }
         public List<string> ConfigurationProblems { get; set; }
@@ -1842,6 +1888,7 @@ namespace EnterpriseTester.API.Client.Models
         {
             var c = new ExternalSystemLink
                     {
+                        AutoSelect = AutoSelect,
                         Configuration = Configuration,
                         ConfigurationComplete = ConfigurationComplete,
                         DefectTrackerProjectId = DefectTrackerProjectId,
@@ -2117,6 +2164,26 @@ namespace EnterpriseTester.API.Client.Models
     }
 
 
+    public partial class IdOrName : EtRestEntityBase, IHasId 
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        
+        public IdOrName Clone(bool includeLocalProperties)
+        {
+            var c = new IdOrName
+                    {
+                        Id = Id,
+                        Name = Name,
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(IdOrName clone, bool includeLocalProperties);
+    }
+
+
     public partial class INamedEntity : EtRestEntityBase, IHasId 
     {
         public string Id { get; set; }
@@ -2142,82 +2209,140 @@ namespace EnterpriseTester.API.Client.Models
         public Incident()
         {
             AffectedVersionIds = new List<string>();
+            Attachments = new List<IncidentAttachment>();
             Comments = new List<IncidentComment>();
             ComponentIds = new List<string>();
+            ExternalSystemLinkIds = new List<string>();
+            ExternalSystemLinks = new List<ExternalSystemLink>();
             FixedVersionIds = new List<string>();
+            Widgets = new List<AbstractWidget>();
         }
 
         public List<string> AffectedVersionIds { get; set; }
+        public PicklistCollection AffectedVersions { get; set; }
         public string AssignedTo { get; set; }
         public string AssignedToId { get; set; }
+        public List<IncidentAttachment> Attachments { get; set; }
         public List<IncidentComment> Comments { get; set; }
         public List<string> ComponentIds { get; set; }
+        public PicklistCollection Components { get; set; }
         public string CreatedAt { get; set; }
         public string CreatedBy { get; set; }
         public string CreatedById { get; set; }
         public string Description { get; set; }
-        public object FieldControls { get; set; }
+        public string ExternalKeys { get; set; }
+        public List<string> ExternalSystemLinkIds { get; set; }
+        public List<ExternalSystemLink> ExternalSystemLinks { get; set; }
         public object FieldValues { get; set; }
         public List<string> FixedVersionIds { get; set; }
+        public PicklistCollection FixedVersions { get; set; }
         public bool HasAttachments { get; set; }
         public string Id { get; set; }
         public int IncidentNumber { get; set; }
         public string InternalId { get; set; }
+        public IncidentComment LastComment { get; set; }
         public string LastUpdatedAt { get; set; }
         public string LastUpdatedBy { get; set; }
         public string LastUpdatedById { get; set; }
+        public Picklist Priority { get; set; }
         public string PriorityId { get; set; }
         public Project Project { get; set; }
         public string ProjectId { get; set; }
         public string ProjectName { get; set; }
+        public Picklist Resolution { get; set; }
         public string ResolutionId { get; set; }
+        public Picklist Status { get; set; }
         public string StatusId { get; set; }
         public string Summary { get; set; }
-        public string TicketId { get; set; }
-        public string TicketKey { get; set; }
-        public string TicketUrl { get; set; }
+        public Picklist Type { get; set; }
         public string TypeId { get; set; }
+        public int VersionNumber { get; set; }
+        public List<AbstractWidget> Widgets { get; set; }
         
         public Incident Clone(bool includeLocalProperties)
         {
             var c = new Incident
                     {
+                        AffectedVersions = AffectedVersions,
                         AssignedTo = AssignedTo,
                         AssignedToId = AssignedToId,
+                        Components = Components,
                         CreatedAt = CreatedAt,
                         CreatedBy = CreatedBy,
                         CreatedById = CreatedById,
                         Description = Description,
-                        FieldControls = FieldControls,
+                        ExternalKeys = ExternalKeys,
                         FieldValues = FieldValues,
+                        FixedVersions = FixedVersions,
                         HasAttachments = HasAttachments,
                         Id = Id,
                         IncidentNumber = IncidentNumber,
                         InternalId = InternalId,
+                        LastComment = LastComment,
                         LastUpdatedAt = LastUpdatedAt,
                         LastUpdatedBy = LastUpdatedBy,
                         LastUpdatedById = LastUpdatedById,
+                        Priority = Priority,
                         PriorityId = PriorityId,
                         Project = Project,
                         ProjectId = ProjectId,
                         ProjectName = ProjectName,
+                        Resolution = Resolution,
                         ResolutionId = ResolutionId,
+                        Status = Status,
                         StatusId = StatusId,
                         Summary = Summary,
-                        TicketId = TicketId,
-                        TicketKey = TicketKey,
-                        TicketUrl = TicketUrl,
+                        Type = Type,
                         TypeId = TypeId,
+                        VersionNumber = VersionNumber,
                         AffectedVersionIds = AffectedVersionIds.ToList(),
+                        Attachments = Attachments.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                         Comments = Comments.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                         ComponentIds = ComponentIds.ToList(),
+                        ExternalSystemLinkIds = ExternalSystemLinkIds.ToList(),
+                        ExternalSystemLinks = ExternalSystemLinks.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                         FixedVersionIds = FixedVersionIds.ToList(),
+                        Widgets = Widgets.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                     };
             CopyExtraPropertiesToClone(c, includeLocalProperties);
             return c;
         }
 
         partial void CopyExtraPropertiesToClone(Incident clone, bool includeLocalProperties);
+    }
+
+
+    public partial class IncidentAttachment : EtRestEntityBase, IHasId 
+    {
+        public string ContentType { get; set; }
+        public string CreatedAt { get; set; }
+        public string CreatedById { get; set; }
+        public string FileName { get; set; }
+        public string Id { get; set; }
+        public string IncidentId { get; set; }
+        public string Name { get; set; }
+        public int Size { get; set; }
+        public string SourceId { get; set; }
+        
+        public IncidentAttachment Clone(bool includeLocalProperties)
+        {
+            var c = new IncidentAttachment
+                    {
+                        ContentType = ContentType,
+                        CreatedAt = CreatedAt,
+                        CreatedById = CreatedById,
+                        FileName = FileName,
+                        Id = Id,
+                        IncidentId = IncidentId,
+                        Name = Name,
+                        Size = Size,
+                        SourceId = SourceId,
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(IncidentAttachment clone, bool includeLocalProperties);
     }
 
 
@@ -2231,7 +2356,6 @@ namespace EnterpriseTester.API.Client.Models
         public string LastUpdatedAt { get; set; }
         public string LastUpdatedById { get; set; }
         public string LastUpdatedByUserName { get; set; }
-        public string TicketCommentId { get; set; }
         
         public IncidentComment Clone(bool includeLocalProperties)
         {
@@ -2245,7 +2369,6 @@ namespace EnterpriseTester.API.Client.Models
                         LastUpdatedAt = LastUpdatedAt,
                         LastUpdatedById = LastUpdatedById,
                         LastUpdatedByUserName = LastUpdatedByUserName,
-                        TicketCommentId = TicketCommentId,
                     };
             CopyExtraPropertiesToClone(c, includeLocalProperties);
             return c;
@@ -2399,8 +2522,10 @@ namespace EnterpriseTester.API.Client.Models
     {
         public string EmailPrefix { get; set; }
         public bool Enabled { get; set; }
+        public string ErrorMessage { get; set; }
         public string FromAddress { get; set; }
         public string HostName { get; set; }
+        public bool IsValid { get; set; }
         public string Password { get; set; }
         public int Port { get; set; }
         public bool SSL { get; set; }
@@ -2414,8 +2539,10 @@ namespace EnterpriseTester.API.Client.Models
                     {
                         EmailPrefix = EmailPrefix,
                         Enabled = Enabled,
+                        ErrorMessage = ErrorMessage,
                         FromAddress = FromAddress,
                         HostName = HostName,
+                        IsValid = IsValid,
                         Password = Password,
                         Port = Port,
                         SSL = SSL,
@@ -2610,24 +2737,6 @@ namespace EnterpriseTester.API.Client.Models
     }
 
 
-    public partial class PatchScheduleConfigurationDTO : EtRestEntityBase 
-    {
-        public bool Enabled { get; set; }
-        
-        public PatchScheduleConfigurationDTO Clone(bool includeLocalProperties)
-        {
-            var c = new PatchScheduleConfigurationDTO
-                    {
-                        Enabled = Enabled,
-                    };
-            CopyExtraPropertiesToClone(c, includeLocalProperties);
-            return c;
-        }
-
-        partial void CopyExtraPropertiesToClone(PatchScheduleConfigurationDTO clone, bool includeLocalProperties);
-    }
-
-
     public partial class Permission : EtRestEntityBase, IHasId 
     {
         public Permission()
@@ -2637,7 +2746,6 @@ namespace EnterpriseTester.API.Client.Models
 
         public List<Permission> Children { get; set; }
         public string Comment { get; set; }
-        public string DisplayName { get; set; }
         public string Id { get; set; }
         public string Key { get; set; }
         public string Name { get; set; }
@@ -2647,7 +2755,6 @@ namespace EnterpriseTester.API.Client.Models
             var c = new Permission
                     {
                         Comment = Comment,
-                        DisplayName = DisplayName,
                         Id = Id,
                         Key = Key,
                         Name = Name,
@@ -2700,6 +2807,31 @@ namespace EnterpriseTester.API.Client.Models
         }
 
         partial void CopyExtraPropertiesToClone(Picklist clone, bool includeLocalProperties);
+    }
+
+
+    public partial class PicklistCollection : EtRestEntityBase 
+    {
+        public PicklistCollection()
+        {
+            Items = new List<Picklist>();
+        }
+
+        public List<Picklist> Items { get; set; }
+        public string Text { get; set; }
+        
+        public PicklistCollection Clone(bool includeLocalProperties)
+        {
+            var c = new PicklistCollection
+                    {
+                        Text = Text,
+                        Items = Items.Select(x=>x.Clone(includeLocalProperties)).ToList(),
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(PicklistCollection clone, bool includeLocalProperties);
     }
 
 
@@ -2759,6 +2891,7 @@ namespace EnterpriseTester.API.Client.Models
         public List<Picklist> TestTypes { get; set; }
         public TimeTrackingConfiguration TimeTrackingConfiguration { get; set; }
         public List<Picklist> Versions { get; set; }
+        public EntityTypeWidgets Widgets { get; set; }
         
         public Project Clone(bool includeLocalProperties)
         {
@@ -2784,6 +2917,7 @@ namespace EnterpriseTester.API.Client.Models
                         Slug = Slug,
                         StartDate = StartDate,
                         TimeTrackingConfiguration = TimeTrackingConfiguration,
+                        Widgets = Widgets,
                         Components = Components.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                         ExecutionPackages = ExecutionPackages.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                         ExternalSystemLinks = ExternalSystemLinks.Select(x=>x.Clone(includeLocalProperties)).ToList(),
@@ -3025,6 +3159,7 @@ namespace EnterpriseTester.API.Client.Models
         {
             Attachments = new List<RequirementAttachment>();
             Children = new List<Requirement>();
+            Widgets = new List<AbstractWidget>();
         }
 
         public string AssignedTo { get; set; }
@@ -3036,9 +3171,9 @@ namespace EnterpriseTester.API.Client.Models
         public string CreatedBy { get; set; }
         public string CreatedById { get; set; }
         public string Description { get; set; }
+        public Picklist DifficultyLevel { get; set; }
         public string DifficultyLevelId { get; set; }
         public string EstimatedDuration { get; set; }
-        public object FieldControls { get; set; }
         public object FieldValues { get; set; }
         public bool HasAttachments { get; set; }
         public string Id { get; set; }
@@ -3053,12 +3188,16 @@ namespace EnterpriseTester.API.Client.Models
         public string PackageName { get; set; }
         public string ParentId { get; set; }
         public string ParentName { get; set; }
+        public Picklist Priority { get; set; }
         public string PriorityId { get; set; }
         public string ProjectId { get; set; }
         public string ProjectName { get; set; }
+        public Picklist Status { get; set; }
         public string StatusId { get; set; }
+        public Picklist Type { get; set; }
         public string TypeId { get; set; }
         public int VersionNumber { get; set; }
+        public List<AbstractWidget> Widgets { get; set; }
         
         public Requirement Clone(bool includeLocalProperties)
         {
@@ -3071,9 +3210,9 @@ namespace EnterpriseTester.API.Client.Models
                         CreatedBy = CreatedBy,
                         CreatedById = CreatedById,
                         Description = Description,
+                        DifficultyLevel = DifficultyLevel,
                         DifficultyLevelId = DifficultyLevelId,
                         EstimatedDuration = EstimatedDuration,
-                        FieldControls = FieldControls,
                         FieldValues = FieldValues,
                         HasAttachments = HasAttachments,
                         Id = Id,
@@ -3088,14 +3227,18 @@ namespace EnterpriseTester.API.Client.Models
                         PackageName = PackageName,
                         ParentId = ParentId,
                         ParentName = ParentName,
+                        Priority = Priority,
                         PriorityId = PriorityId,
                         ProjectId = ProjectId,
                         ProjectName = ProjectName,
+                        Status = Status,
                         StatusId = StatusId,
+                        Type = Type,
                         TypeId = TypeId,
                         VersionNumber = VersionNumber,
                         Attachments = Attachments.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                         Children = Children.Select(x=>x.Clone(includeLocalProperties)).ToList(),
+                        Widgets = Widgets.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                     };
             CopyExtraPropertiesToClone(c, includeLocalProperties);
             return c;
@@ -3283,74 +3426,6 @@ namespace EnterpriseTester.API.Client.Models
     }
 
 
-    public partial class Schedule : EtRestEntityBase, IHasId 
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string ProjectId { get; set; }
-        public string ProjectName { get; set; }
-        
-        public Schedule Clone(bool includeLocalProperties)
-        {
-            var c = new Schedule
-                    {
-                        Id = Id,
-                        Name = Name,
-                        ProjectId = ProjectId,
-                        ProjectName = ProjectName,
-                    };
-            CopyExtraPropertiesToClone(c, includeLocalProperties);
-            return c;
-        }
-
-        partial void CopyExtraPropertiesToClone(Schedule clone, bool includeLocalProperties);
-    }
-
-
-    public partial class ScheduleImportConfiguration : EtRestEntityBase, IHasId 
-    {
-        public bool CombineResults { get; set; }
-        public string Description { get; set; }
-        public bool Enabled { get; set; }
-        public string ExecutionPackageId { get; set; }
-        public string Id { get; set; }
-        public int MaximumNumberOfResultsRetained { get; set; }
-        public string Name { get; set; }
-        public string NameTemplate { get; set; }
-        public string ScheduleId { get; set; }
-        public string ScriptPackageId { get; set; }
-        public bool SkipIfFilesUnchanged { get; set; }
-        public string SourcePath { get; set; }
-        public string SubType { get; set; }
-        public string Type { get; set; }
-        
-        public ScheduleImportConfiguration Clone(bool includeLocalProperties)
-        {
-            var c = new ScheduleImportConfiguration
-                    {
-                        CombineResults = CombineResults,
-                        Description = Description,
-                        Enabled = Enabled,
-                        ExecutionPackageId = ExecutionPackageId,
-                        Id = Id,
-                        MaximumNumberOfResultsRetained = MaximumNumberOfResultsRetained,
-                        Name = Name,
-                        NameTemplate = NameTemplate,
-                        ScheduleId = ScheduleId,
-                        ScriptPackageId = ScriptPackageId,
-                        SkipIfFilesUnchanged = SkipIfFilesUnchanged,
-                        SourcePath = SourcePath,
-                        SubType = SubType,
-                        Type = Type,
-                    };
-            CopyExtraPropertiesToClone(c, includeLocalProperties);
-            return c;
-        }
-
-        partial void CopyExtraPropertiesToClone(ScheduleImportConfiguration clone, bool includeLocalProperties);
-    }
-
-
     public partial class Scope : EtRestEntityBase, IHasId 
     {
         public string Id { get; set; }
@@ -3380,6 +3455,7 @@ namespace EnterpriseTester.API.Client.Models
             Assignments = new List<ScriptAssignment>();
             Attachments = new List<ScriptAttachment>();
             Steps = new List<Step>();
+            Widgets = new List<AbstractWidget>();
         }
 
         public string AssignedTo { get; set; }
@@ -3392,7 +3468,6 @@ namespace EnterpriseTester.API.Client.Models
         public string CreatedById { get; set; }
         public string Description { get; set; }
         public string EstimatedDuration { get; set; }
-        public object FieldControls { get; set; }
         public object FieldValues { get; set; }
         public bool HasAttachments { get; set; }
         public string Id { get; set; }
@@ -3409,13 +3484,17 @@ namespace EnterpriseTester.API.Client.Models
         public string PackageName { get; set; }
         public string PostCondition { get; set; }
         public string PreCondition { get; set; }
+        public Picklist Priority { get; set; }
         public string PriorityId { get; set; }
         public string ProjectId { get; set; }
         public string ProjectName { get; set; }
+        public Picklist Status { get; set; }
         public string StatusId { get; set; }
         public List<Step> Steps { get; set; }
+        public Picklist Type { get; set; }
         public string TypeId { get; set; }
         public int VersionNumber { get; set; }
+        public List<AbstractWidget> Widgets { get; set; }
         
         public Script Clone(bool includeLocalProperties)
         {
@@ -3429,7 +3508,6 @@ namespace EnterpriseTester.API.Client.Models
                         CreatedById = CreatedById,
                         Description = Description,
                         EstimatedDuration = EstimatedDuration,
-                        FieldControls = FieldControls,
                         FieldValues = FieldValues,
                         HasAttachments = HasAttachments,
                         Id = Id,
@@ -3446,15 +3524,19 @@ namespace EnterpriseTester.API.Client.Models
                         PackageName = PackageName,
                         PostCondition = PostCondition,
                         PreCondition = PreCondition,
+                        Priority = Priority,
                         PriorityId = PriorityId,
                         ProjectId = ProjectId,
                         ProjectName = ProjectName,
+                        Status = Status,
                         StatusId = StatusId,
+                        Type = Type,
                         TypeId = TypeId,
                         VersionNumber = VersionNumber,
                         Assignments = Assignments.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                         Attachments = Attachments.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                         Steps = Steps.Select(x=>x.Clone(includeLocalProperties)).ToList(),
+                        Widgets = Widgets.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                     };
             CopyExtraPropertiesToClone(c, includeLocalProperties);
             return c;
@@ -3586,6 +3668,7 @@ namespace EnterpriseTester.API.Client.Models
         public ScriptRun()
         {
             StepResults = new List<StepResult>();
+            Widgets = new List<AbstractWidget>();
         }
 
         public string ActualDuration { get; set; }
@@ -3595,7 +3678,6 @@ namespace EnterpriseTester.API.Client.Models
         public string CreatedAt { get; set; }
         public string CreatedBy { get; set; }
         public string CreatedById { get; set; }
-        public object FieldControls { get; set; }
         public object FieldValues { get; set; }
         public string Id { get; set; }
         public string LastUpdatedAt { get; set; }
@@ -3607,6 +3689,7 @@ namespace EnterpriseTester.API.Client.Models
         public int ScriptVersion { get; set; }
         public string Status { get; set; }
         public List<StepResult> StepResults { get; set; }
+        public List<AbstractWidget> Widgets { get; set; }
         
         public ScriptRun Clone(bool includeLocalProperties)
         {
@@ -3619,7 +3702,6 @@ namespace EnterpriseTester.API.Client.Models
                         CreatedAt = CreatedAt,
                         CreatedBy = CreatedBy,
                         CreatedById = CreatedById,
-                        FieldControls = FieldControls,
                         FieldValues = FieldValues,
                         Id = Id,
                         LastUpdatedAt = LastUpdatedAt,
@@ -3631,6 +3713,7 @@ namespace EnterpriseTester.API.Client.Models
                         ScriptVersion = ScriptVersion,
                         Status = Status,
                         StepResults = StepResults.Select(x=>x.Clone(includeLocalProperties)).ToList(),
+                        Widgets = Widgets.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                     };
             CopyExtraPropertiesToClone(c, includeLocalProperties);
             return c;
@@ -3861,6 +3944,7 @@ namespace EnterpriseTester.API.Client.Models
 
     public partial class SynchronizationScheduleInfo : EtRestEntityBase, IHasId 
     {
+        public string Condition { get; set; }
         public SynchronizationScheduleConfiguration Configuration { get; set; }
         public string Description { get; set; }
         public string Direction { get; set; }
@@ -3877,6 +3961,7 @@ namespace EnterpriseTester.API.Client.Models
         {
             var c = new SynchronizationScheduleInfo
                     {
+                        Condition = Condition,
                         Configuration = Configuration,
                         Description = Description,
                         Direction = Direction,
@@ -4196,10 +4281,10 @@ namespace EnterpriseTester.API.Client.Models
 
         public string ActualDuration { get; set; }
         public bool AttemptToComplete { get; set; }
-        public object FieldControlValues { get; set; }
         public object FieldValues { get; set; }
         public string Id { get; set; }
         public List<UpdateStepResult> StepResults { get; set; }
+        public object WidgetValues { get; set; }
         
         public UpdateScriptRun Clone(bool includeLocalProperties)
         {
@@ -4207,9 +4292,9 @@ namespace EnterpriseTester.API.Client.Models
                     {
                         ActualDuration = ActualDuration,
                         AttemptToComplete = AttemptToComplete,
-                        FieldControlValues = FieldControlValues,
                         FieldValues = FieldValues,
                         Id = Id,
+                        WidgetValues = WidgetValues,
                         StepResults = StepResults.Select(x=>x.Clone(includeLocalProperties)).ToList(),
                     };
             CopyExtraPropertiesToClone(c, includeLocalProperties);
@@ -4251,9 +4336,11 @@ namespace EnterpriseTester.API.Client.Models
 
         public string DisplayName { get; set; }
         public string Email { get; set; }
+        public bool Enabled { get; set; }
         public string FirstName { get; set; }
         public List<Group> Groups { get; set; }
         public string Id { get; set; }
+        public bool IsExternal { get; set; }
         public string LastLogIn { get; set; }
         public string LastName { get; set; }
         public string Phone { get; set; }
@@ -4265,8 +4352,10 @@ namespace EnterpriseTester.API.Client.Models
                     {
                         DisplayName = DisplayName,
                         Email = Email,
+                        Enabled = Enabled,
                         FirstName = FirstName,
                         Id = Id,
+                        IsExternal = IsExternal,
                         LastLogIn = LastLogIn,
                         LastName = LastName,
                         Phone = Phone,
@@ -4278,6 +4367,26 @@ namespace EnterpriseTester.API.Client.Models
         }
 
         partial void CopyExtraPropertiesToClone(User clone, bool includeLocalProperties);
+    }
+
+
+    public partial class UserGroup : EtRestEntityBase, IHasId 
+    {
+        public string DisplayName { get; set; }
+        public string Id { get; set; }
+        
+        public UserGroup Clone(bool includeLocalProperties)
+        {
+            var c = new UserGroup
+                    {
+                        DisplayName = DisplayName,
+                        Id = Id,
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(UserGroup clone, bool includeLocalProperties);
     }
 
 

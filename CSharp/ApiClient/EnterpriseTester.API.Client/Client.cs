@@ -13,6 +13,10 @@ namespace EnterpriseTester.API.Client
             : this(new EnterpriseTesterHttpClient(baseAddress, username, password, true))
         {
         }
+        public Client(string baseAddress, string baseAuthString)
+            : this(new EnterpriseTesterHttpClient(baseAddress, baseAuthString, true))
+        {
+        }
 
         public EnterpriseTesterHttpClient HttpClient
         {

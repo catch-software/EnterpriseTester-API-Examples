@@ -98,8 +98,6 @@ namespace EnterpriseTester.API.Client
         public virtual async Task<AgileRun> UpdateAgileRunAsync(string id, CreateOrUpdateAgileRun model, string expand = null)
         {
             var operation = Operations.UpdateAgileRun(id, model, expand);
-		    var request = operation.BuildRequest(_client);
-            request.Headers.Add("wait-until-indexed","false");
 			var response = await _client.SendAsync(operation.BuildRequest(_client));
 			EnsureSuccess(response);
 			var result = await response.Content.ReadAsAsync<AgileRun>();
@@ -191,6 +189,254 @@ namespace EnterpriseTester.API.Client
 			var response = await _client.SendAsync(operation.BuildRequest(_client));
 			EnsureSuccess(response);
 			var result = await response.Content.ReadAsAsync<Relationship>();
+			return result;
+						
+		}
+
+
+        /// <summary>
+        /// Sends a DELETE to '/api/agilerun/{runId}/step/{stepId}/attachment/{attachmentId}'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="attachmentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteAgileRunStepAttachment(string runId, string stepId, string attachmentId)
+        {
+            var operation = Operations.DeleteAgileRunStepAttachment(runId, stepId, attachmentId);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			
+		}
+
+		/// <summary>
+        /// Sends a DELETE to '/api/agilerun/{runId}/step/{stepId}/attachment/{attachmentId}'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="attachmentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteAgileRunStepAttachmentAsync(string runId, string stepId, string attachmentId)
+        {
+            var operation = Operations.DeleteAgileRunStepAttachment(runId, stepId, attachmentId);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+						
+		}
+
+
+        /// <summary>
+        /// Sends a GET to '/api/agilerun/{runId}/step/{stepId}/attachments'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<AgileRunStepAttachment> GetAgileRunStepAttachments(string runId, string stepId, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetAgileRunStepAttachments(runId, stepId, top, skip, inlinecount, filter, orderby);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			var result = response.Content.ReadAsAsync<QueryResults<AgileRunStepAttachment>>().Result;
+			return result;
+			
+		}
+
+		/// <summary>
+        /// Sends a GET to '/api/agilerun/{runId}/step/{stepId}/attachments'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<AgileRunStepAttachment>> GetAgileRunStepAttachmentsAsync(string runId, string stepId, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetAgileRunStepAttachments(runId, stepId, top, skip, inlinecount, filter, orderby);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			var result = await response.Content.ReadAsAsync<QueryResults<AgileRunStepAttachment>>();
+			return result;
+						
+		}
+
+        /// <summary>
+        /// Sends a POST to '/api/agilerun/{runId}/step/{stepId}/attachments'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<AgileRunStepAttachment> CreateAgileRunStepAttachment(string runId, string stepId)
+        {
+            var operation = Operations.CreateAgileRunStepAttachment(runId, stepId);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			var result = response.Content.ReadAsAsync<List<AgileRunStepAttachment>>().Result;
+			return result;
+			
+		}
+
+		/// <summary>
+        /// Sends a POST to '/api/agilerun/{runId}/step/{stepId}/attachments'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<AgileRunStepAttachment>> CreateAgileRunStepAttachmentAsync(string runId, string stepId)
+        {
+            var operation = Operations.CreateAgileRunStepAttachment(runId, stepId);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			var result = await response.Content.ReadAsAsync<List<AgileRunStepAttachment>>();
+			return result;
+						
+		}
+
+
+        /// <summary>
+        /// Sends a GET to '/api/agilerun/{runId}/step/{stepId}/incident/{incidentId}'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual AgileRunStepIncident GetAgileRunStepIncidentLink(string runId, string stepId, string incidentId)
+        {
+            var operation = Operations.GetAgileRunStepIncidentLink(runId, stepId, incidentId);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			var result = response.Content.ReadAsAsync<AgileRunStepIncident>().Result;
+			return result;
+			
+		}
+
+		/// <summary>
+        /// Sends a GET to '/api/agilerun/{runId}/step/{stepId}/incident/{incidentId}'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<AgileRunStepIncident> GetAgileRunStepIncidentLinkAsync(string runId, string stepId, string incidentId)
+        {
+            var operation = Operations.GetAgileRunStepIncidentLink(runId, stepId, incidentId);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			var result = await response.Content.ReadAsAsync<AgileRunStepIncident>();
+			return result;
+						
+		}
+
+        /// <summary>
+        /// Sends a DELETE to '/api/agilerun/{runId}/step/{stepId}/incident/{incidentId}'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteAgileRunStepIncidentLink(string runId, string stepId, string incidentId)
+        {
+            var operation = Operations.DeleteAgileRunStepIncidentLink(runId, stepId, incidentId);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			
+		}
+
+		/// <summary>
+        /// Sends a DELETE to '/api/agilerun/{runId}/step/{stepId}/incident/{incidentId}'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteAgileRunStepIncidentLinkAsync(string runId, string stepId, string incidentId)
+        {
+            var operation = Operations.DeleteAgileRunStepIncidentLink(runId, stepId, incidentId);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+						
+		}
+
+
+        /// <summary>
+        /// Sends a GET to '/api/agilerun/{runId}/step/{stepId}/incidents'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<AgileRunStepIncident> GetAgileRunStepIncidentLinks(string runId, string stepId, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetAgileRunStepIncidentLinks(runId, stepId, top, skip, inlinecount, filter, orderby);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			var result = response.Content.ReadAsAsync<QueryResults<AgileRunStepIncident>>().Result;
+			return result;
+			
+		}
+
+		/// <summary>
+        /// Sends a GET to '/api/agilerun/{runId}/step/{stepId}/incidents'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<AgileRunStepIncident>> GetAgileRunStepIncidentLinksAsync(string runId, string stepId, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetAgileRunStepIncidentLinks(runId, stepId, top, skip, inlinecount, filter, orderby);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			var result = await response.Content.ReadAsAsync<QueryResults<AgileRunStepIncident>>();
+			return result;
+						
+		}
+
+        /// <summary>
+        /// Sends a POST to '/api/agilerun/{runId}/step/{stepId}/incidents'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual AgileRunStepIncident CreateAgileRunStepIncidentLink(string runId, string stepId, CreateAgileRunStepIncident model)
+        {
+            var operation = Operations.CreateAgileRunStepIncidentLink(runId, stepId, model);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			var result = response.Content.ReadAsAsync<AgileRunStepIncident>().Result;
+			return result;
+			
+		}
+
+		/// <summary>
+        /// Sends a POST to '/api/agilerun/{runId}/step/{stepId}/incidents'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<AgileRunStepIncident> CreateAgileRunStepIncidentLinkAsync(string runId, string stepId, CreateAgileRunStepIncident model)
+        {
+            var operation = Operations.CreateAgileRunStepIncidentLink(runId, stepId, model);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			var result = await response.Content.ReadAsAsync<AgileRunStepIncident>();
 			return result;
 						
 		}
@@ -747,79 +993,6 @@ namespace EnterpriseTester.API.Client
 
 
         /// <summary>
-        /// Sends a GET to '/api/automatedtestassignment/{id}/runs'
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
-        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
-        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
-        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
-        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
-        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
-        /// <returns></returns>
-        public virtual QueryResults<AutomatedTestRun> GetRunsForAutomatedTestAssignment(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
-        {
-            var operation = Operations.GetRunsForAutomatedTestAssignment(id, top, skip, inlinecount, expand, filter, orderby);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<QueryResults<AutomatedTestRun>>().Result;
-			return result;
-			
-		}
-
-		/// <summary>
-        /// Sends a GET to '/api/automatedtestassignment/{id}/runs'  (asynchronous)
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
-        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
-        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
-        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
-        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
-        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
-        /// <returns></returns>
-        public virtual async Task<QueryResults<AutomatedTestRun>> GetRunsForAutomatedTestAssignmentAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
-        {
-            var operation = Operations.GetRunsForAutomatedTestAssignment(id, top, skip, inlinecount, expand, filter, orderby);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<QueryResults<AutomatedTestRun>>();
-			return result;
-						
-		}
-
-        /// <summary>
-        /// Sends a POST to '/api/automatedtestassignment/{id}/runs'
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <returns></returns>
-        public virtual BackgroundTask CreateAutomatedTestRun(string id)
-        {
-            var operation = Operations.CreateAutomatedTestRun(id);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<BackgroundTask>().Result;
-			return result;
-			
-		}
-
-		/// <summary>
-        /// Sends a POST to '/api/automatedtestassignment/{id}/runs'  (asynchronous)
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <returns></returns>
-        public virtual async Task<BackgroundTask> CreateAutomatedTestRunAsync(string id)
-        {
-            var operation = Operations.CreateAutomatedTestRun(id);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<BackgroundTask>();
-			return result;
-						
-		}
-
-
-        /// <summary>
         /// Sends a GET to '/api/automatedtestassignments'
         /// </summary>
         /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
@@ -1360,12 +1533,12 @@ namespace EnterpriseTester.API.Client
         /// <param name="nodeId">a path parameter (no description)</param>
         /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
         /// <returns></returns>
-        public virtual List<AutomatedTestRunIncident> GetAutomatedTestRunNodeIncidents(string runId, string nodeId, string expand = null)
+        public virtual QueryResults<AutomatedTestRunIncident> GetAutomatedTestRunNodeIncidents(string runId, string nodeId, string expand = null)
         {
             var operation = Operations.GetAutomatedTestRunNodeIncidents(runId, nodeId, expand);
 			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
 			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<List<AutomatedTestRunIncident>>().Result;
+			var result = response.Content.ReadAsAsync<QueryResults<AutomatedTestRunIncident>>().Result;
 			return result;
 			
 		}
@@ -1377,12 +1550,12 @@ namespace EnterpriseTester.API.Client
         /// <param name="nodeId">a path parameter (no description)</param>
         /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
         /// <returns></returns>
-        public virtual async Task<List<AutomatedTestRunIncident>> GetAutomatedTestRunNodeIncidentsAsync(string runId, string nodeId, string expand = null)
+        public virtual async Task<QueryResults<AutomatedTestRunIncident>> GetAutomatedTestRunNodeIncidentsAsync(string runId, string nodeId, string expand = null)
         {
             var operation = Operations.GetAutomatedTestRunNodeIncidents(runId, nodeId, expand);
 			var response = await _client.SendAsync(operation.BuildRequest(_client));
 			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<List<AutomatedTestRunIncident>>();
+			var result = await response.Content.ReadAsAsync<QueryResults<AutomatedTestRunIncident>>();
 			return result;
 						
 		}
@@ -1564,660 +1737,6 @@ namespace EnterpriseTester.API.Client
 			var response = await _client.SendAsync(operation.BuildRequest(_client));
 			EnsureSuccess(response);
 			var result = await response.Content.ReadAsAsync<AutomatedTest>();
-			return result;
-						
-		}
-
-
-        /// <summary>
-        /// Sends a GET to '/api/automatedtestschedule/{id}'
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <returns></returns>
-        public virtual Schedule GetAutomatedTestScheduleById(string id)
-        {
-            var operation = Operations.GetAutomatedTestScheduleById(id);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<Schedule>().Result;
-			return result;
-			
-		}
-
-		/// <summary>
-        /// Sends a GET to '/api/automatedtestschedule/{id}'  (asynchronous)
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <returns></returns>
-        public virtual async Task<Schedule> GetAutomatedTestScheduleByIdAsync(string id)
-        {
-            var operation = Operations.GetAutomatedTestScheduleById(id);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<Schedule>();
-			return result;
-						
-		}
-
-        /// <summary>
-        /// Sends a PUT to '/api/automatedtestschedule/{id}'
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <param name="dto">a body parameter (no description)</param>
-        /// <returns></returns>
-        public virtual Schedule UpdateAutomatedTestSchedule(string id, EditScheduleDTO dto)
-        {
-            var operation = Operations.UpdateAutomatedTestSchedule(id, dto);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<Schedule>().Result;
-			return result;
-			
-		}
-
-		/// <summary>
-        /// Sends a PUT to '/api/automatedtestschedule/{id}'  (asynchronous)
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <param name="dto">a body parameter (no description)</param>
-        /// <returns></returns>
-        public virtual async Task<Schedule> UpdateAutomatedTestScheduleAsync(string id, EditScheduleDTO dto)
-        {
-            var operation = Operations.UpdateAutomatedTestSchedule(id, dto);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<Schedule>();
-			return result;
-						
-		}
-
-        /// <summary>
-        /// Sends a DELETE to '/api/automatedtestschedule/{id}'
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <returns></returns>
-        public virtual void DeletedAutomatedTestSchedule(string id)
-        {
-            var operation = Operations.DeletedAutomatedTestSchedule(id);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			
-		}
-
-		/// <summary>
-        /// Sends a DELETE to '/api/automatedtestschedule/{id}'  (asynchronous)
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <returns></returns>
-        public virtual async Task DeletedAutomatedTestScheduleAsync(string id)
-        {
-            var operation = Operations.DeletedAutomatedTestSchedule(id);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-						
-		}
-
-
-        /// <summary>
-        /// Sends a GET to '/api/automatedtestschedule/{id}/importconfigurations'
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
-        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
-        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
-        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
-        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
-        /// <returns></returns>
-        public virtual QueryResults<ScheduleImportConfiguration> GetAutomatedTestScheduleConfigurations(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
-        {
-            var operation = Operations.GetAutomatedTestScheduleConfigurations(id, top, skip, inlinecount, filter, orderby);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<QueryResults<ScheduleImportConfiguration>>().Result;
-			return result;
-			
-		}
-
-		/// <summary>
-        /// Sends a GET to '/api/automatedtestschedule/{id}/importconfigurations'  (asynchronous)
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
-        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
-        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
-        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
-        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
-        /// <returns></returns>
-        public virtual async Task<QueryResults<ScheduleImportConfiguration>> GetAutomatedTestScheduleConfigurationsAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
-        {
-            var operation = Operations.GetAutomatedTestScheduleConfigurations(id, top, skip, inlinecount, filter, orderby);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<QueryResults<ScheduleImportConfiguration>>();
-			return result;
-						
-		}
-
-        /// <summary>
-        /// Sends a POST to '/api/automatedtestschedule/{id}/importconfigurations'
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <param name="dto">a body parameter (no description)</param>
-        /// <returns></returns>
-        public virtual ScheduleImportConfiguration CreateAutomatedTestScheduleConfiguration(string id, EditScheduleConfigurationDTO dto)
-        {
-            var operation = Operations.CreateAutomatedTestScheduleConfiguration(id, dto);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<ScheduleImportConfiguration>().Result;
-			return result;
-			
-		}
-
-		/// <summary>
-        /// Sends a POST to '/api/automatedtestschedule/{id}/importconfigurations'  (asynchronous)
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <param name="dto">a body parameter (no description)</param>
-        /// <returns></returns>
-        public virtual async Task<ScheduleImportConfiguration> CreateAutomatedTestScheduleConfigurationAsync(string id, EditScheduleConfigurationDTO dto)
-        {
-            var operation = Operations.CreateAutomatedTestScheduleConfiguration(id, dto);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<ScheduleImportConfiguration>();
-			return result;
-						
-		}
-
-
-        /// <summary>
-        /// Sends a GET to '/api/automatedtestschedule/{id}/schedules'
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
-        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
-        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
-        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
-        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
-        /// <returns></returns>
-        public virtual QueryResults<AutomatedTestingScheduleInfo> GetAutomatedTestScheduleScheduleConfigurations(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
-        {
-            var operation = Operations.GetAutomatedTestScheduleScheduleConfigurations(id, top, skip, inlinecount, filter, orderby);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<QueryResults<AutomatedTestingScheduleInfo>>().Result;
-			return result;
-			
-		}
-
-		/// <summary>
-        /// Sends a GET to '/api/automatedtestschedule/{id}/schedules'  (asynchronous)
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
-        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
-        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
-        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
-        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
-        /// <returns></returns>
-        public virtual async Task<QueryResults<AutomatedTestingScheduleInfo>> GetAutomatedTestScheduleScheduleConfigurationsAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
-        {
-            var operation = Operations.GetAutomatedTestScheduleScheduleConfigurations(id, top, skip, inlinecount, filter, orderby);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<QueryResults<AutomatedTestingScheduleInfo>>();
-			return result;
-						
-		}
-
-        /// <summary>
-        /// Sends a POST to '/api/automatedtestschedule/{id}/schedules'
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <param name="model">a body parameter (no description)</param>
-        /// <returns></returns>
-        public virtual AutomatedTestingScheduleInfo CreateAutomatedTestScheduleScheduleConfiguration(string id, CreateOrUpdateAutomatedTestingScheduleInfo model)
-        {
-            var operation = Operations.CreateAutomatedTestScheduleScheduleConfiguration(id, model);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<AutomatedTestingScheduleInfo>().Result;
-			return result;
-			
-		}
-
-		/// <summary>
-        /// Sends a POST to '/api/automatedtestschedule/{id}/schedules'  (asynchronous)
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <param name="model">a body parameter (no description)</param>
-        /// <returns></returns>
-        public virtual async Task<AutomatedTestingScheduleInfo> CreateAutomatedTestScheduleScheduleConfigurationAsync(string id, CreateOrUpdateAutomatedTestingScheduleInfo model)
-        {
-            var operation = Operations.CreateAutomatedTestScheduleScheduleConfiguration(id, model);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<AutomatedTestingScheduleInfo>();
-			return result;
-						
-		}
-
-
-        /// <summary>
-        /// Sends a GET to '/api/automatedtestschedule/{scheduleId}/importconfiguration/{configId}'
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="configId">a path parameter (no description)</param>
-        /// <returns></returns>
-        public virtual ScheduleImportConfiguration GetConfigurationForAutomatedTestSchedule(string scheduleId, string configId)
-        {
-            var operation = Operations.GetConfigurationForAutomatedTestSchedule(scheduleId, configId);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<ScheduleImportConfiguration>().Result;
-			return result;
-			
-		}
-
-		/// <summary>
-        /// Sends a GET to '/api/automatedtestschedule/{scheduleId}/importconfiguration/{configId}'  (asynchronous)
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="configId">a path parameter (no description)</param>
-        /// <returns></returns>
-        public virtual async Task<ScheduleImportConfiguration> GetConfigurationForAutomatedTestScheduleAsync(string scheduleId, string configId)
-        {
-            var operation = Operations.GetConfigurationForAutomatedTestSchedule(scheduleId, configId);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<ScheduleImportConfiguration>();
-			return result;
-						
-		}
-
-        /// <summary>
-        /// Sends a PATCH to '/api/automatedtestschedule/{scheduleId}/importconfiguration/{configId}'
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="configId">a path parameter (no description)</param>
-        /// <param name="dto">a body parameter (no description)</param>
-        /// <returns></returns>
-        public virtual ScheduleImportConfiguration PatchConfigurationForAutomatedTestSchedule(string scheduleId, string configId, PatchScheduleConfigurationDTO dto)
-        {
-            var operation = Operations.PatchConfigurationForAutomatedTestSchedule(scheduleId, configId, dto);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<ScheduleImportConfiguration>().Result;
-			return result;
-			
-		}
-
-		/// <summary>
-        /// Sends a PATCH to '/api/automatedtestschedule/{scheduleId}/importconfiguration/{configId}'  (asynchronous)
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="configId">a path parameter (no description)</param>
-        /// <param name="dto">a body parameter (no description)</param>
-        /// <returns></returns>
-        public virtual async Task<ScheduleImportConfiguration> PatchConfigurationForAutomatedTestScheduleAsync(string scheduleId, string configId, PatchScheduleConfigurationDTO dto)
-        {
-            var operation = Operations.PatchConfigurationForAutomatedTestSchedule(scheduleId, configId, dto);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<ScheduleImportConfiguration>();
-			return result;
-						
-		}
-
-        /// <summary>
-        /// Sends a PUT to '/api/automatedtestschedule/{scheduleId}/importconfiguration/{configId}'
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="configId">a path parameter (no description)</param>
-        /// <param name="dto">a body parameter (no description)</param>
-        /// <returns></returns>
-        public virtual ScheduleImportConfiguration UpdateConfigurationForAutomatedTestSchedule(string scheduleId, string configId, EditScheduleConfigurationDTO dto)
-        {
-            var operation = Operations.UpdateConfigurationForAutomatedTestSchedule(scheduleId, configId, dto);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<ScheduleImportConfiguration>().Result;
-			return result;
-			
-		}
-
-		/// <summary>
-        /// Sends a PUT to '/api/automatedtestschedule/{scheduleId}/importconfiguration/{configId}'  (asynchronous)
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="configId">a path parameter (no description)</param>
-        /// <param name="dto">a body parameter (no description)</param>
-        /// <returns></returns>
-        public virtual async Task<ScheduleImportConfiguration> UpdateConfigurationForAutomatedTestScheduleAsync(string scheduleId, string configId, EditScheduleConfigurationDTO dto)
-        {
-            var operation = Operations.UpdateConfigurationForAutomatedTestSchedule(scheduleId, configId, dto);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<ScheduleImportConfiguration>();
-			return result;
-						
-		}
-
-        /// <summary>
-        /// Sends a DELETE to '/api/automatedtestschedule/{scheduleId}/importconfiguration/{configId}'
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="configId">a path parameter (no description)</param>
-        /// <returns></returns>
-        public virtual void DeleteConfigurationForAutomatedTestSchedule(string scheduleId, string configId)
-        {
-            var operation = Operations.DeleteConfigurationForAutomatedTestSchedule(scheduleId, configId);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			
-		}
-
-		/// <summary>
-        /// Sends a DELETE to '/api/automatedtestschedule/{scheduleId}/importconfiguration/{configId}'  (asynchronous)
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="configId">a path parameter (no description)</param>
-        /// <returns></returns>
-        public virtual async Task DeleteConfigurationForAutomatedTestScheduleAsync(string scheduleId, string configId)
-        {
-            var operation = Operations.DeleteConfigurationForAutomatedTestSchedule(scheduleId, configId);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-						
-		}
-
-
-        /// <summary>
-        /// Sends a GET to '/api/automatedtestschedule/{scheduleId}/schedule/{scheduleConfigId}'
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="scheduleConfigId">a path parameter (no description)</param>
-        /// <returns></returns>
-        public virtual AutomatedTestingScheduleInfo GetAutomatedTestScheduleScheduleConfiguration(string scheduleId, string scheduleConfigId)
-        {
-            var operation = Operations.GetAutomatedTestScheduleScheduleConfiguration(scheduleId, scheduleConfigId);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<AutomatedTestingScheduleInfo>().Result;
-			return result;
-			
-		}
-
-		/// <summary>
-        /// Sends a GET to '/api/automatedtestschedule/{scheduleId}/schedule/{scheduleConfigId}'  (asynchronous)
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="scheduleConfigId">a path parameter (no description)</param>
-        /// <returns></returns>
-        public virtual async Task<AutomatedTestingScheduleInfo> GetAutomatedTestScheduleScheduleConfigurationAsync(string scheduleId, string scheduleConfigId)
-        {
-            var operation = Operations.GetAutomatedTestScheduleScheduleConfiguration(scheduleId, scheduleConfigId);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<AutomatedTestingScheduleInfo>();
-			return result;
-						
-		}
-
-        /// <summary>
-        /// Sends a PATCH to '/api/automatedtestschedule/{scheduleId}/schedule/{scheduleConfigId}'
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="scheduleConfigId">a path parameter (no description)</param>
-        /// <param name="model">a body parameter (no description)</param>
-        /// <returns></returns>
-        public virtual AutomatedTestingScheduleInfo PatchAutomatedTestScheduleScheduleConfiguration(string scheduleId, string scheduleConfigId, CreateOrUpdateAutomatedTestingScheduleInfo model)
-        {
-            var operation = Operations.PatchAutomatedTestScheduleScheduleConfiguration(scheduleId, scheduleConfigId, model);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<AutomatedTestingScheduleInfo>().Result;
-			return result;
-			
-		}
-
-		/// <summary>
-        /// Sends a PATCH to '/api/automatedtestschedule/{scheduleId}/schedule/{scheduleConfigId}'  (asynchronous)
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="scheduleConfigId">a path parameter (no description)</param>
-        /// <param name="model">a body parameter (no description)</param>
-        /// <returns></returns>
-        public virtual async Task<AutomatedTestingScheduleInfo> PatchAutomatedTestScheduleScheduleConfigurationAsync(string scheduleId, string scheduleConfigId, CreateOrUpdateAutomatedTestingScheduleInfo model)
-        {
-            var operation = Operations.PatchAutomatedTestScheduleScheduleConfiguration(scheduleId, scheduleConfigId, model);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<AutomatedTestingScheduleInfo>();
-			return result;
-						
-		}
-
-        /// <summary>
-        /// Sends a PUT to '/api/automatedtestschedule/{scheduleId}/schedule/{scheduleConfigId}'
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="scheduleConfigId">a path parameter (no description)</param>
-        /// <param name="model">a body parameter (no description)</param>
-        /// <returns></returns>
-        public virtual AutomatedTestingScheduleInfo UpdateAutomatedTestScheduleScheduleConfiguration(string scheduleId, string scheduleConfigId, CreateOrUpdateAutomatedTestingScheduleInfo model)
-        {
-            var operation = Operations.UpdateAutomatedTestScheduleScheduleConfiguration(scheduleId, scheduleConfigId, model);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<AutomatedTestingScheduleInfo>().Result;
-			return result;
-			
-		}
-
-		/// <summary>
-        /// Sends a PUT to '/api/automatedtestschedule/{scheduleId}/schedule/{scheduleConfigId}'  (asynchronous)
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="scheduleConfigId">a path parameter (no description)</param>
-        /// <param name="model">a body parameter (no description)</param>
-        /// <returns></returns>
-        public virtual async Task<AutomatedTestingScheduleInfo> UpdateAutomatedTestScheduleScheduleConfigurationAsync(string scheduleId, string scheduleConfigId, CreateOrUpdateAutomatedTestingScheduleInfo model)
-        {
-            var operation = Operations.UpdateAutomatedTestScheduleScheduleConfiguration(scheduleId, scheduleConfigId, model);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<AutomatedTestingScheduleInfo>();
-			return result;
-						
-		}
-
-        /// <summary>
-        /// Sends a DELETE to '/api/automatedtestschedule/{scheduleId}/schedule/{scheduleConfigId}'
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="scheduleConfigId">a path parameter (no description)</param>
-        /// <returns></returns>
-        public virtual void DeleteAutomatedTestScheduleScheduleConfiguration(string scheduleId, string scheduleConfigId)
-        {
-            var operation = Operations.DeleteAutomatedTestScheduleScheduleConfiguration(scheduleId, scheduleConfigId);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			
-		}
-
-		/// <summary>
-        /// Sends a DELETE to '/api/automatedtestschedule/{scheduleId}/schedule/{scheduleConfigId}'  (asynchronous)
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="scheduleConfigId">a path parameter (no description)</param>
-        /// <returns></returns>
-        public virtual async Task DeleteAutomatedTestScheduleScheduleConfigurationAsync(string scheduleId, string scheduleConfigId)
-        {
-            var operation = Operations.DeleteAutomatedTestScheduleScheduleConfiguration(scheduleId, scheduleConfigId);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-						
-		}
-
-
-        /// <summary>
-        /// Sends a POST to '/api/automatedtestschedule/{scheduleId}/schedule/{scheduleConfigId}/run'
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="scheduleConfigId">a path parameter (no description)</param>
-        /// <returns></returns>
-        public virtual HttpResponseMessage TriggerAutomatedScheduleScheduleConfiguration(string scheduleId, string scheduleConfigId)
-        {
-            var operation = Operations.TriggerAutomatedScheduleScheduleConfiguration(scheduleId, scheduleConfigId);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			return response;
-		}
-
-		/// <summary>
-        /// Sends a POST to '/api/automatedtestschedule/{scheduleId}/schedule/{scheduleConfigId}/run'  (asynchronous)
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="scheduleConfigId">a path parameter (no description)</param>
-        /// <returns></returns>
-        public virtual async Task<HttpResponseMessage> TriggerAutomatedScheduleScheduleConfigurationAsync(string scheduleId, string scheduleConfigId)
-        {
-            var operation = Operations.TriggerAutomatedScheduleScheduleConfiguration(scheduleId, scheduleConfigId);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			return response;
-						
-		}
-
-
-        /// <summary>
-        /// Sends a GET to '/api/automatedtestschedules'
-        /// </summary>
-        /// <param name="projectId">a query parameter (no description)</param>
-        /// <returns></returns>
-        public virtual QueryResults<Schedule> GetAutomatedTestSchedules(string projectId = null)
-        {
-            var operation = Operations.GetAutomatedTestSchedules(projectId);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<QueryResults<Schedule>>().Result;
-			return result;
-			
-		}
-
-		/// <summary>
-        /// Sends a GET to '/api/automatedtestschedules'  (asynchronous)
-        /// </summary>
-        /// <param name="projectId">a query parameter (no description)</param>
-        /// <returns></returns>
-        public virtual async Task<QueryResults<Schedule>> GetAutomatedTestSchedulesAsync(string projectId = null)
-        {
-            var operation = Operations.GetAutomatedTestSchedules(projectId);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<QueryResults<Schedule>>();
-			return result;
-						
-		}
-
-        /// <summary>
-        /// Sends a POST to '/api/automatedtestschedules'
-        /// </summary>
-        /// <param name="model">a body parameter (no description)</param>
-        /// <returns></returns>
-        public virtual Schedule CreateAutomatedTestSchedule(CreateSchedule model)
-        {
-            var operation = Operations.CreateAutomatedTestSchedule(model);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<Schedule>().Result;
-			return result;
-			
-		}
-
-		/// <summary>
-        /// Sends a POST to '/api/automatedtestschedules'  (asynchronous)
-        /// </summary>
-        /// <param name="model">a body parameter (no description)</param>
-        /// <returns></returns>
-        public virtual async Task<Schedule> CreateAutomatedTestScheduleAsync(CreateSchedule model)
-        {
-            var operation = Operations.CreateAutomatedTestSchedule(model);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<Schedule>();
-			return result;
-						
-		}
-
-
-        /// <summary>
-        /// Sends a GET to '/api/automatedtesttype/{name}'
-        /// </summary>
-        /// <param name="name">a path parameter (no description)</param>
-        /// <returns></returns>
-        public virtual AutomatedTestType GetAutomatedTestTypeByName(string name)
-        {
-            var operation = Operations.GetAutomatedTestTypeByName(name);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<AutomatedTestType>().Result;
-			return result;
-			
-		}
-
-		/// <summary>
-        /// Sends a GET to '/api/automatedtesttype/{name}'  (asynchronous)
-        /// </summary>
-        /// <param name="name">a path parameter (no description)</param>
-        /// <returns></returns>
-        public virtual async Task<AutomatedTestType> GetAutomatedTestTypeByNameAsync(string name)
-        {
-            var operation = Operations.GetAutomatedTestTypeByName(name);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<AutomatedTestType>();
-			return result;
-						
-		}
-
-
-        /// <summary>
-        /// Sends a GET to '/api/automatedtesttypes'
-        /// </summary>
-        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
-        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
-        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
-        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
-        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
-        /// <returns></returns>
-        public virtual QueryResults<AutomatedTestType> GetAutomatedTestTypes(int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
-        {
-            var operation = Operations.GetAutomatedTestTypes(top, skip, inlinecount, filter, orderby);
-			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
-			EnsureSuccess(response);
-			var result = response.Content.ReadAsAsync<QueryResults<AutomatedTestType>>().Result;
-			return result;
-			
-		}
-
-		/// <summary>
-        /// Sends a GET to '/api/automatedtesttypes'  (asynchronous)
-        /// </summary>
-        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
-        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
-        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
-        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
-        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
-        /// <returns></returns>
-        public virtual async Task<QueryResults<AutomatedTestType>> GetAutomatedTestTypesAsync(int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
-        {
-            var operation = Operations.GetAutomatedTestTypes(top, skip, inlinecount, filter, orderby);
-			var response = await _client.SendAsync(operation.BuildRequest(_client));
-			EnsureSuccess(response);
-			var result = await response.Content.ReadAsAsync<QueryResults<AutomatedTestType>>();
 			return result;
 						
 		}
@@ -3105,6 +2624,41 @@ namespace EnterpriseTester.API.Client
             var operation = Operations.DeleteExternalSystemLink(id, keepReferences);
 			var response = await _client.SendAsync(operation.BuildRequest(_client));
 			EnsureSuccess(response);
+						
+		}
+
+
+        /// <summary>
+        /// Sends a POST to '/api/externalsystemlink/{linkId}/copy'
+        /// </summary>
+        /// <param name="linkId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ExternalSystemLink CopyExternalSystemLink(string linkId, CopyExternalSystemLink model, string expand = null)
+        {
+            var operation = Operations.CopyExternalSystemLink(linkId, model, expand);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			var result = response.Content.ReadAsAsync<ExternalSystemLink>().Result;
+			return result;
+			
+		}
+
+		/// <summary>
+        /// Sends a POST to '/api/externalsystemlink/{linkId}/copy'  (asynchronous)
+        /// </summary>
+        /// <param name="linkId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ExternalSystemLink> CopyExternalSystemLinkAsync(string linkId, CopyExternalSystemLink model, string expand = null)
+        {
+            var operation = Operations.CopyExternalSystemLink(linkId, model, expand);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			var result = await response.Content.ReadAsAsync<ExternalSystemLink>();
+			return result;
 						
 		}
 
@@ -4102,6 +3656,77 @@ namespace EnterpriseTester.API.Client
 
 
         /// <summary>
+        /// Sends a GET to '/api/incident/{id}/attachments'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<IncidentAttachment> GetIncidentAttachments(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetIncidentAttachments(id, top, skip, inlinecount, filter, orderby);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			var result = response.Content.ReadAsAsync<QueryResults<IncidentAttachment>>().Result;
+			return result;
+			
+		}
+
+		/// <summary>
+        /// Sends a GET to '/api/incident/{id}/attachments'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<IncidentAttachment>> GetIncidentAttachmentsAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetIncidentAttachments(id, top, skip, inlinecount, filter, orderby);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			var result = await response.Content.ReadAsAsync<QueryResults<IncidentAttachment>>();
+			return result;
+						
+		}
+
+        /// <summary>
+        /// Sends a POST to '/api/incident/{id}/attachments'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<IncidentAttachment> CreateIncidentAttachment(string id)
+        {
+            var operation = Operations.CreateIncidentAttachment(id);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			var result = response.Content.ReadAsAsync<List<IncidentAttachment>>().Result;
+			return result;
+			
+		}
+
+		/// <summary>
+        /// Sends a POST to '/api/incident/{id}/attachments'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<IncidentAttachment>> CreateIncidentAttachmentAsync(string id)
+        {
+            var operation = Operations.CreateIncidentAttachment(id);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			var result = await response.Content.ReadAsAsync<List<IncidentAttachment>>();
+			return result;
+						
+		}
+
+
+        /// <summary>
         /// Sends a GET to '/api/incident/{id}/comments'
         /// </summary>
         /// <param name="id">a path parameter (no description)</param>
@@ -4169,6 +3794,35 @@ namespace EnterpriseTester.API.Client
 			EnsureSuccess(response);
 			var result = await response.Content.ReadAsAsync<Relationship>();
 			return result;
+						
+		}
+
+
+        /// <summary>
+        /// Sends a DELETE to '/api/incident/{incidentId}/attachment/{id}'
+        /// </summary>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteIncidentAttachment(string incidentId, string id)
+        {
+            var operation = Operations.DeleteIncidentAttachment(incidentId, id);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			
+		}
+
+		/// <summary>
+        /// Sends a DELETE to '/api/incident/{incidentId}/attachment/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteIncidentAttachmentAsync(string incidentId, string id)
+        {
+            var operation = Operations.DeleteIncidentAttachment(incidentId, id);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
 						
 		}
 
@@ -4308,7 +3962,7 @@ namespace EnterpriseTester.API.Client
         /// </summary>
         /// <param name="model">a body parameter (no description)</param>
         /// <returns></returns>
-        public virtual MailSenderSettings UpdateMailSenderSettings(MailSenderSettings model)
+        public virtual MailSenderSettings UpdateMailSenderSettings(CreateMailSenderSettings model)
         {
             var operation = Operations.UpdateMailSenderSettings(model);
 			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
@@ -4323,7 +3977,7 @@ namespace EnterpriseTester.API.Client
         /// </summary>
         /// <param name="model">a body parameter (no description)</param>
         /// <returns></returns>
-        public virtual async Task<MailSenderSettings> UpdateMailSenderSettingsAsync(MailSenderSettings model)
+        public virtual async Task<MailSenderSettings> UpdateMailSenderSettingsAsync(CreateMailSenderSettings model)
         {
             var operation = Operations.UpdateMailSenderSettings(model);
 			var response = await _client.SendAsync(operation.BuildRequest(_client));
@@ -5142,6 +4796,72 @@ namespace EnterpriseTester.API.Client
 
 
         /// <summary>
+        /// Sends a GET to '/api/project/{projectId}/searchlinks'
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ExternalSystemLink> SearchProjectExternalLinksByPartialName(string projectId, string query = null, bool? valuesqry = null)
+        {
+            var operation = Operations.SearchProjectExternalLinksByPartialName(projectId, query, valuesqry);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			var result = response.Content.ReadAsAsync<QueryResults<ExternalSystemLink>>().Result;
+			return result;
+			
+		}
+
+		/// <summary>
+        /// Sends a GET to '/api/project/{projectId}/searchlinks'  (asynchronous)
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ExternalSystemLink>> SearchProjectExternalLinksByPartialNameAsync(string projectId, string query = null, bool? valuesqry = null)
+        {
+            var operation = Operations.SearchProjectExternalLinksByPartialName(projectId, query, valuesqry);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			var result = await response.Content.ReadAsAsync<QueryResults<ExternalSystemLink>>();
+			return result;
+						
+		}
+
+        /// <summary>
+        /// Sends a POST to '/api/project/{projectId}/searchlinks'
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage SearchProjectExternalLinksByPartialNameUsingPostMethod(string projectId, string valuesqry = null, string query = null)
+        {
+            var operation = Operations.SearchProjectExternalLinksByPartialNameUsingPostMethod(projectId, valuesqry, query);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			return response;
+		}
+
+		/// <summary>
+        /// Sends a POST to '/api/project/{projectId}/searchlinks'  (asynchronous)
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> SearchProjectExternalLinksByPartialNameUsingPostMethodAsync(string projectId, string valuesqry = null, string query = null)
+        {
+            var operation = Operations.SearchProjectExternalLinksByPartialNameUsingPostMethod(projectId, valuesqry, query);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			return response;
+						
+		}
+
+
+        /// <summary>
         /// Sends a GET to '/api/project/{projectId}/tickets'
         /// </summary>
         /// <param name="projectId">a path parameter (no description)</param>
@@ -5171,6 +4891,39 @@ namespace EnterpriseTester.API.Client
 			var response = await _client.SendAsync(operation.BuildRequest(_client));
 			EnsureSuccess(response);
 			var result = await response.Content.ReadAsAsync<QueryResults<TicketSearchResult>>();
+			return result;
+						
+		}
+
+
+        /// <summary>
+        /// Sends a GET to '/api/project/{projectId}/widgets'
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual EntityTypeWidgets GetWidgetsForProject(string projectId, string expand = null)
+        {
+            var operation = Operations.GetWidgetsForProject(projectId, expand);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			var result = response.Content.ReadAsAsync<EntityTypeWidgets>().Result;
+			return result;
+			
+		}
+
+		/// <summary>
+        /// Sends a GET to '/api/project/{projectId}/widgets'  (asynchronous)
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<EntityTypeWidgets> GetWidgetsForProjectAsync(string projectId, string expand = null)
+        {
+            var operation = Operations.GetWidgetsForProject(projectId, expand);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			var result = await response.Content.ReadAsAsync<EntityTypeWidgets>();
 			return result;
 						
 		}
@@ -8902,6 +8655,68 @@ namespace EnterpriseTester.API.Client
 			EnsureSuccess(response);
 			var result = await response.Content.ReadAsAsync<List<PermissionAssignment>>();
 			return result;
+						
+		}
+
+
+        /// <summary>
+        /// Sends a GET to '/api/usergroupsearch'
+        /// </summary>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual QueryResults<UserGroup> SearchUserOrGroupByPartialName(string query = null, bool? valuesqry = null)
+        {
+            var operation = Operations.SearchUserOrGroupByPartialName(query, valuesqry);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			var result = response.Content.ReadAsAsync<QueryResults<UserGroup>>().Result;
+			return result;
+			
+		}
+
+		/// <summary>
+        /// Sends a GET to '/api/usergroupsearch'  (asynchronous)
+        /// </summary>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<UserGroup>> SearchUserOrGroupByPartialNameAsync(string query = null, bool? valuesqry = null)
+        {
+            var operation = Operations.SearchUserOrGroupByPartialName(query, valuesqry);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			var result = await response.Content.ReadAsAsync<QueryResults<UserGroup>>();
+			return result;
+						
+		}
+
+        /// <summary>
+        /// Sends a POST to '/api/usergroupsearch'
+        /// </summary>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage SearchUserOrGroupByPartialNameUsingPostMethod(string valuesqry = null, string query = null)
+        {
+            var operation = Operations.SearchUserOrGroupByPartialNameUsingPostMethod(valuesqry, query);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			return response;
+		}
+
+		/// <summary>
+        /// Sends a POST to '/api/usergroupsearch'  (asynchronous)
+        /// </summary>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> SearchUserOrGroupByPartialNameUsingPostMethodAsync(string valuesqry = null, string query = null)
+        {
+            var operation = Operations.SearchUserOrGroupByPartialNameUsingPostMethod(valuesqry, query);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			return response;
 						
 		}
 

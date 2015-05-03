@@ -17,6 +17,15 @@ namespace EnterpriseTester.API.Client
             ConfigureBasicAuth(baseAddress, username, password);
         }
 
+        public EnterpriseTesterHttpClient(string baseAddress, string baseAuthString, bool followRedirects)
+            : base(new HttpClientHandler
+            {
+                AllowAutoRedirect = followRedirects
+            })
+        {
+            ConfigureBasicAuth(baseAddress, baseAuthString);
+        }
+
         public EnterpriseTesterHttpClient(HttpMessageHandler handler, string baseAddress, string username,
                                           string password)
             : base(handler)
@@ -35,6 +44,14 @@ namespace EnterpriseTester.API.Client
             DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", auth);
             BaseAddress = new Uri(baseAddress);
         }
+
+        // EnterpriseTester.API.Client.EnterpriseTesterHttpClient
+        private void ConfigureBasicAuth(string baseAddress, string hash)
+        {
+            DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", hash);
+            BaseAddress = new Uri(baseAddress);
+        }
+
 
         public HttpContent CreateContent<T>(T o)
         {

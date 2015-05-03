@@ -96,6 +96,132 @@ namespace EnterpriseTester.API.Client
 
 
         /// <summary>
+        /// Sends a DELETE to '/api/agilerun/{runId}/step/{stepId}/attachment/{attachmentId}'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="attachmentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public static RestOperation DeleteAgileRunStepAttachment(string runId, string stepId, string attachmentId)
+        {
+            return new RestOperation("DELETE", "api/agilerun/" + runId + "/step/" + stepId + "/attachment/" + attachmentId + "")
+                { 
+                };
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/agilerun/{runId}/step/{stepId}/attachments'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public static RestOperation GetAgileRunStepAttachments(string runId, string stepId, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            return new RestOperation("GET", "api/agilerun/" + runId + "/step/" + stepId + "/attachments")
+                { 
+                    QueryParams = 
+                        {
+                             {"$top", top},
+                             {"$skip", skip},
+                             {"$inlinecount", inlinecount},
+                             {"$filter", filter},
+                             {"$orderby", orderby},
+                        }
+                };
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/agilerun/{runId}/step/{stepId}/attachments'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public static RestOperation CreateAgileRunStepAttachment(string runId, string stepId)
+        {
+            return new RestOperation("POST", "api/agilerun/" + runId + "/step/" + stepId + "/attachments")
+                { 
+                };
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/agilerun/{runId}/step/{stepId}/incident/{incidentId}'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public static RestOperation GetAgileRunStepIncidentLink(string runId, string stepId, string incidentId)
+        {
+            return new RestOperation("GET", "api/agilerun/" + runId + "/step/" + stepId + "/incident/" + incidentId + "")
+                { 
+                };
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/agilerun/{runId}/step/{stepId}/incident/{incidentId}'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public static RestOperation DeleteAgileRunStepIncidentLink(string runId, string stepId, string incidentId)
+        {
+            return new RestOperation("DELETE", "api/agilerun/" + runId + "/step/" + stepId + "/incident/" + incidentId + "")
+                { 
+                };
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/agilerun/{runId}/step/{stepId}/incidents'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public static RestOperation GetAgileRunStepIncidentLinks(string runId, string stepId, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            return new RestOperation("GET", "api/agilerun/" + runId + "/step/" + stepId + "/incidents")
+                { 
+                    QueryParams = 
+                        {
+                             {"$top", top},
+                             {"$skip", skip},
+                             {"$inlinecount", inlinecount},
+                             {"$filter", filter},
+                             {"$orderby", orderby},
+                        }
+                };
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/agilerun/{runId}/step/{stepId}/incidents'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public static RestOperation CreateAgileRunStepIncidentLink(string runId, string stepId, CreateAgileRunStepIncident model)
+        {
+            return new RestOperation("POST", "api/agilerun/" + runId + "/step/" + stepId + "/incidents")
+                { 
+					Content = model
+                };
+        }
+
+
+        /// <summary>
         /// Sends a GET to '/api/agileruns'
         /// </summary>
         /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
@@ -378,46 +504,6 @@ namespace EnterpriseTester.API.Client
         public static RestOperation GetAutomatedTestAssignmentRelationships(string id)
         {
             return new RestOperation("GET", "api/automatedtestassignment/" + id + "/relationships")
-                { 
-                };
-        }
-
-
-        /// <summary>
-        /// Sends a GET to '/api/automatedtestassignment/{id}/runs'
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
-        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
-        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
-        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
-        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
-        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
-        /// <returns></returns>
-        public static RestOperation GetRunsForAutomatedTestAssignment(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
-        {
-            return new RestOperation("GET", "api/automatedtestassignment/" + id + "/runs")
-                { 
-                    QueryParams = 
-                        {
-                             {"$top", top},
-                             {"$skip", skip},
-                             {"$inlinecount", inlinecount},
-                             {"$expand", expand},
-                             {"$filter", filter},
-                             {"$orderby", orderby},
-                        }
-                };
-        }
-
-        /// <summary>
-        /// Sends a POST to '/api/automatedtestassignment/{id}/runs'
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <returns></returns>
-        public static RestOperation CreateAutomatedTestRun(string id)
-        {
-            return new RestOperation("POST", "api/automatedtestassignment/" + id + "/runs")
                 { 
                 };
         }
@@ -811,321 +897,6 @@ namespace EnterpriseTester.API.Client
 					Content = model,                    QueryParams = 
                         {
                              {"$expand", expand},
-                        }
-                };
-        }
-
-
-        /// <summary>
-        /// Sends a GET to '/api/automatedtestschedule/{id}'
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <returns></returns>
-        public static RestOperation GetAutomatedTestScheduleById(string id)
-        {
-            return new RestOperation("GET", "api/automatedtestschedule/" + id + "")
-                { 
-                };
-        }
-
-        /// <summary>
-        /// Sends a PUT to '/api/automatedtestschedule/{id}'
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <param name="dto">a body parameter (no description)</param>
-        /// <returns></returns>
-        public static RestOperation UpdateAutomatedTestSchedule(string id, EditScheduleDTO dto)
-        {
-            return new RestOperation("PUT", "api/automatedtestschedule/" + id + "")
-                { 
-					Content = dto
-                };
-        }
-
-        /// <summary>
-        /// Sends a DELETE to '/api/automatedtestschedule/{id}'
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <returns></returns>
-        public static RestOperation DeletedAutomatedTestSchedule(string id)
-        {
-            return new RestOperation("DELETE", "api/automatedtestschedule/" + id + "")
-                { 
-                };
-        }
-
-
-        /// <summary>
-        /// Sends a GET to '/api/automatedtestschedule/{id}/importconfigurations'
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
-        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
-        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
-        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
-        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
-        /// <returns></returns>
-        public static RestOperation GetAutomatedTestScheduleConfigurations(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
-        {
-            return new RestOperation("GET", "api/automatedtestschedule/" + id + "/importconfigurations")
-                { 
-                    QueryParams = 
-                        {
-                             {"$top", top},
-                             {"$skip", skip},
-                             {"$inlinecount", inlinecount},
-                             {"$filter", filter},
-                             {"$orderby", orderby},
-                        }
-                };
-        }
-
-        /// <summary>
-        /// Sends a POST to '/api/automatedtestschedule/{id}/importconfigurations'
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <param name="dto">a body parameter (no description)</param>
-        /// <returns></returns>
-        public static RestOperation CreateAutomatedTestScheduleConfiguration(string id, EditScheduleConfigurationDTO dto)
-        {
-            return new RestOperation("POST", "api/automatedtestschedule/" + id + "/importconfigurations")
-                { 
-					Content = dto
-                };
-        }
-
-
-        /// <summary>
-        /// Sends a GET to '/api/automatedtestschedule/{id}/schedules'
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
-        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
-        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
-        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
-        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
-        /// <returns></returns>
-        public static RestOperation GetAutomatedTestScheduleScheduleConfigurations(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
-        {
-            return new RestOperation("GET", "api/automatedtestschedule/" + id + "/schedules")
-                { 
-                    QueryParams = 
-                        {
-                             {"$top", top},
-                             {"$skip", skip},
-                             {"$inlinecount", inlinecount},
-                             {"$filter", filter},
-                             {"$orderby", orderby},
-                        }
-                };
-        }
-
-        /// <summary>
-        /// Sends a POST to '/api/automatedtestschedule/{id}/schedules'
-        /// </summary>
-        /// <param name="id">a path parameter (no description)</param>
-        /// <param name="model">a body parameter (no description)</param>
-        /// <returns></returns>
-        public static RestOperation CreateAutomatedTestScheduleScheduleConfiguration(string id, CreateOrUpdateAutomatedTestingScheduleInfo model)
-        {
-            return new RestOperation("POST", "api/automatedtestschedule/" + id + "/schedules")
-                { 
-					Content = model
-                };
-        }
-
-
-        /// <summary>
-        /// Sends a GET to '/api/automatedtestschedule/{scheduleId}/importconfiguration/{configId}'
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="configId">a path parameter (no description)</param>
-        /// <returns></returns>
-        public static RestOperation GetConfigurationForAutomatedTestSchedule(string scheduleId, string configId)
-        {
-            return new RestOperation("GET", "api/automatedtestschedule/" + scheduleId + "/importconfiguration/" + configId + "")
-                { 
-                };
-        }
-
-        /// <summary>
-        /// Sends a PATCH to '/api/automatedtestschedule/{scheduleId}/importconfiguration/{configId}'
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="configId">a path parameter (no description)</param>
-        /// <param name="dto">a body parameter (no description)</param>
-        /// <returns></returns>
-        public static RestOperation PatchConfigurationForAutomatedTestSchedule(string scheduleId, string configId, PatchScheduleConfigurationDTO dto)
-        {
-            return new RestOperation("PATCH", "api/automatedtestschedule/" + scheduleId + "/importconfiguration/" + configId + "")
-                { 
-					Content = dto
-                };
-        }
-
-        /// <summary>
-        /// Sends a PUT to '/api/automatedtestschedule/{scheduleId}/importconfiguration/{configId}'
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="configId">a path parameter (no description)</param>
-        /// <param name="dto">a body parameter (no description)</param>
-        /// <returns></returns>
-        public static RestOperation UpdateConfigurationForAutomatedTestSchedule(string scheduleId, string configId, EditScheduleConfigurationDTO dto)
-        {
-            return new RestOperation("PUT", "api/automatedtestschedule/" + scheduleId + "/importconfiguration/" + configId + "")
-                { 
-					Content = dto
-                };
-        }
-
-        /// <summary>
-        /// Sends a DELETE to '/api/automatedtestschedule/{scheduleId}/importconfiguration/{configId}'
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="configId">a path parameter (no description)</param>
-        /// <returns></returns>
-        public static RestOperation DeleteConfigurationForAutomatedTestSchedule(string scheduleId, string configId)
-        {
-            return new RestOperation("DELETE", "api/automatedtestschedule/" + scheduleId + "/importconfiguration/" + configId + "")
-                { 
-                };
-        }
-
-
-        /// <summary>
-        /// Sends a GET to '/api/automatedtestschedule/{scheduleId}/schedule/{scheduleConfigId}'
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="scheduleConfigId">a path parameter (no description)</param>
-        /// <returns></returns>
-        public static RestOperation GetAutomatedTestScheduleScheduleConfiguration(string scheduleId, string scheduleConfigId)
-        {
-            return new RestOperation("GET", "api/automatedtestschedule/" + scheduleId + "/schedule/" + scheduleConfigId + "")
-                { 
-                };
-        }
-
-        /// <summary>
-        /// Sends a PATCH to '/api/automatedtestschedule/{scheduleId}/schedule/{scheduleConfigId}'
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="scheduleConfigId">a path parameter (no description)</param>
-        /// <param name="model">a body parameter (no description)</param>
-        /// <returns></returns>
-        public static RestOperation PatchAutomatedTestScheduleScheduleConfiguration(string scheduleId, string scheduleConfigId, CreateOrUpdateAutomatedTestingScheduleInfo model)
-        {
-            return new RestOperation("PATCH", "api/automatedtestschedule/" + scheduleId + "/schedule/" + scheduleConfigId + "")
-                { 
-					Content = model
-                };
-        }
-
-        /// <summary>
-        /// Sends a PUT to '/api/automatedtestschedule/{scheduleId}/schedule/{scheduleConfigId}'
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="scheduleConfigId">a path parameter (no description)</param>
-        /// <param name="model">a body parameter (no description)</param>
-        /// <returns></returns>
-        public static RestOperation UpdateAutomatedTestScheduleScheduleConfiguration(string scheduleId, string scheduleConfigId, CreateOrUpdateAutomatedTestingScheduleInfo model)
-        {
-            return new RestOperation("PUT", "api/automatedtestschedule/" + scheduleId + "/schedule/" + scheduleConfigId + "")
-                { 
-					Content = model
-                };
-        }
-
-        /// <summary>
-        /// Sends a DELETE to '/api/automatedtestschedule/{scheduleId}/schedule/{scheduleConfigId}'
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="scheduleConfigId">a path parameter (no description)</param>
-        /// <returns></returns>
-        public static RestOperation DeleteAutomatedTestScheduleScheduleConfiguration(string scheduleId, string scheduleConfigId)
-        {
-            return new RestOperation("DELETE", "api/automatedtestschedule/" + scheduleId + "/schedule/" + scheduleConfigId + "")
-                { 
-                };
-        }
-
-
-        /// <summary>
-        /// Sends a POST to '/api/automatedtestschedule/{scheduleId}/schedule/{scheduleConfigId}/run'
-        /// </summary>
-        /// <param name="scheduleId">a path parameter (no description)</param>
-        /// <param name="scheduleConfigId">a path parameter (no description)</param>
-        /// <returns></returns>
-        public static RestOperation TriggerAutomatedScheduleScheduleConfiguration(string scheduleId, string scheduleConfigId)
-        {
-            return new RestOperation("POST", "api/automatedtestschedule/" + scheduleId + "/schedule/" + scheduleConfigId + "/run")
-                { 
-                };
-        }
-
-
-        /// <summary>
-        /// Sends a GET to '/api/automatedtestschedules'
-        /// </summary>
-        /// <param name="projectId">a query parameter (no description)</param>
-        /// <returns></returns>
-        public static RestOperation GetAutomatedTestSchedules(string projectId = null)
-        {
-            return new RestOperation("GET", "api/automatedtestschedules")
-                { 
-                    QueryParams = 
-                        {
-                             {"projectId", projectId},
-                        }
-                };
-        }
-
-        /// <summary>
-        /// Sends a POST to '/api/automatedtestschedules'
-        /// </summary>
-        /// <param name="model">a body parameter (no description)</param>
-        /// <returns></returns>
-        public static RestOperation CreateAutomatedTestSchedule(CreateSchedule model)
-        {
-            return new RestOperation("POST", "api/automatedtestschedules")
-                { 
-					Content = model
-                };
-        }
-
-
-        /// <summary>
-        /// Sends a GET to '/api/automatedtesttype/{name}'
-        /// </summary>
-        /// <param name="name">a path parameter (no description)</param>
-        /// <returns></returns>
-        public static RestOperation GetAutomatedTestTypeByName(string name)
-        {
-            return new RestOperation("GET", "api/automatedtesttype/" + name + "")
-                { 
-                };
-        }
-
-
-        /// <summary>
-        /// Sends a GET to '/api/automatedtesttypes'
-        /// </summary>
-        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
-        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
-        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
-        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
-        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
-        /// <returns></returns>
-        public static RestOperation GetAutomatedTestTypes(int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
-        {
-            return new RestOperation("GET", "api/automatedtesttypes")
-                { 
-                    QueryParams = 
-                        {
-                             {"$top", top},
-                             {"$skip", skip},
-                             {"$inlinecount", inlinecount},
-                             {"$filter", filter},
-                             {"$orderby", orderby},
                         }
                 };
         }
@@ -1618,6 +1389,25 @@ namespace EnterpriseTester.API.Client
                     QueryParams = 
                         {
                              {"keepReferences", keepReferences},
+                        }
+                };
+        }
+
+
+        /// <summary>
+        /// Sends a POST to '/api/externalsystemlink/{linkId}/copy'
+        /// </summary>
+        /// <param name="linkId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public static RestOperation CopyExternalSystemLink(string linkId, CopyExternalSystemLink model, string expand = null)
+        {
+            return new RestOperation("POST", "api/externalsystemlink/" + linkId + "/copy")
+                { 
+					Content = model,                    QueryParams = 
+                        {
+                             {"$expand", expand},
                         }
                 };
         }
@@ -2146,6 +1936,44 @@ namespace EnterpriseTester.API.Client
 
 
         /// <summary>
+        /// Sends a GET to '/api/incident/{id}/attachments'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public static RestOperation GetIncidentAttachments(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            return new RestOperation("GET", "api/incident/" + id + "/attachments")
+                { 
+                    QueryParams = 
+                        {
+                             {"$top", top},
+                             {"$skip", skip},
+                             {"$inlinecount", inlinecount},
+                             {"$filter", filter},
+                             {"$orderby", orderby},
+                        }
+                };
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/incident/{id}/attachments'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public static RestOperation CreateIncidentAttachment(string id)
+        {
+            return new RestOperation("POST", "api/incident/" + id + "/attachments")
+                { 
+                };
+        }
+
+
+        /// <summary>
         /// Sends a GET to '/api/incident/{id}/comments'
         /// </summary>
         /// <param name="id">a path parameter (no description)</param>
@@ -2179,6 +2007,20 @@ namespace EnterpriseTester.API.Client
         public static RestOperation GetIncidentRelationships(string id)
         {
             return new RestOperation("GET", "api/incident/" + id + "/relationships")
+                { 
+                };
+        }
+
+
+        /// <summary>
+        /// Sends a DELETE to '/api/incident/{incidentId}/attachment/{id}'
+        /// </summary>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public static RestOperation DeleteIncidentAttachment(string incidentId, string id)
+        {
+            return new RestOperation("DELETE", "api/incident/" + incidentId + "/attachment/" + id + "")
                 { 
                 };
         }
@@ -2256,7 +2098,7 @@ namespace EnterpriseTester.API.Client
         /// </summary>
         /// <param name="model">a body parameter (no description)</param>
         /// <returns></returns>
-        public static RestOperation UpdateMailSenderSettings(MailSenderSettings model)
+        public static RestOperation UpdateMailSenderSettings(CreateMailSenderSettings model)
         {
             return new RestOperation("PUT", "api/mailsender/default/settings")
                 { 
@@ -2713,6 +2555,45 @@ namespace EnterpriseTester.API.Client
 
 
         /// <summary>
+        /// Sends a GET to '/api/project/{projectId}/searchlinks'
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <returns></returns>
+        public static RestOperation SearchProjectExternalLinksByPartialName(string projectId, string query = null, bool? valuesqry = null)
+        {
+            return new RestOperation("GET", "api/project/" + projectId + "/searchlinks")
+                { 
+                    QueryParams = 
+                        {
+                             {"query", query},
+                             {"valuesqry", valuesqry},
+                        }
+                };
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/project/{projectId}/searchlinks'
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <returns></returns>
+        public static RestOperation SearchProjectExternalLinksByPartialNameUsingPostMethod(string projectId, string valuesqry = null, string query = null)
+        {
+            return new RestOperation("POST", "api/project/" + projectId + "/searchlinks")
+                { 
+                    FormParams = 
+                        {
+                             {"valuesqry", valuesqry},
+                             {"query", query},
+                        }
+                };
+        }
+
+
+        /// <summary>
         /// Sends a GET to '/api/project/{projectId}/tickets'
         /// </summary>
         /// <param name="projectId">a path parameter (no description)</param>
@@ -2726,6 +2607,24 @@ namespace EnterpriseTester.API.Client
                     QueryParams = 
                         {
                              {"q", q},
+                             {"$expand", expand},
+                        }
+                };
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/project/{projectId}/widgets'
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public static RestOperation GetWidgetsForProject(string projectId, string expand = null)
+        {
+            return new RestOperation("GET", "api/project/" + projectId + "/widgets")
+                { 
+                    QueryParams = 
+                        {
                              {"$expand", expand},
                         }
                 };
@@ -4727,6 +4626,43 @@ namespace EnterpriseTester.API.Client
             return new RestOperation("PUT", "api/user/" + userId + "/permissions/project/" + projectId + "")
                 { 
 					Content = assignments
+                };
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/usergroupsearch'
+        /// </summary>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <returns></returns>
+        public static RestOperation SearchUserOrGroupByPartialName(string query = null, bool? valuesqry = null)
+        {
+            return new RestOperation("GET", "api/usergroupsearch")
+                { 
+                    QueryParams = 
+                        {
+                             {"query", query},
+                             {"valuesqry", valuesqry},
+                        }
+                };
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/usergroupsearch'
+        /// </summary>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <returns></returns>
+        public static RestOperation SearchUserOrGroupByPartialNameUsingPostMethod(string valuesqry = null, string query = null)
+        {
+            return new RestOperation("POST", "api/usergroupsearch")
+                { 
+                    FormParams = 
+                        {
+                             {"valuesqry", valuesqry},
+                             {"query", query},
+                        }
                 };
         }
 

@@ -20,3 +20,7 @@ TestResults
 /CSharp/**/src/obj
 /CSharp/**/src/**/bin
 /CSharp/**/src/**/obj
+CSharp/ApiClient/EnterpriseTester.API.Client.Tests/bin/*
+CSharp/ApiClient/EnterpriseTester.API.Client.Tests/obj/*
+CSharp/ApiClient/EnterpriseTester.API.Client/bin/*
+CSharp/ApiClient/EnterpriseTester.API.Client/obj/*

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>EnterpriseTester.API.Client</id>
-        <version>5.1.0</version>
+        <version>5.1.1</version>
         <title>Enterprise Tester API Client</title>
         <authors>Catch Software</authors>
         <owners>Catch Software</owners>
@@ -13,48 +13,9 @@
         <releaseNotes>Updated to Enterprise Tester v5.1</releaseNotes>
         <copyright>Copyright 2015</copyright>
         <tags>Enterprise Tester Catch Software</tags>
+<dependencies>
+  <dependency id="System.Net.Http" version="2.0.0.0" />
+</dependencies>
+
     </metadata>
-    <files>
-        <file src="bin\Debug\EnterpriseTester.API.Client.dll" target="bin\Debug\EnterpriseTester.API.Client.dll" />
-        <file src="bin\Debug\EnterpriseTester.API.Client.pdb" target="bin\Debug\EnterpriseTester.API.Client.pdb" />
-        <file src="bin\Debug\Newtonsoft.Json.dll" target="bin\Debug\Newtonsoft.Json.dll" />
-        <file src="bin\Debug\Newtonsoft.Json.xml" target="bin\Debug\Newtonsoft.Json.xml" />
-        <file src="bin\Release\EnterpriseTester.API.Client.dll" target="bin\Release\EnterpriseTester.API.Client.dll" />
-        <file src="bin\Release\EnterpriseTester.API.Client.pdb" target="bin\Release\EnterpriseTester.API.Client.pdb" />
-        <file src="bin\Release\Newtonsoft.Json.dll" target="bin\Release\Newtonsoft.Json.dll" />
-        <file src="bin\Release\Newtonsoft.Json.xml" target="bin\Release\Newtonsoft.Json.xml" />
-        <file src="Models\Classes.tt" target="Models\Classes.tt" />
-        <file src="Models\Classes1.designer.cs" target="Models\Classes1.designer.cs" />
-        <file src="Models\EtRestEntityBase.cs" target="Models\EtRestEntityBase.cs" />
-        <file src="Models\IHasId.cs" target="Models\IHasId.cs" />
-        <file src="Models\QueryResults.cs" target="Models\QueryResults.cs" />
-        <file src="Models\RestLink.cs" target="Models\RestLink.cs" />
-        <file src="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" target="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-        <file src="obj\Debug\EnterpriseTester.API.Client.csproj.FileListAbsolute.txt" target="obj\Debug\EnterpriseTester.API.Client.csproj.FileListAbsolute.txt" />
-        <file src="obj\Debug\EnterpriseTester.API.Client.csprojResolveAssemblyReference.cache" target="obj\Debug\EnterpriseTester.API.Client.csprojResolveAssemblyReference.cache" />
-        <file src="obj\Debug\EnterpriseTester.API.Client.dll" target="obj\Debug\EnterpriseTester.API.Client.dll" />
-        <file src="obj\Debug\EnterpriseTester.API.Client.pdb" target="obj\Debug\EnterpriseTester.API.Client.pdb" />
-        <file src="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" target="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-        <file src="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" target="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-        <file src="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" target="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-        <file src="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" target="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
-        <file src="obj\Release\EnterpriseTester.API.Client.csproj.FileListAbsolute.txt" target="obj\Release\EnterpriseTester.API.Client.csproj.FileListAbsolute.txt" />
-        <file src="obj\Release\EnterpriseTester.API.Client.csprojResolveAssemblyReference.cache" target="obj\Release\EnterpriseTester.API.Client.csprojResolveAssemblyReference.cache" />
-        <file src="obj\Release\EnterpriseTester.API.Client.dll" target="obj\Release\EnterpriseTester.API.Client.dll" />
-        <file src="obj\Release\EnterpriseTester.API.Client.pdb" target="obj\Release\EnterpriseTester.API.Client.pdb" />
-        <file src="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" target="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-        <file src="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" target="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-        <file src="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" target="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-        <file src="Properties\AssemblyInfo.cs" target="Properties\AssemblyInfo.cs" />
-        <file src="Client.cs" target="Client.cs" />
-        <file src="Client.designer.cs" target="Client.designer.cs" />
-        <file src="Client.tt" target="Client.tt" />
-        <file src="EnterpriseTester.API.Client.csproj" target="EnterpriseTester.API.Client.csproj" />
-        <file src="EnterpriseTesterHttpClient.cs" target="EnterpriseTesterHttpClient.cs" />
-        <file src="Operations.tt" target="Operations.tt" />
-        <file src="Operations1.designer.cs" target="Operations1.designer.cs" />
-        <file src="packages.config" target="packages.config" />
-        <file src="RestOperation.cs" target="RestOperation.cs" />
-        <file src="Swagger.json" target="Swagger.json" />
-    </files>
 </package>

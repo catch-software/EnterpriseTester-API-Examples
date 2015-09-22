@@ -122,16 +122,18 @@ string TypeName(JsonSchema schema)
     {
         return schema.Id;
     }
+	var required = schema.Required ?? true;
+
     switch (schema.Type.Value)
     {
         case JsonSchemaType.String:
             return "string";
         case JsonSchemaType.Float:
-            return "double";
+            return required ? "double" : "double?";
         case JsonSchemaType.Integer:
-            return "int";
+            return required ? "int" : "int?";
         case JsonSchemaType.Boolean:
-            return "bool";
+            return required ? "bool" : "bool?";
         case JsonSchemaType.None:
         case JsonSchemaType.Null:
         case JsonSchemaType.Any:

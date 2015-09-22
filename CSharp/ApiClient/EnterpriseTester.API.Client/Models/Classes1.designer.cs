@@ -9,14 +9,14 @@ namespace EnterpriseTester.API.Client.Models
         public string FieldCategory { get; set; }
         public string FormName { get; set; }
         public string HandlerType { get; set; }
-        public bool Hidden { get; set; }
+        public bool? Hidden { get; set; }
         public string ImplementationType { get; set; }
         public string ItemId { get; set; }
         public string Label { get; set; }
         public string Name { get; set; }
-        public bool ReadOnly { get; set; }
-        public bool Required { get; set; }
-        public int TabIndex { get; set; }
+        public bool? ReadOnly { get; set; }
+        public bool? Required { get; set; }
+        public int? TabIndex { get; set; }
         public string ValueType { get; set; }
         public string WidgetType { get; set; }
         
@@ -66,9 +66,9 @@ namespace EnterpriseTester.API.Client.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string Notes { get; set; }
-        public int Number { get; set; }
+        public int? Number { get; set; }
         public string Objective { get; set; }
-        public int OrderNumber { get; set; }
+        public int? OrderNumber { get; set; }
         public string PackageId { get; set; }
         public string PackageName { get; set; }
         public string PostCondition { get; set; }
@@ -137,8 +137,8 @@ namespace EnterpriseTester.API.Client.Models
         public string Data { get; set; }
         public string Description { get; set; }
         public string ExpectedResult { get; set; }
-        public bool HasAttachments { get; set; }
-        public bool HasIncidents { get; set; }
+        public bool? HasAttachments { get; set; }
+        public bool? HasIncidents { get; set; }
         public string Id { get; set; }
         public string Notes { get; set; }
         public int OrderNumber { get; set; }
@@ -518,10 +518,10 @@ namespace EnterpriseTester.API.Client.Models
         public string FinishedAt { get; set; }
         public string Id { get; set; }
         public string Message { get; set; }
-        public int ProcessedElements { get; set; }
-        public double ProgressInPercent { get; set; }
+        public int? ProcessedElements { get; set; }
+        public double? ProgressInPercent { get; set; }
         public string StartedAt { get; set; }
-        public int TotalElements { get; set; }
+        public int? TotalElements { get; set; }
         
         public BackgroundTask Clone(bool includeLocalProperties)
         {
@@ -613,7 +613,7 @@ namespace EnterpriseTester.API.Client.Models
     public partial class CreateBackgroundTask : EtRestEntityBase 
     {
         public object Parameters { get; set; }
-        public bool StreamProgress { get; set; }
+        public bool? StreamProgress { get; set; }
         public string Type { get; set; }
         
         public CreateBackgroundTask Clone(bool includeLocalProperties)
@@ -635,7 +635,7 @@ namespace EnterpriseTester.API.Client.Models
     public partial class CreateExternalSystemLink : EtRestEntityBase 
     {
         public CreateExternalSystemLinkEnd Destination { get; set; }
-        public bool Enabled { get; set; }
+        public bool? Enabled { get; set; }
         public string Name { get; set; }
         public CreateExternalSystemLinkEnd Source { get; set; }
         
@@ -685,7 +685,7 @@ namespace EnterpriseTester.API.Client.Models
         public string FromAddress { get; set; }
         public string HostName { get; set; }
         public string Password { get; set; }
-        public int Port { get; set; }
+        public int? Port { get; set; }
         public bool SSL { get; set; }
         public int Timeout { get; set; }
         public string Type { get; set; }
@@ -771,9 +771,9 @@ namespace EnterpriseTester.API.Client.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string Notes { get; set; }
-        public int Number { get; set; }
+        public int? Number { get; set; }
         public string Objective { get; set; }
-        public int OrderNumber { get; set; }
+        public int? OrderNumber { get; set; }
         public string PackageId { get; set; }
         public string PostCondition { get; set; }
         public string PreCondition { get; set; }
@@ -823,7 +823,7 @@ namespace EnterpriseTester.API.Client.Models
         public object Configuration { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
-        public int OrderNumber { get; set; }
+        public int? OrderNumber { get; set; }
         public string PackageId { get; set; }
         public string Type { get; set; }
         
@@ -852,7 +852,7 @@ namespace EnterpriseTester.API.Client.Models
         public string AssignedToId { get; set; }
         public string AutomatedTestId { get; set; }
         public string Id { get; set; }
-        public int OrderNumber { get; set; }
+        public int? OrderNumber { get; set; }
         public string PackageId { get; set; }
         
         public CreateOrUpdateAutomatedTestAssignment Clone(bool includeLocalProperties)
@@ -877,7 +877,7 @@ namespace EnterpriseTester.API.Client.Models
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public int OrderNumber { get; set; }
+        public int? OrderNumber { get; set; }
         public string ParentId { get; set; }
         public string ProjectId { get; set; }
         public string Stereotype { get; set; }
@@ -903,7 +903,7 @@ namespace EnterpriseTester.API.Client.Models
 
     public partial class CreateOrUpdateExternalSystem : EtRestEntityBase 
     {
-        public bool Enabled { get; set; }
+        public bool? Enabled { get; set; }
         public object FieldValues { get; set; }
         public string Name { get; set; }
         public string OrganisationId { get; set; }
@@ -971,7 +971,7 @@ namespace EnterpriseTester.API.Client.Models
         public object FieldValues { get; set; }
         public List<string> FixedVersionIds { get; set; }
         public string Id { get; set; }
-        public int Number { get; set; }
+        public int? Number { get; set; }
         public string PriorityId { get; set; }
         public string ProjectId { get; set; }
         public string ResolutionId { get; set; }
@@ -1049,7 +1049,7 @@ namespace EnterpriseTester.API.Client.Models
         public string IndustryType { get; set; }
         public string LongDescription { get; set; }
         public string Name { get; set; }
-        public int OrderNumber { get; set; }
+        public int? OrderNumber { get; set; }
         public string ShortDescription { get; set; }
         
         public CreateOrUpdateOrganisation Clone(bool includeLocalProperties)
@@ -1093,19 +1093,19 @@ namespace EnterpriseTester.API.Client.Models
 
     public partial class CreateOrUpdateProject : EtRestEntityBase, IHasId 
     {
-        public bool AutoNumberRequirements { get; set; }
-        public bool AutoNumberScripts { get; set; }
+        public bool? AutoNumberRequirements { get; set; }
+        public bool? AutoNumberScripts { get; set; }
         public string Description { get; set; }
         public string EstimatedEndDate { get; set; }
         public string Id { get; set; }
-        public bool Independent { get; set; }
+        public bool? Independent { get; set; }
         public string ManagerId { get; set; }
         public string Name { get; set; }
-        public int OrderNumber { get; set; }
+        public int? OrderNumber { get; set; }
         public string OrganisationId { get; set; }
         public string ProjectCategoryId { get; set; }
-        public bool RequirementNumberReadOnly { get; set; }
-        public bool ScriptNumberReadOnly { get; set; }
+        public bool? RequirementNumberReadOnly { get; set; }
+        public bool? ScriptNumberReadOnly { get; set; }
         public string Slug { get; set; }
         public string StartDate { get; set; }
         public string TemplateId { get; set; }
@@ -1145,7 +1145,7 @@ namespace EnterpriseTester.API.Client.Models
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public int OrderNumber { get; set; }
+        public int? OrderNumber { get; set; }
         public string OrganisationId { get; set; }
         public string ParentId { get; set; }
         
@@ -1178,7 +1178,7 @@ namespace EnterpriseTester.API.Client.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public object Number { get; set; }
-        public int OrderNumber { get; set; }
+        public int? OrderNumber { get; set; }
         public string PackageId { get; set; }
         public string ParentId { get; set; }
         public string PriorityId { get; set; }
@@ -1221,7 +1221,7 @@ namespace EnterpriseTester.API.Client.Models
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public int OrderNumber { get; set; }
+        public int? OrderNumber { get; set; }
         public string ParentId { get; set; }
         public string ProjectId { get; set; }
         
@@ -1260,7 +1260,7 @@ namespace EnterpriseTester.API.Client.Models
         public string Notes { get; set; }
         public object Number { get; set; }
         public string Objective { get; set; }
-        public int OrderNumber { get; set; }
+        public int? OrderNumber { get; set; }
         public string PackageId { get; set; }
         public string PostCondition { get; set; }
         public string PreCondition { get; set; }
@@ -1332,7 +1332,7 @@ namespace EnterpriseTester.API.Client.Models
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public int OrderNumber { get; set; }
+        public int? OrderNumber { get; set; }
         public string ParentId { get; set; }
         public string ProjectId { get; set; }
         
@@ -1427,10 +1427,10 @@ namespace EnterpriseTester.API.Client.Models
     public partial class CreateOrUpdateUser : EtRestEntityBase, IHasId 
     {
         public string Email { get; set; }
-        public bool Enabled { get; set; }
+        public bool? Enabled { get; set; }
         public string FirstName { get; set; }
         public string Id { get; set; }
-        public bool IsExternal { get; set; }
+        public bool? IsExternal { get; set; }
         public string LastName { get; set; }
         public string Password { get; set; }
         public string Phone { get; set; }
@@ -1564,7 +1564,7 @@ namespace EnterpriseTester.API.Client.Models
 
     public partial class EditExternalSystemLink : EtRestEntityBase, IHasId 
     {
-        public bool Enabled { get; set; }
+        public bool? Enabled { get; set; }
         public string Id { get; set; }
         
         public EditExternalSystemLink Clone(bool includeLocalProperties)
@@ -2525,9 +2525,9 @@ namespace EnterpriseTester.API.Client.Models
         public string ErrorMessage { get; set; }
         public string FromAddress { get; set; }
         public string HostName { get; set; }
-        public bool IsValid { get; set; }
+        public bool? IsValid { get; set; }
         public string Password { get; set; }
-        public int Port { get; set; }
+        public int? Port { get; set; }
         public bool SSL { get; set; }
         public int Timeout { get; set; }
         public string Type { get; set; }
@@ -3181,7 +3181,7 @@ namespace EnterpriseTester.API.Client.Models
         public string LastUpdatedBy { get; set; }
         public string LastUpdatedById { get; set; }
         public string Name { get; set; }
-        public int Number { get; set; }
+        public int? Number { get; set; }
         public int OrderNumber { get; set; }
         public RequirementPackage Package { get; set; }
         public string PackageId { get; set; }
@@ -3390,7 +3390,7 @@ namespace EnterpriseTester.API.Client.Models
         public bool HasChildren { get; set; }
         public bool HasIncidents { get; set; }
         public string Id { get; set; }
-        public int Iteration { get; set; }
+        public int? Iteration { get; set; }
         public object Metadata { get; set; }
         public string Name { get; set; }
         public string Notes { get; set; }
@@ -3476,7 +3476,7 @@ namespace EnterpriseTester.API.Client.Models
         public string LastUpdatedById { get; set; }
         public string Name { get; set; }
         public string Notes { get; set; }
-        public int Number { get; set; }
+        public int? Number { get; set; }
         public string Objective { get; set; }
         public int OrderNumber { get; set; }
         public ScriptPackage Package { get; set; }
@@ -3674,7 +3674,7 @@ namespace EnterpriseTester.API.Client.Models
         public string ActualDuration { get; set; }
         public ScriptAssignment Assignment { get; set; }
         public string AssignmentId { get; set; }
-        public bool Completed { get; set; }
+        public bool? Completed { get; set; }
         public string CreatedAt { get; set; }
         public string CreatedBy { get; set; }
         public string CreatedById { get; set; }
@@ -3920,9 +3920,9 @@ namespace EnterpriseTester.API.Client.Models
 
     public partial class SynchronizationScheduleConfiguration : EtRestEntityBase 
     {
-        public int HourOfDay { get; set; }
-        public int MinuteOfDay { get; set; }
-        public int PeriodInMinutes { get; set; }
+        public int? HourOfDay { get; set; }
+        public int? MinuteOfDay { get; set; }
+        public int? PeriodInMinutes { get; set; }
         public string Type { get; set; }
         
         public SynchronizationScheduleConfiguration Clone(bool includeLocalProperties)
@@ -4172,8 +4172,8 @@ namespace EnterpriseTester.API.Client.Models
 
     public partial class TimeTrackingConfiguration : EtRestEntityBase 
     {
-        public int DaysPerWeek { get; set; }
-        public int HoursPerDay { get; set; }
+        public int? DaysPerWeek { get; set; }
+        public int? HoursPerDay { get; set; }
         
         public TimeTrackingConfiguration Clone(bool includeLocalProperties)
         {
@@ -4280,7 +4280,7 @@ namespace EnterpriseTester.API.Client.Models
         }
 
         public string ActualDuration { get; set; }
-        public bool AttemptToComplete { get; set; }
+        public bool? AttemptToComplete { get; set; }
         public object FieldValues { get; set; }
         public string Id { get; set; }
         public List<UpdateStepResult> StepResults { get; set; }

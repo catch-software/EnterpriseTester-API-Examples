@@ -31,7 +31,16 @@ namespace EnterpriseTester.API.Client
 
         public virtual void EnsureSuccess(HttpResponseMessage response)
         {
-            response.EnsureSuccessStatusCode();
+            if (response.IsSuccessStatusCode)
+                return;
+
+            var task = response.Content.ReadAsStringAsync();
+            task.Wait();
+            var content = task.Result;
+            throw new HttpRequestException(
+                string.Format(
+                    "status code does not indicate success: {0} ({1}).\n{2}",
+                    (int)response.StatusCode, response.ReasonPhrase, content));
         }
     }
 }

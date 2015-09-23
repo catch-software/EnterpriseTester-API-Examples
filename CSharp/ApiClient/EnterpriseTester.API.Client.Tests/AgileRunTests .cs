@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net.Http;
 using EnterpriseTester.API.Client.Models;
 using Xunit;
+using Xunit.Sdk;
 
 namespace EnterpriseTester.API.Client.Tests
 {
@@ -15,7 +16,7 @@ namespace EnterpriseTester.API.Client.Tests
 
         public AgileRunTests()
         {
-            client = new Client("http://localhost/EnterpriseTester/", "Administrator", "password");
+            client = new Client("http://localhost:8092/EnterpriseTester/", "Administrator", "password");
         }
 
         private string GetSingleExecutionPackageId()
@@ -64,6 +65,21 @@ namespace EnterpriseTester.API.Client.Tests
             var runsTask = client.SearchAgileRunsAsync("Text ~ 'Release'", top: 100);
             var result = runsTask.Result;
             Assert.Equal(100, result.Top);
+        }
+
+        [Fact]
+        public void create_faulty_agile_run()
+        {
+            try
+            {
+                client.CreateAgileRun(new CreateOrUpdateAgileRun {Name = "My Agile Run"});
+                throw new AssertException("Exception doe not thrown!");
+            }
+            catch (HttpRequestException e)
+            {
+                Assert.Equal("System.Net.Http.HttpRequestException status code does not indicate success: 403 (Forbidden).\n{\r\n  \"Message\": \"You must specify a valid PackageId which the agile run can be added to.\"\r\n}", e.Message);
+            }
+
         }
     }
 }

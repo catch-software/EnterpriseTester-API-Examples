@@ -39,7 +39,7 @@ namespace EnterpriseTester.API.Client
             var content = task.Result;
             throw new HttpRequestException(
                 string.Format(
-                    "status code does not indicate success: {0} ({1}).\n{2}",
+                    "System.Net.Http.HttpRequestException status code does not indicate success: {0} ({1}).\n{2}",
                     (int)response.StatusCode, response.ReasonPhrase, content));
         }
     }

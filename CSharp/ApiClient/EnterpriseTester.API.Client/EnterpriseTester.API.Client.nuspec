@@ -2,15 +2,17 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>EnterpriseTester.API.Client</id>
-        <version>5.1.1</version>
+        <version>5.2.1</version>
         <title>Enterprise Tester API Client</title>
         <authors>Catch Software</authors>
         <owners>Catch Software</owners>
         <projectUrl>https://github.com/catch-software/EnterpriseTester-API-Examples/tree/master/CSharp/ApiClient</projectUrl>
-        <iconUrl>https://github.com/catch-software/EnterpriseTester-API-Examples/tree/master/CSharp/ApiClient</iconUrl>
+        <iconUrl>http://catchsoftware.com/images/catch-software-primary-logo.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Enterprise Tester API Client</description>
-        <releaseNotes>Updated to Enterprise Tester v5.1</releaseNotes>
+        <releaseNotes>Added details if request was unsuccessful
+		Added support for non-mandatory fields
+		</releaseNotes>
         <copyright>Copyright 2015</copyright>
         <tags>Enterprise Tester Catch Software</tags>
 <dependencies>

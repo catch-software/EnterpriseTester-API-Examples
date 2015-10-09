@@ -28,7 +28,7 @@ For any code interacting with the rest client you will want to do the following:
 
 Additionally you may also want to do this:
 
-    requre 'json'
+    require 'json'
 
 This will give you access to the useful methods such as to_json.
 

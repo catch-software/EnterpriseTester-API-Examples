@@ -1099,11 +1099,13 @@ namespace EnterpriseTester.API.Client.Models
         public string EstimatedEndDate { get; set; }
         public string Id { get; set; }
         public bool? Independent { get; set; }
+        public bool? Linked { get; set; }
         public string ManagerId { get; set; }
         public string Name { get; set; }
         public int? OrderNumber { get; set; }
         public string OrganisationId { get; set; }
         public string ProjectCategoryId { get; set; }
+        public string ProjectTypeId { get; set; }
         public bool? RequirementNumberReadOnly { get; set; }
         public bool? ScriptNumberReadOnly { get; set; }
         public string Slug { get; set; }
@@ -1121,11 +1123,13 @@ namespace EnterpriseTester.API.Client.Models
                         EstimatedEndDate = EstimatedEndDate,
                         Id = Id,
                         Independent = Independent,
+                        Linked = Linked,
                         ManagerId = ManagerId,
                         Name = Name,
                         OrderNumber = OrderNumber,
                         OrganisationId = OrganisationId,
                         ProjectCategoryId = ProjectCategoryId,
+                        ProjectTypeId = ProjectTypeId,
                         RequirementNumberReadOnly = RequirementNumberReadOnly,
                         ScriptNumberReadOnly = ScriptNumberReadOnly,
                         Slug = Slug,

@@ -1,5 +1,5 @@
 {
-  "apiVersion": "5.1.1907.0",
+  "apiVersion": "6.0.1942.0",
   "swaggerVersion": "1.1",
   "basePath": "http://etstaging01.catchsoftware.net/EnterpriseTesterMaster/",
   "apis": [
@@ -2282,6 +2282,48 @@
             "200": "Returned if the report was generated successfully.",
             "403": "Returned if the user does not have permission to run diagnostic tests.",
             "404": "Returned if the performance test has not been run, or first test is still in progress."
+          }
+        }
+      ]
+    },
+    {
+      "path": "/api/entitytypes",
+      "description": "Notification's EntityType search",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "nickname": "getNotificationEntityTypes",
+          "responseClass": "list[Object]",
+          "summary": "Retrieves all (or a subset) of projects that are visible to the user.",
+          "notes": "<strong>Expanders:</strong><br/><ul><li>TimeTrackingConfiguration</li>\r\n<li>ProjectCategory</li>\r\n<li>Statuses</li>\r\n<li>Priorities</li>\r\n<li>RequirementTypes</li>\r\n<li>RequirementStatuses</li>\r\n<li>RequirementDifficulties</li>\r\n<li>IncidentTypes</li>\r\n<li>TestTypes</li>\r\n<li>IncidentResolutions</li>\r\n<li>IncidentStatuses</li>\r\n<li>Versions</li>\r\n<li>Components</li>\r\n<li>ExecutionPackages</li>\r\n<li>ScriptPackages</li>\r\n<li>RequirementPackages</li>\r\n<li>ExternalSystemLinks</li>\r\n<li>Widgets</li></ul><br/><br/><strong>Nickname:</strong> getNotificationEntityTypes (Method Name in swagger code-gen clients)",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "$expand",
+              "description": "Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.",
+              "dataType": "string",
+              "required": false,
+              "allowMultiple": false
+            }
+          ],
+          "statusCodes": {
+            "200": "Returned if the request was completed successfully."
+          }
+        }
+      ]
+    },
+    {
+      "path": "/api/eventtypes",
+      "description": "Get all event types available for user",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "nickname": "getEventTypes",
+          "responseClass": "list[Object]",
+          "summary": "Retrieves all (or a subset) of projects that are visible to the user.",
+          "notes": "<strong>Nickname:</strong> getEventTypes (Method Name in swagger code-gen clients)",
+          "statusCodes": {
+            "200": "Returned if the request was completed successfully."
           }
         }
       ]
@@ -5140,16 +5182,16 @@
             },
             {
               "paramType": "form",
-              "name": "valuesqry",
-              "description": "Query to retreive a set of matches based on their values (values are separated by a pipe '|' character)",
+              "name": "query",
+              "description": "Partial name to match on",
               "dataType": "string",
               "required": false,
               "allowMultiple": false
             },
             {
               "paramType": "form",
-              "name": "query",
-              "description": "Partial name to match on",
+              "name": "valuesqry",
+              "description": "Query to retreive a set of matches based on their values (values are separated by a pipe '|' character)",
               "dataType": "string",
               "required": false,
               "allowMultiple": false
@@ -6357,16 +6399,16 @@
             },
             {
               "paramType": "form",
-              "name": "valuesqry",
-              "description": "Query to retreive a set of matches based on their values (values are separated by a pipe '|' character)",
+              "name": "query",
+              "description": "Partial name to match on",
               "dataType": "string",
               "required": false,
               "allowMultiple": false
             },
             {
               "paramType": "form",
-              "name": "query",
-              "description": "Partial name to match on",
+              "name": "valuesqry",
+              "description": "Query to retreive a set of matches based on their values (values are separated by a pipe '|' character)",
               "dataType": "string",
               "required": false,
               "allowMultiple": false
@@ -10479,16 +10521,16 @@
           "parameters": [
             {
               "paramType": "form",
-              "name": "valuesqry",
-              "description": "Query to retreive a set of matches based on their values (values are separated by a pipe '|' character)",
+              "name": "query",
+              "description": "Partial name to match on",
               "dataType": "string",
               "required": false,
               "allowMultiple": false
             },
             {
               "paramType": "form",
-              "name": "query",
-              "description": "Partial name to match on",
+              "name": "valuesqry",
+              "description": "Query to retreive a set of matches based on their values (values are separated by a pipe '|' character)",
               "dataType": "string",
               "required": false,
               "allowMultiple": false
@@ -13133,6 +13175,13 @@
         "TimeTrackingConfiguration": {
           "$ref": "TimeTrackingConfiguration",
           "type": "TimeTrackingConfiguration"
+        },
+        "ProjectTypeId": {
+          "type": "string"
+        },
+        "Linked": {
+          "required": false,
+          "type": "boolean"
         }
       }
     },

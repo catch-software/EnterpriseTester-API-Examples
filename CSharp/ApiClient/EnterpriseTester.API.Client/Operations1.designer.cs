@@ -1023,6 +1023,35 @@ namespace EnterpriseTester.API.Client
 
 
         /// <summary>
+        /// Sends a GET to '/api/entitytypes'
+        /// </summary>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public static RestOperation GetNotificationEntityTypes(string expand = null)
+        {
+            return new RestOperation("GET", "api/entitytypes")
+                { 
+                    QueryParams = 
+                        {
+                             {"$expand", expand},
+                        }
+                };
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/eventtypes'
+        /// </summary>
+        /// <returns></returns>
+        public static RestOperation GetEventTypes()
+        {
+            return new RestOperation("GET", "api/eventtypes")
+                { 
+                };
+        }
+
+
+        /// <summary>
         /// Sends a GET to '/api/executionpackage/{id}'
         /// </summary>
         /// <param name="id">a path parameter (no description)</param>
@@ -2275,17 +2304,17 @@ namespace EnterpriseTester.API.Client
         /// </summary>
         /// <param name="organisationId">a path parameter (no description)</param>
         /// <param name="type">a path parameter (no description)</param>
-        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <returns></returns>
-        public static RestOperation SearchOrganisationPicklistValuesUsingPostMethod(string organisationId, string type, string valuesqry = null, string query = null)
+        public static RestOperation SearchOrganisationPicklistValuesUsingPostMethod(string organisationId, string type, string query = null, string valuesqry = null)
         {
             return new RestOperation("POST", "api/organisation/" + organisationId + "/picklistsearch/" + type + "")
                 { 
                     FormParams = 
                         {
-                             {"valuesqry", valuesqry},
                              {"query", query},
+                             {"valuesqry", valuesqry},
                         }
                 };
         }
@@ -2819,10 +2848,10 @@ namespace EnterpriseTester.API.Client
         /// Sends a POST to '/api/projectssearch'
         /// </summary>
         /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
-        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <returns></returns>
-        public static RestOperation SearchProjectsByPartialNameUsingPostMethod(string valuesqry = null, string query = null, string expand = null)
+        public static RestOperation SearchProjectsByPartialNameUsingPostMethod(string query = null, string valuesqry = null, string expand = null)
         {
             return new RestOperation("POST", "api/projectssearch")
                 { 
@@ -2832,8 +2861,8 @@ namespace EnterpriseTester.API.Client
                         }
  ,                     FormParams = 
                         {
-                             {"valuesqry", valuesqry},
                              {"query", query},
+                             {"valuesqry", valuesqry},
                         }
                 };
         }
@@ -4651,17 +4680,17 @@ namespace EnterpriseTester.API.Client
         /// <summary>
         /// Sends a POST to '/api/usergroupsearch'
         /// </summary>
-        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <returns></returns>
-        public static RestOperation SearchUserOrGroupByPartialNameUsingPostMethod(string valuesqry = null, string query = null)
+        public static RestOperation SearchUserOrGroupByPartialNameUsingPostMethod(string query = null, string valuesqry = null)
         {
             return new RestOperation("POST", "api/usergroupsearch")
                 { 
                     FormParams = 
                         {
-                             {"valuesqry", valuesqry},
                              {"query", query},
+                             {"valuesqry", valuesqry},
                         }
                 };
         }

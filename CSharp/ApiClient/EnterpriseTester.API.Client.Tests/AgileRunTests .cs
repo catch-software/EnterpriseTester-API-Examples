@@ -12,16 +12,17 @@ namespace EnterpriseTester.API.Client.Tests
     /// </summary>
     public class AgileRunTests
     {
-        private readonly Client client;
+        private readonly Client _client;
 
         public AgileRunTests()
         {
-            client = new Client("http://localhost:8092/EnterpriseTester/", "Administrator", "password");
+            _client = new Client("http://localhost:8092/EnterpriseTester/", "administrator", "password");
         }
 
         private string GetSingleExecutionPackageId()
         {
-            return client.SearchExecutionPackages(top: 1).Items.Single().Id;
+	        var items = _client.SearchExecutionPackages(top: 1).Items;
+            return items.Single().Id;
         }
 
         [Fact]
@@ -29,7 +30,7 @@ namespace EnterpriseTester.API.Client.Tests
         {
             string packageId = GetSingleExecutionPackageId();
 
-            AgileRun run = client.CreateAgileRun(new CreateOrUpdateAgileRun { PackageId = packageId, Name = "My Agile Run" });
+            AgileRun run = _client.CreateAgileRun(new CreateOrUpdateAgileRun { PackageId = packageId, Name = "My Agile Run" });
 
             Assert.Equal("My Agile Run", run.Name);
             Assert.NotEqual(Guid.Empty.ToString(), run.Id);
@@ -40,9 +41,9 @@ namespace EnterpriseTester.API.Client.Tests
         {
             string packageId = GetSingleExecutionPackageId();
 
-            AgileRun run = client.CreateAgileRun(new CreateOrUpdateAgileRun { PackageId = packageId, Name = "My Agile Run" });
+            AgileRun run = _client.CreateAgileRun(new CreateOrUpdateAgileRun { PackageId = packageId, Name = "My Agile Run" });
 
-            AgileRun updatedRun = client.UpdateAgileRun(run.Id, new CreateOrUpdateAgileRun { Name = "Updated name" });
+            AgileRun updatedRun = _client.UpdateAgileRun(run.Id, new CreateOrUpdateAgileRun { Name = "Updated name" });
 
             Assert.Equal("Updated name", updatedRun.Name);
         }
@@ -52,17 +53,17 @@ namespace EnterpriseTester.API.Client.Tests
         {
             string packageId = GetSingleExecutionPackageId();
 
-            AgileRun run = client.CreateAgileRun(new CreateOrUpdateAgileRun { PackageId = packageId, Name = "My Agile Run" });
+            AgileRun run = _client.CreateAgileRun(new CreateOrUpdateAgileRun { PackageId = packageId, Name = "My Agile Run" });
 
-            client.DeleteAgileRun(run.Id);
+            _client.DeleteAgileRun(run.Id);
 
-            Assert.Throws<HttpRequestException>(() => client.GetAgileRun(run.Id));
+            Assert.Throws<HttpRequestException>(() => _client.GetAgileRun(run.Id));
         }
 
         [Fact]
         public void search_agile_runs_async()
         {
-            var runsTask = client.SearchAgileRunsAsync("Text ~ 'Release'", top: 100);
+            var runsTask = _client.SearchAgileRunsAsync("Text ~ 'Release'", top: 100);
             var result = runsTask.Result;
             Assert.Equal(100, result.Top);
         }
@@ -72,7 +73,7 @@ namespace EnterpriseTester.API.Client.Tests
         {
             try
             {
-                client.CreateAgileRun(new CreateOrUpdateAgileRun {Name = "My Agile Run"});
+                _client.CreateAgileRun(new CreateOrUpdateAgileRun {Name = "My Agile Run"});
                 throw new AssertException("Exception doe not thrown!");
             }
             catch (HttpRequestException e)

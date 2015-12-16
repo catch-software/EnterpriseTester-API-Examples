@@ -47,6 +47,28 @@ namespace EnterpriseTester.API.Client.Models
     }
 
 
+    public partial class Add : EtRestEntityBase 
+    {
+        public string ownerId { get; set; }
+        public int sortOrder { get; set; }
+        public string text { get; set; }
+        
+        public Add Clone(bool includeLocalProperties)
+        {
+            var c = new Add
+                    {
+                        ownerId = ownerId,
+                        sortOrder = sortOrder,
+                        text = text,
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(Add clone, bool includeLocalProperties);
+    }
+
+
     public partial class AgileRun : EtRestEntityBase, IHasId 
     {
         public AgileRun()
@@ -629,6 +651,44 @@ namespace EnterpriseTester.API.Client.Models
         }
 
         partial void CopyExtraPropertiesToClone(CreateBackgroundTask clone, bool includeLocalProperties);
+    }
+
+
+    public partial class CreateCustomField : EtRestEntityBase 
+    {
+        public CreateCustomField()
+        {
+            Entities = new List<string>();
+            Scopes = new List<Scope>();
+        }
+
+        public string DefaultValue { get; set; }
+        public string Description { get; set; }
+        public List<string> Entities { get; set; }
+        public string HandlerType { get; set; }
+        public string Label { get; set; }
+        public string Name { get; set; }
+        public bool Required { get; set; }
+        public List<Scope> Scopes { get; set; }
+        
+        public CreateCustomField Clone(bool includeLocalProperties)
+        {
+            var c = new CreateCustomField
+                    {
+                        DefaultValue = DefaultValue,
+                        Description = Description,
+                        HandlerType = HandlerType,
+                        Label = Label,
+                        Name = Name,
+                        Required = Required,
+                        Entities = Entities.ToList(),
+                        Scopes = Scopes.Select(x=>x.Clone(includeLocalProperties)).ToList(),
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(CreateCustomField clone, bool includeLocalProperties);
     }
 
 
@@ -1505,6 +1565,24 @@ namespace EnterpriseTester.API.Client.Models
         }
 
         partial void CopyExtraPropertiesToClone(CreateStepRunResultIncident clone, bool includeLocalProperties);
+    }
+
+
+    public partial class CusField : EtRestEntityBase 
+    {
+        public Set set { get; set; }
+        
+        public CusField Clone(bool includeLocalProperties)
+        {
+            var c = new CusField
+                    {
+                        set = set,
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(CusField clone, bool includeLocalProperties);
     }
 
 
@@ -2667,6 +2745,24 @@ namespace EnterpriseTester.API.Client.Models
     }
 
 
+    public partial class Operation : EtRestEntityBase 
+    {
+        public Update update { get; set; }
+        
+        public Operation Clone(bool includeLocalProperties)
+        {
+            var c = new Operation
+                    {
+                        update = update,
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(Operation clone, bool includeLocalProperties);
+    }
+
+
     public partial class Organisation : EtRestEntityBase, IHasId 
     {
         public Organisation()
@@ -2836,6 +2932,28 @@ namespace EnterpriseTester.API.Client.Models
         }
 
         partial void CopyExtraPropertiesToClone(PicklistCollection clone, bool includeLocalProperties);
+    }
+
+
+    public partial class PickListValue : EtRestEntityBase 
+    {
+        public Add add { get; set; }
+        public Remove remove { get; set; }
+        public Set set { get; set; }
+        
+        public PickListValue Clone(bool includeLocalProperties)
+        {
+            var c = new PickListValue
+                    {
+                        add = add,
+                        remove = remove,
+                        set = set,
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(PickListValue clone, bool includeLocalProperties);
     }
 
 
@@ -3154,6 +3272,26 @@ namespace EnterpriseTester.API.Client.Models
         }
 
         partial void CopyExtraPropertiesToClone(RelationshipType clone, bool includeLocalProperties);
+    }
+
+
+    public partial class Remove : EtRestEntityBase 
+    {
+        public string id { get; set; }
+        public string ownerId { get; set; }
+        
+        public Remove Clone(bool includeLocalProperties)
+        {
+            var c = new Remove
+                    {
+                        id = id,
+                        ownerId = ownerId,
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(Remove clone, bool includeLocalProperties);
     }
 
 
@@ -3727,6 +3865,36 @@ namespace EnterpriseTester.API.Client.Models
     }
 
 
+    public partial class Set : EtRestEntityBase 
+    {
+        public string id { get; set; }
+        public string name { get; set; }
+        public string ownerId { get; set; }
+        public int sortOrder { get; set; }
+        public string text { get; set; }
+        public string value { get; set; }
+        public string valueType { get; set; }
+        
+        public Set Clone(bool includeLocalProperties)
+        {
+            var c = new Set
+                    {
+                        id = id,
+                        name = name,
+                        ownerId = ownerId,
+                        sortOrder = sortOrder,
+                        text = text,
+                        value = value,
+                        valueType = valueType,
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(Set clone, bool includeLocalProperties);
+    }
+
+
     public partial class SetPassword : EtRestEntityBase 
     {
         public string Password { get; set; }
@@ -4237,6 +4405,32 @@ namespace EnterpriseTester.API.Client.Models
         }
 
         partial void CopyExtraPropertiesToClone(TypedId clone, bool includeLocalProperties);
+    }
+
+
+    public partial class Update : EtRestEntityBase 
+    {
+        public Update()
+        {
+            customFields = new List<CusField>();
+            pickListValues = new List<PickListValue>();
+        }
+
+        public List<CusField> customFields { get; set; }
+        public List<PickListValue> pickListValues { get; set; }
+        
+        public Update Clone(bool includeLocalProperties)
+        {
+            var c = new Update
+                    {
+                        customFields = customFields.Select(x=>x.Clone(includeLocalProperties)).ToList(),
+                        pickListValues = pickListValues.Select(x=>x.Clone(includeLocalProperties)).ToList(),
+                    };
+            CopyExtraPropertiesToClone(c, includeLocalProperties);
+            return c;
+        }
+
+        partial void CopyExtraPropertiesToClone(Update clone, bool includeLocalProperties);
     }
 
 

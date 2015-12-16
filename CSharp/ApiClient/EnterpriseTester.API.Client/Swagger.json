@@ -1,5 +1,5 @@
 {
-  "apiVersion": "6.0.1942.0",
+  "apiVersion": "6.1.1946.0",
   "swaggerVersion": "1.1",
   "basePath": "http://etstaging01.catchsoftware.net/EnterpriseTesterMaster/",
   "apis": [
@@ -845,7 +845,7 @@
           "nickname": "searchAutomatedTestAssignmentsForAutomatedTest",
           "responseClass": "QueryResultsOfAutomatedTestAssignment",
           "summary": "Retrieves all (or a subset) of automated test assignments that are visible associated with the automated test.  This method takes a TQL query.",
-          "notes": "<strong>Expanders:</strong><br/><ul><li>Package</li>\r\n<li>Totals</li>\r\n<li>AutomatedTest</li>\r\n<li>Runs</li></ul><br/><br/><strong>Nickname:</strong> searchAutomatedTestAssignmentsForAutomatedTest (Method Name in swagger code-gen clients)",
+          "notes": "<strong>Expanders:</strong><br/><ul><li>Runs</li>\r\n<li>Package</li>\r\n<li>Totals</li>\r\n<li>AutomatedTest</li></ul><br/><br/><strong>Nickname:</strong> searchAutomatedTestAssignmentsForAutomatedTest (Method Name in swagger code-gen clients)",
           "parameters": [
             {
               "paramType": "path",
@@ -920,7 +920,7 @@
           "nickname": "createAssignmentForAutomatedTest",
           "responseClass": "AutomatedTestAssignment",
           "summary": "Creates a new automated test assignment for this test.",
-          "notes": "<strong>Expanders:</strong><br/><ul><li>Package</li>\r\n<li>Totals</li>\r\n<li>AutomatedTest</li>\r\n<li>Runs</li></ul><br/><br/><strong>Nickname:</strong> createAssignmentForAutomatedTest (Method Name in swagger code-gen clients)",
+          "notes": "<strong>Expanders:</strong><br/><ul><li>Runs</li>\r\n<li>Package</li>\r\n<li>Totals</li>\r\n<li>AutomatedTest</li></ul><br/><br/><strong>Nickname:</strong> createAssignmentForAutomatedTest (Method Name in swagger code-gen clients)",
           "parameters": [
             {
               "paramType": "path",
@@ -961,7 +961,7 @@
           "nickname": "getAutomatedTestAssignment",
           "responseClass": "AutomatedTestAssignment",
           "summary": "Retrieves a single automated test assignment by its unique identifier.",
-          "notes": "<strong>Expanders:</strong><br/><ul><li>Package</li>\r\n<li>Totals</li>\r\n<li>AutomatedTest</li>\r\n<li>Runs</li></ul><br/><br/><strong>Nickname:</strong> getAutomatedTestAssignment (Method Name in swagger code-gen clients)",
+          "notes": "<strong>Expanders:</strong><br/><ul><li>Runs</li>\r\n<li>Package</li>\r\n<li>Totals</li>\r\n<li>AutomatedTest</li></ul><br/><br/><strong>Nickname:</strong> getAutomatedTestAssignment (Method Name in swagger code-gen clients)",
           "parameters": [
             {
               "paramType": "path",
@@ -990,7 +990,7 @@
           "nickname": "updateAutomatedTestAssignment",
           "responseClass": "AutomatedTestAssignment",
           "summary": "Update automated test assignment",
-          "notes": "<strong>Expanders:</strong><br/><ul><li>Package</li>\r\n<li>Totals</li>\r\n<li>AutomatedTest</li>\r\n<li>Runs</li></ul><br/><br/><strong>Nickname:</strong> updateAutomatedTestAssignment (Method Name in swagger code-gen clients)",
+          "notes": "<strong>Expanders:</strong><br/><ul><li>Runs</li>\r\n<li>Package</li>\r\n<li>Totals</li>\r\n<li>AutomatedTest</li></ul><br/><br/><strong>Nickname:</strong> updateAutomatedTestAssignment (Method Name in swagger code-gen clients)",
           "parameters": [
             {
               "paramType": "path",
@@ -1106,7 +1106,7 @@
           "nickname": "searchAutomatedTestAssignments",
           "responseClass": "QueryResultsOfAutomatedTestAssignment",
           "summary": "Retrieves all (or a subset) of automated test assignments that are visible associated with the automated test.  This method takes a TQL query.",
-          "notes": "<strong>Expanders:</strong><br/><ul><li>Package</li>\r\n<li>Totals</li>\r\n<li>AutomatedTest</li>\r\n<li>Runs</li></ul><br/><br/><strong>Nickname:</strong> searchAutomatedTestAssignments (Method Name in swagger code-gen clients)",
+          "notes": "<strong>Expanders:</strong><br/><ul><li>Runs</li>\r\n<li>Package</li>\r\n<li>Totals</li>\r\n<li>AutomatedTest</li></ul><br/><br/><strong>Nickname:</strong> searchAutomatedTestAssignments (Method Name in swagger code-gen clients)",
           "parameters": [
             {
               "paramType": "query",
@@ -1173,7 +1173,7 @@
           "nickname": "createAutomatedTestAssignment",
           "responseClass": "AutomatedTestAssignment",
           "summary": "Creates a new automated test assignment.",
-          "notes": "<strong>Expanders:</strong><br/><ul><li>Package</li>\r\n<li>Totals</li>\r\n<li>AutomatedTest</li>\r\n<li>Runs</li></ul><br/><br/><strong>Nickname:</strong> createAutomatedTestAssignment (Method Name in swagger code-gen clients)",
+          "notes": "<strong>Expanders:</strong><br/><ul><li>Runs</li>\r\n<li>Package</li>\r\n<li>Totals</li>\r\n<li>AutomatedTest</li></ul><br/><br/><strong>Nickname:</strong> createAutomatedTestAssignment (Method Name in swagger code-gen clients)",
           "parameters": [
             {
               "paramType": "body",
@@ -2098,6 +2098,54 @@
             "200": "Returned if the request was completed successfully.",
             "404": "Returned if the custom field type does not exist."
           }
+        },
+        {
+          "httpMethod": "PATCH",
+          "nickname": "updateCustomField",
+          "responseClass": "void",
+          "summary": "Updates an existing custom field.",
+          "notes": "<strong>Nickname:</strong> updateCustomField (Method Name in swagger code-gen clients)",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "name",
+              "dataType": "string",
+              "required": false,
+              "allowMultiple": false
+            },
+            {
+              "paramType": "body",
+              "name": "operationModel",
+              "dataType": "Operation",
+              "required": false,
+              "allowMultiple": false
+            }
+          ],
+          "statusCodes": {
+            "204": "Returned if it updated the custom field successfully.",
+            "403": "Returned if ET would not complete request (normally due to a validation failure or you don't have the necessary permissions to complete the request).",
+            "404": "Returned if the custom field does not exist."
+          }
+        },
+        {
+          "httpMethod": "DELETE",
+          "nickname": "deleteCustomField",
+          "responseClass": "void",
+          "summary": "Delete a custom field",
+          "notes": "<strong>Nickname:</strong> deleteCustomField (Method Name in swagger code-gen clients)",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "name",
+              "dataType": "string",
+              "required": false,
+              "allowMultiple": false
+            }
+          ],
+          "statusCodes": {
+            "204": "Returned if delete was successful.",
+            "404": "Returned if custom field does not exist."
+          }
         }
       ]
     },
@@ -2163,6 +2211,26 @@
           "statusCodes": {
             "200": "Returned if the request was completed successfully.",
             "404": "Returned if the custom field type does not exist."
+          }
+        },
+        {
+          "httpMethod": "POST",
+          "nickname": "addCustomField",
+          "responseClass": "void",
+          "summary": "Add a new custom field.",
+          "notes": "<strong>Nickname:</strong> addCustomField (Method Name in swagger code-gen clients)",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "model",
+              "dataType": "CreateCustomField",
+              "required": false,
+              "allowMultiple": false
+            }
+          ],
+          "statusCodes": {
+            "201": "Returned if the custom field is created successfully.",
+            "409": "Returned if the custom field already exists."
           }
         }
       ]
@@ -2337,7 +2405,7 @@
           "nickname": "getExecutionPackage",
           "responseClass": "ExecutionPackage",
           "summary": "Retrieves an execution package by its unique identifier.",
-          "notes": "<strong>Expanders:</strong><br/><ul><li>AutomatedTestAssignments</li>\r\n<li>Children</li>\r\n<li>Parent</li>\r\n<li>Project</li>\r\n<li>AgileRuns</li>\r\n<li>ScriptAssignments</li></ul><br/><br/><strong>Nickname:</strong> getExecutionPackage (Method Name in swagger code-gen clients)",
+          "notes": "<strong>Expanders:</strong><br/><ul><li>Children</li>\r\n<li>Parent</li>\r\n<li>Project</li>\r\n<li>AutomatedTestAssignments</li>\r\n<li>ScriptAssignments</li>\r\n<li>AgileRuns</li></ul><br/><br/><strong>Nickname:</strong> getExecutionPackage (Method Name in swagger code-gen clients)",
           "parameters": [
             {
               "paramType": "path",
@@ -2365,7 +2433,7 @@
           "nickname": "updateExecutionPackage",
           "responseClass": "ExecutionPackage",
           "summary": "Update an execution package.",
-          "notes": "<strong>Expanders:</strong><br/><ul><li>AutomatedTestAssignments</li>\r\n<li>Children</li>\r\n<li>Parent</li>\r\n<li>Project</li>\r\n<li>AgileRuns</li>\r\n<li>ScriptAssignments</li></ul><br/><br/><strong>Nickname:</strong> updateExecutionPackage (Method Name in swagger code-gen clients)",
+          "notes": "<strong>Expanders:</strong><br/><ul><li>Children</li>\r\n<li>Parent</li>\r\n<li>Project</li>\r\n<li>AutomatedTestAssignments</li>\r\n<li>ScriptAssignments</li>\r\n<li>AgileRuns</li></ul><br/><br/><strong>Nickname:</strong> updateExecutionPackage (Method Name in swagger code-gen clients)",
           "parameters": [
             {
               "paramType": "path",
@@ -2428,7 +2496,7 @@
           "nickname": "getExecutionPackageChildren",
           "responseClass": "QueryResultsOfExecutionPackage",
           "summary": "Retrieves the children of the execution package.",
-          "notes": "<strong>Expanders:</strong><br/><ul><li>AutomatedTestAssignments</li>\r\n<li>Children</li>\r\n<li>Parent</li>\r\n<li>Project</li>\r\n<li>AgileRuns</li>\r\n<li>ScriptAssignments</li></ul><br/><br/><strong>Nickname:</strong> getExecutionPackageChildren (Method Name in swagger code-gen clients)",
+          "notes": "<strong>Expanders:</strong><br/><ul><li>Children</li>\r\n<li>Parent</li>\r\n<li>Project</li>\r\n<li>AutomatedTestAssignments</li>\r\n<li>ScriptAssignments</li>\r\n<li>AgileRuns</li></ul><br/><br/><strong>Nickname:</strong> getExecutionPackageChildren (Method Name in swagger code-gen clients)",
           "parameters": [
             {
               "paramType": "path",
@@ -2510,7 +2578,7 @@
           "nickname": "searchExecutionPackages",
           "responseClass": "QueryResultsOfExecutionPackage",
           "summary": "Retrieves all (or a subset) of execution packages that are visible.",
-          "notes": "<strong>Expanders:</strong><br/><ul><li>AutomatedTestAssignments</li>\r\n<li>Children</li>\r\n<li>Parent</li>\r\n<li>Project</li>\r\n<li>AgileRuns</li>\r\n<li>ScriptAssignments</li></ul><br/><br/><strong>Nickname:</strong> searchExecutionPackages (Method Name in swagger code-gen clients)",
+          "notes": "<strong>Expanders:</strong><br/><ul><li>Children</li>\r\n<li>Parent</li>\r\n<li>Project</li>\r\n<li>AutomatedTestAssignments</li>\r\n<li>ScriptAssignments</li>\r\n<li>AgileRuns</li></ul><br/><br/><strong>Nickname:</strong> searchExecutionPackages (Method Name in swagger code-gen clients)",
           "parameters": [
             {
               "paramType": "query",
@@ -2577,7 +2645,7 @@
           "nickname": "createExecutionPackage",
           "responseClass": "ExecutionPackage",
           "summary": "Create a new execution package.",
-          "notes": "<strong>Expanders:</strong><br/><ul><li>AutomatedTestAssignments</li>\r\n<li>Children</li>\r\n<li>Parent</li>\r\n<li>Project</li>\r\n<li>AgileRuns</li>\r\n<li>ScriptAssignments</li></ul><br/><br/><strong>Nickname:</strong> createExecutionPackage (Method Name in swagger code-gen clients)",
+          "notes": "<strong>Expanders:</strong><br/><ul><li>Children</li>\r\n<li>Parent</li>\r\n<li>Project</li>\r\n<li>AutomatedTestAssignments</li>\r\n<li>ScriptAssignments</li>\r\n<li>AgileRuns</li></ul><br/><br/><strong>Nickname:</strong> createExecutionPackage (Method Name in swagger code-gen clients)",
           "parameters": [
             {
               "paramType": "body",
@@ -4226,16 +4294,16 @@
             },
             {
               "paramType": "form",
-              "name": "valuesqry",
-              "description": "Query to retreive a set of matches based on their values (values are separated by a pipe '|' character)",
+              "name": "query",
+              "description": "Partial name to match on",
               "dataType": "string",
               "required": false,
               "allowMultiple": false
             },
             {
               "paramType": "form",
-              "name": "query",
-              "description": "Partial name to match on",
+              "name": "valuesqry",
+              "description": "Query to retreive a set of matches based on their values (values are separated by a pipe '|' character)",
               "dataType": "string",
               "required": false,
               "allowMultiple": false
@@ -4278,6 +4346,34 @@
             "200": "Returned if the request was completed successfully.",
             "403": "Returned if you do not have permission to view this incident",
             "404": "Returned if no incident with that identifier exists"
+          }
+        },
+        {
+          "httpMethod": "PATCH",
+          "nickname": "updateIncidentFields",
+          "responseClass": "void",
+          "summary": "Updates an existing incident.",
+          "notes": "<strong>Nickname:</strong> updateIncidentFields (Method Name in swagger code-gen clients)",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "dataType": "string",
+              "required": false,
+              "allowMultiple": false
+            },
+            {
+              "paramType": "body",
+              "name": "operationModel",
+              "dataType": "Operation",
+              "required": false,
+              "allowMultiple": false
+            }
+          ],
+          "statusCodes": {
+            "204": "Returned if it updated the incident successfully",
+            "403": "Returned if ET could not complete request (normally due to a validation failure or the necessary permissions to complete the request have not been met).",
+            "404": "Returned if the incident does not exist."
           }
         },
         {
@@ -5796,16 +5892,16 @@
             },
             {
               "paramType": "form",
-              "name": "valuesqry",
-              "description": "Query to retreive a set of matches based on their values (values are separated by a pipe '|' character)",
+              "name": "query",
+              "description": "Partial name to match on",
               "dataType": "string",
               "required": false,
               "allowMultiple": false
             },
             {
               "paramType": "form",
-              "name": "query",
-              "description": "Partial name to match on",
+              "name": "valuesqry",
+              "description": "Query to retreive a set of matches based on their values (values are separated by a pipe '|' character)",
               "dataType": "string",
               "required": false,
               "allowMultiple": false
@@ -5872,16 +5968,16 @@
             },
             {
               "paramType": "form",
-              "name": "valuesqry",
-              "description": "Query to retreive a set of matches based on their values (values are separated by a pipe '|' character)",
+              "name": "query",
+              "description": "Partial name to match on",
               "dataType": "string",
               "required": false,
               "allowMultiple": false
             },
             {
               "paramType": "form",
-              "name": "query",
-              "description": "Partial name to match on",
+              "name": "valuesqry",
+              "description": "Query to retreive a set of matches based on their values (values are separated by a pipe '|' character)",
               "dataType": "string",
               "required": false,
               "allowMultiple": false
@@ -6581,6 +6677,34 @@
             "200": "Returned if the request was completed successfully.",
             "403": "Returned if you do not have permission to view this requirement.",
             "404": "Returned if no requirement with that identifier exists."
+          }
+        },
+        {
+          "httpMethod": "PATCH",
+          "nickname": "updateExistingRequirementFields",
+          "responseClass": "void",
+          "summary": "Updates an existing requirement.",
+          "notes": "<strong>Nickname:</strong> updateExistingRequirementFields (Method Name in swagger code-gen clients)",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "dataType": "string",
+              "required": false,
+              "allowMultiple": false
+            },
+            {
+              "paramType": "body",
+              "name": "operationModel",
+              "dataType": "Operation",
+              "required": false,
+              "allowMultiple": false
+            }
+          ],
+          "statusCodes": {
+            "204": "Returned if it updated the requirement successfully.",
+            "403": "Returned if ET did not complete request (normally due to a validation failure or invalid permissions to complete the request).",
+            "404": "Returned if the requirement does not exist."
           }
         },
         {
@@ -7385,6 +7509,34 @@
             "200": "Returned if the request was completed successfully.",
             "403": "Returned if you do not have permission to view this script.",
             "404": "Returned if no script with that identifier exists."
+          }
+        },
+        {
+          "httpMethod": "PATCH",
+          "nickname": "updateScriptCustomField",
+          "responseClass": "void",
+          "summary": "Updates an existing custom field.",
+          "notes": "<strong>Nickname:</strong> updateScriptCustomField (Method Name in swagger code-gen clients)",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "dataType": "string",
+              "required": false,
+              "allowMultiple": false
+            },
+            {
+              "paramType": "body",
+              "name": "operationModel",
+              "dataType": "Operation",
+              "required": false,
+              "allowMultiple": false
+            }
+          ],
+          "statusCodes": {
+            "204": "Returned if it updated the script successfully.",
+            "403": "Returned if ET would not complete request (normally due to a validation failure or you don't have the necessary permissions to complete the request).",
+            "404": "Returned if the script does not exist."
           }
         },
         {
@@ -8412,6 +8564,34 @@
           "statusCodes": {
             "200": "Returned if the request was completed successfully.",
             "403": "Returned if you do not have permission to view the script run.",
+            "404": "Returned if no script run with that identifier exists."
+          }
+        },
+        {
+          "httpMethod": "PATCH",
+          "nickname": "updateScriptRunFields",
+          "responseClass": "void",
+          "summary": "Updates a script run.",
+          "notes": "<strong>Nickname:</strong> updateScriptRunFields (Method Name in swagger code-gen clients)",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "dataType": "string",
+              "required": false,
+              "allowMultiple": false
+            },
+            {
+              "paramType": "body",
+              "name": "operationModel",
+              "dataType": "Operation",
+              "required": false,
+              "allowMultiple": false
+            }
+          ],
+          "statusCodes": {
+            "204": "Returned if it updated the script run successfully.",
+            "403": "Returned if you do not have permission to update the script run.",
             "404": "Returned if no script run with that identifier exists."
           }
         },
@@ -10691,16 +10871,16 @@
             },
             {
               "paramType": "form",
-              "name": "valuesqry",
-              "description": "Query to retreive a set of matches based on their values (values are separated by a pipe '|' character)",
+              "name": "query",
+              "description": "Partial name to match on",
               "dataType": "string",
               "required": false,
               "allowMultiple": false
             },
             {
               "paramType": "form",
-              "name": "query",
-              "description": "Partial name to match on",
+              "name": "valuesqry",
+              "description": "Query to retreive a set of matches based on their values (values are separated by a pipe '|' character)",
               "dataType": "string",
               "required": false,
               "allowMultiple": false
@@ -11525,12 +11705,6 @@
           "required": true,
           "type": "integer"
         },
-        "AutomatedTestAssignments": {
-          "type": "array",
-          "items": {
-            "$ref": "AutomatedTestAssignment"
-          }
-        },
         "Children": {
           "type": "array",
           "items": {
@@ -11545,16 +11719,22 @@
           "$ref": "Project",
           "type": "Project"
         },
-        "AgileRuns": {
+        "AutomatedTestAssignments": {
           "type": "array",
           "items": {
-            "$ref": "AgileRun"
+            "$ref": "AutomatedTestAssignment"
           }
         },
         "ScriptAssignments": {
           "type": "array",
           "items": {
             "$ref": "ScriptAssignment"
+          }
+        },
+        "AgileRuns": {
+          "type": "array",
+          "items": {
+            "$ref": "AgileRun"
           }
         }
       }
@@ -11591,6 +11771,12 @@
           "required": true,
           "type": "string"
         },
+        "Runs": {
+          "type": "array",
+          "items": {
+            "$ref": "AutomatedTestRun"
+          }
+        },
         "Package": {
           "$ref": "ExecutionPackage",
           "type": "ExecutionPackage"
@@ -11602,12 +11788,57 @@
         "AutomatedTest": {
           "$ref": "AutomatedTest",
           "type": "AutomatedTest"
+        }
+      }
+    },
+    "AutomatedTestRun": {
+      "id": "AutomatedTestRun",
+      "required": false,
+      "type": "object",
+      "properties": {
+        "RunByDisplayName": {
+          "type": "string"
         },
-        "Runs": {
-          "type": "array",
-          "items": {
-            "$ref": "AutomatedTestRun"
-          }
+        "RunBy": {
+          "type": "string"
+        },
+        "RunById": {
+          "type": "string"
+        },
+        "AssignmentId": {
+          "required": true,
+          "type": "string"
+        },
+        "Id": {
+          "required": true,
+          "type": "string"
+        },
+        "Status": {
+          "required": true,
+          "type": "string"
+        },
+        "ImportedAt": {
+          "required": false,
+          "type": "string",
+          "format": "DateTime"
+        },
+        "StartedAt": {
+          "required": false,
+          "type": "string",
+          "format": "DateTime"
+        },
+        "FinishedAt": {
+          "required": false,
+          "type": "string",
+          "format": "DateTime"
+        },
+        "Totals": {
+          "$ref": "ITotals",
+          "type": "ITotals"
+        },
+        "Assignment": {
+          "$ref": "AutomatedTestAssignment",
+          "type": "AutomatedTestAssignment"
         }
       }
     },
@@ -11743,295 +11974,6 @@
           "additionalProperties": {
             "type": "any"
           }
-        }
-      }
-    },
-    "AutomatedTestRun": {
-      "id": "AutomatedTestRun",
-      "required": false,
-      "type": "object",
-      "properties": {
-        "RunByDisplayName": {
-          "type": "string"
-        },
-        "RunBy": {
-          "type": "string"
-        },
-        "RunById": {
-          "type": "string"
-        },
-        "AssignmentId": {
-          "required": true,
-          "type": "string"
-        },
-        "Id": {
-          "required": true,
-          "type": "string"
-        },
-        "Status": {
-          "required": true,
-          "type": "string"
-        },
-        "ImportedAt": {
-          "required": false,
-          "type": "string",
-          "format": "DateTime"
-        },
-        "StartedAt": {
-          "required": false,
-          "type": "string",
-          "format": "DateTime"
-        },
-        "FinishedAt": {
-          "required": false,
-          "type": "string",
-          "format": "DateTime"
-        },
-        "Totals": {
-          "$ref": "ITotals",
-          "type": "ITotals"
-        },
-        "Assignment": {
-          "$ref": "AutomatedTestAssignment",
-          "type": "AutomatedTestAssignment"
-        }
-      }
-    },
-    "AgileRun": {
-      "id": "AgileRun",
-      "required": false,
-      "type": "object",
-      "properties": {
-        "Id": {
-          "type": "string"
-        },
-        "AssignedToId": {
-          "type": "string"
-        },
-        "AssignedTo": {
-          "type": "string"
-        },
-        "Description": {
-          "required": true,
-          "type": "string"
-        },
-        "Name": {
-          "required": true,
-          "type": "string"
-        },
-        "Notes": {
-          "required": true,
-          "type": "string"
-        },
-        "Number": {
-          "required": false,
-          "type": "integer"
-        },
-        "Objective": {
-          "required": true,
-          "type": "string"
-        },
-        "PostCondition": {
-          "required": true,
-          "type": "string"
-        },
-        "PreCondition": {
-          "required": true,
-          "type": "string"
-        },
-        "PriorityId": {
-          "type": "string"
-        },
-        "StatusId": {
-          "type": "string"
-        },
-        "TypeId": {
-          "type": "string"
-        },
-        "SourceId": {
-          "type": "string"
-        },
-        "SourceContainerId": {
-          "type": "string"
-        },
-        "PackageId": {
-          "type": "string"
-        },
-        "OrderNumber": {
-          "required": false,
-          "type": "integer"
-        },
-        "ProjectId": {
-          "type": "string"
-        },
-        "ProjectName": {
-          "required": true,
-          "type": "string"
-        },
-        "PackageName": {
-          "required": true,
-          "type": "string"
-        },
-        "EstimatedDuration": {
-          "required": true,
-          "type": "string"
-        },
-        "ActualDuration": {
-          "required": true,
-          "type": "string"
-        },
-        "ExecutionStatus": {
-          "required": true,
-          "type": "string"
-        },
-        "AgileRunNumberReadOnly": {
-          "required": true,
-          "type": "boolean"
-        },
-        "Widgets": {
-          "type": "array",
-          "items": {
-            "$ref": "AbstractWidget"
-          }
-        },
-        "FieldValues": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "Object",
-            "type": "Object"
-          }
-        },
-        "Steps": {
-          "type": "array",
-          "items": {
-            "$ref": "AgileRunStep"
-          }
-        },
-        "Project": {
-          "$ref": "Project",
-          "type": "Project"
-        },
-        "Status": {
-          "$ref": "Picklist",
-          "type": "Picklist"
-        },
-        "Priority": {
-          "$ref": "Picklist",
-          "type": "Picklist"
-        },
-        "Type": {
-          "$ref": "Picklist",
-          "type": "Picklist"
-        }
-      }
-    },
-    "AbstractWidget": {
-      "id": "AbstractWidget",
-      "required": false,
-      "type": "object",
-      "properties": {
-        "FieldCategory": {
-          "type": "string"
-        },
-        "Name": {
-          "required": true,
-          "type": "string"
-        },
-        "Label": {
-          "type": "string"
-        },
-        "WidgetType": {
-          "type": "string"
-        },
-        "ImplementationType": {
-          "type": "string"
-        },
-        "HandlerType": {
-          "type": "string"
-        },
-        "ValueType": {
-          "type": "string"
-        },
-        "ItemId": {
-          "type": "string"
-        },
-        "Required": {
-          "required": false,
-          "type": "boolean"
-        },
-        "ReadOnly": {
-          "required": false,
-          "type": "boolean"
-        },
-        "TabIndex": {
-          "required": false,
-          "type": "integer"
-        },
-        "Hidden": {
-          "required": false,
-          "type": "boolean"
-        },
-        "FormName": {
-          "type": "string"
-        },
-        "Description": {
-          "type": "string"
-        }
-      }
-    },
-    "Object": {
-      "id": "Object",
-      "required": false,
-      "type": "object",
-      "properties": {}
-    },
-    "AgileRunStep": {
-      "id": "AgileRunStep",
-      "required": false,
-      "type": "object",
-      "properties": {
-        "Description": {
-          "required": true,
-          "type": "string"
-        },
-        "ExpectedResult": {
-          "required": true,
-          "type": "string"
-        },
-        "Notes": {
-          "type": "string"
-        },
-        "Data": {
-          "type": "string"
-        },
-        "OrderNumber": {
-          "required": true,
-          "type": "integer"
-        },
-        "ActualResult": {
-          "type": "string"
-        },
-        "Result": {
-          "required": true,
-          "type": "string",
-          "enum": [
-            "NotRun",
-            "Failed",
-            "Passed",
-            "Blocked",
-            "Undetermined"
-          ]
-        },
-        "Id": {
-          "type": "string"
-        },
-        "HasIncidents": {
-          "required": false,
-          "type": "boolean"
-        },
-        "HasAttachments": {
-          "required": false,
-          "type": "boolean"
         }
       }
     },
@@ -12292,6 +12234,66 @@
           "type": "string"
         }
       }
+    },
+    "AbstractWidget": {
+      "id": "AbstractWidget",
+      "required": false,
+      "type": "object",
+      "properties": {
+        "FieldCategory": {
+          "type": "string"
+        },
+        "Name": {
+          "required": true,
+          "type": "string"
+        },
+        "Label": {
+          "type": "string"
+        },
+        "WidgetType": {
+          "type": "string"
+        },
+        "ImplementationType": {
+          "type": "string"
+        },
+        "HandlerType": {
+          "type": "string"
+        },
+        "ValueType": {
+          "type": "string"
+        },
+        "ItemId": {
+          "type": "string"
+        },
+        "Required": {
+          "required": false,
+          "type": "boolean"
+        },
+        "ReadOnly": {
+          "required": false,
+          "type": "boolean"
+        },
+        "TabIndex": {
+          "required": false,
+          "type": "integer"
+        },
+        "Hidden": {
+          "required": false,
+          "type": "boolean"
+        },
+        "FormName": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        }
+      }
+    },
+    "Object": {
+      "id": "Object",
+      "required": false,
+      "type": "object",
+      "properties": {}
     },
     "Script": {
       "id": "Script",
@@ -12572,6 +12574,184 @@
         "OrderNumber": {
           "required": true,
           "type": "integer"
+        }
+      }
+    },
+    "AgileRun": {
+      "id": "AgileRun",
+      "required": false,
+      "type": "object",
+      "properties": {
+        "Id": {
+          "type": "string"
+        },
+        "AssignedToId": {
+          "type": "string"
+        },
+        "AssignedTo": {
+          "type": "string"
+        },
+        "Description": {
+          "required": true,
+          "type": "string"
+        },
+        "Name": {
+          "required": true,
+          "type": "string"
+        },
+        "Notes": {
+          "required": true,
+          "type": "string"
+        },
+        "Number": {
+          "required": false,
+          "type": "integer"
+        },
+        "Objective": {
+          "required": true,
+          "type": "string"
+        },
+        "PostCondition": {
+          "required": true,
+          "type": "string"
+        },
+        "PreCondition": {
+          "required": true,
+          "type": "string"
+        },
+        "PriorityId": {
+          "type": "string"
+        },
+        "StatusId": {
+          "type": "string"
+        },
+        "TypeId": {
+          "type": "string"
+        },
+        "SourceId": {
+          "type": "string"
+        },
+        "SourceContainerId": {
+          "type": "string"
+        },
+        "PackageId": {
+          "type": "string"
+        },
+        "OrderNumber": {
+          "required": false,
+          "type": "integer"
+        },
+        "ProjectId": {
+          "type": "string"
+        },
+        "ProjectName": {
+          "required": true,
+          "type": "string"
+        },
+        "PackageName": {
+          "required": true,
+          "type": "string"
+        },
+        "EstimatedDuration": {
+          "required": true,
+          "type": "string"
+        },
+        "ActualDuration": {
+          "required": true,
+          "type": "string"
+        },
+        "ExecutionStatus": {
+          "required": true,
+          "type": "string"
+        },
+        "AgileRunNumberReadOnly": {
+          "required": true,
+          "type": "boolean"
+        },
+        "Widgets": {
+          "type": "array",
+          "items": {
+            "$ref": "AbstractWidget"
+          }
+        },
+        "FieldValues": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "Object",
+            "type": "Object"
+          }
+        },
+        "Steps": {
+          "type": "array",
+          "items": {
+            "$ref": "AgileRunStep"
+          }
+        },
+        "Project": {
+          "$ref": "Project",
+          "type": "Project"
+        },
+        "Status": {
+          "$ref": "Picklist",
+          "type": "Picklist"
+        },
+        "Priority": {
+          "$ref": "Picklist",
+          "type": "Picklist"
+        },
+        "Type": {
+          "$ref": "Picklist",
+          "type": "Picklist"
+        }
+      }
+    },
+    "AgileRunStep": {
+      "id": "AgileRunStep",
+      "required": false,
+      "type": "object",
+      "properties": {
+        "Description": {
+          "required": true,
+          "type": "string"
+        },
+        "ExpectedResult": {
+          "required": true,
+          "type": "string"
+        },
+        "Notes": {
+          "type": "string"
+        },
+        "Data": {
+          "type": "string"
+        },
+        "OrderNumber": {
+          "required": true,
+          "type": "integer"
+        },
+        "ActualResult": {
+          "type": "string"
+        },
+        "Result": {
+          "required": true,
+          "type": "string",
+          "enum": [
+            "NotRun",
+            "Failed",
+            "Passed",
+            "Blocked",
+            "Undetermined"
+          ]
+        },
+        "Id": {
+          "type": "string"
+        },
+        "HasIncidents": {
+          "required": false,
+          "type": "boolean"
+        },
+        "HasAttachments": {
+          "required": false,
+          "type": "boolean"
         }
       }
     },
@@ -13843,6 +14023,134 @@
         }
       }
     },
+    "Operation": {
+      "id": "Operation",
+      "type": "object",
+      "properties": {
+        "update": {
+          "$ref": "Update",
+          "type": "Update"
+        }
+      }
+    },
+    "Update": {
+      "id": "Update",
+      "required": true,
+      "type": "object",
+      "properties": {
+        "customFields": {
+          "required": true,
+          "type": "array",
+          "items": {
+            "$ref": "CusField"
+          }
+        },
+        "pickListValues": {
+          "required": true,
+          "type": "array",
+          "items": {
+            "$ref": "PickListValue"
+          }
+        }
+      }
+    },
+    "CusField": {
+      "id": "CusField",
+      "type": "object",
+      "properties": {
+        "set": {
+          "$ref": "Set",
+          "type": "Set"
+        }
+      }
+    },
+    "Set": {
+      "id": "Set",
+      "required": false,
+      "type": "object",
+      "properties": {
+        "name": {
+          "required": true,
+          "type": "string"
+        },
+        "valueType": {
+          "required": true,
+          "type": "string"
+        },
+        "value": {
+          "required": true,
+          "type": "string"
+        },
+        "ownerId": {
+          "required": true,
+          "type": "string"
+        },
+        "id": {
+          "required": true,
+          "type": "string"
+        },
+        "text": {
+          "required": true,
+          "type": "string"
+        },
+        "sortOrder": {
+          "required": true,
+          "type": "integer"
+        }
+      }
+    },
+    "PickListValue": {
+      "id": "PickListValue",
+      "type": "object",
+      "properties": {
+        "add": {
+          "$ref": "Add",
+          "type": "Add"
+        },
+        "set": {
+          "$ref": "Set",
+          "type": "Set"
+        },
+        "remove": {
+          "$ref": "Remove",
+          "type": "Remove"
+        }
+      }
+    },
+    "Add": {
+      "id": "Add",
+      "required": true,
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "required": true,
+          "type": "string"
+        },
+        "text": {
+          "required": true,
+          "type": "string"
+        },
+        "sortOrder": {
+          "required": true,
+          "type": "integer"
+        }
+      }
+    },
+    "Remove": {
+      "id": "Remove",
+      "required": true,
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "required": true,
+          "type": "string"
+        },
+        "id": {
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
     "QueryResultsOfScriptAttachment": {
       "id": "QueryResultsOfScriptAttachment",
       "type": "object",
@@ -13980,6 +14288,7 @@
     },
     "Scope": {
       "id": "Scope",
+      "required": false,
       "type": "object",
       "properties": {
         "Type": {
@@ -13991,6 +14300,50 @@
           "type": "string"
         },
         "Name": {
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "CreateCustomField": {
+      "id": "CreateCustomField",
+      "type": "object",
+      "properties": {
+        "Entities": {
+          "required": true,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Scopes": {
+          "required": true,
+          "type": "array",
+          "items": {
+            "$ref": "Scope"
+          }
+        },
+        "Required": {
+          "required": true,
+          "type": "boolean"
+        },
+        "Name": {
+          "required": true,
+          "type": "string"
+        },
+        "Label": {
+          "required": true,
+          "type": "string"
+        },
+        "Description": {
+          "required": true,
+          "type": "string"
+        },
+        "DefaultValue": {
+          "required": true,
+          "type": "string"
+        },
+        "HandlerType": {
           "required": true,
           "type": "string"
         }
@@ -16509,10 +16862,10 @@
       "id": "AutomatedTestRunAttachment",
       "type": "object",
       "properties": {
-        "RunId": {
-          "required": true,
-          "type": "string"
-        },
+				"RunId": {
+					"required": true,
+					"type": "string"
+				},
         "Id": {
           "required": true,
           "type": "string"

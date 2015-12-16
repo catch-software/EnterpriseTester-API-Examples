@@ -941,6 +941,32 @@ namespace EnterpriseTester.API.Client
                 };
         }
 
+        /// <summary>
+        /// Sends a PATCH to '/api/customfield/{name}'
+        /// </summary>
+        /// <param name="name">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public static RestOperation UpdateCustomField(string name, Operation operationModel)
+        {
+            return new RestOperation("PATCH", "api/customfield/" + name + "")
+                { 
+					Content = operationModel
+                };
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/customfield/{name}'
+        /// </summary>
+        /// <param name="name">a path parameter (no description)</param>
+        /// <returns></returns>
+        public static RestOperation DeleteCustomField(string name)
+        {
+            return new RestOperation("DELETE", "api/customfield/" + name + "")
+                { 
+                };
+        }
+
 
         /// <summary>
         /// Sends a GET to '/api/customfields'
@@ -963,6 +989,19 @@ namespace EnterpriseTester.API.Client
                              {"$filter", filter},
                              {"$orderby", orderby},
                         }
+                };
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/customfields'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public static RestOperation AddCustomField(CreateCustomField model)
+        {
+            return new RestOperation("POST", "api/customfields")
+                { 
+					Content = model
                 };
         }
 
@@ -1883,10 +1922,10 @@ namespace EnterpriseTester.API.Client
         /// Sends a POST to '/api/groupssearch'
         /// </summary>
         /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
-        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <returns></returns>
-        public static RestOperation SearchGroupsByPartialNameUsingPostMethod(string valuesqry = null, string query = null, string expand = null)
+        public static RestOperation SearchGroupsByPartialNameUsingPostMethod(string query = null, string valuesqry = null, string expand = null)
         {
             return new RestOperation("POST", "api/groupssearch")
                 { 
@@ -1896,8 +1935,8 @@ namespace EnterpriseTester.API.Client
                         }
  ,                     FormParams = 
                         {
-                             {"valuesqry", valuesqry},
                              {"query", query},
+                             {"valuesqry", valuesqry},
                         }
                 };
         }
@@ -1917,6 +1956,20 @@ namespace EnterpriseTester.API.Client
                         {
                              {"$expand", expand},
                         }
+                };
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/incident/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public static RestOperation UpdateIncidentFields(string id, Operation operationModel)
+        {
+            return new RestOperation("PATCH", "api/incident/" + id + "")
+                { 
+					Content = operationModel
                 };
         }
 
@@ -2567,17 +2620,17 @@ namespace EnterpriseTester.API.Client
         /// </summary>
         /// <param name="projectId">a path parameter (no description)</param>
         /// <param name="type">a path parameter (no description)</param>
-        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <returns></returns>
-        public static RestOperation SearchProjectPicklistValuesUsingPostMethod(string projectId, string type, string valuesqry = null, string query = null)
+        public static RestOperation SearchProjectPicklistValuesUsingPostMethod(string projectId, string type, string query = null, string valuesqry = null)
         {
             return new RestOperation("POST", "api/project/" + projectId + "/picklistsearch/" + type + "")
                 { 
                     FormParams = 
                         {
-                             {"valuesqry", valuesqry},
                              {"query", query},
+                             {"valuesqry", valuesqry},
                         }
                 };
         }
@@ -2606,17 +2659,17 @@ namespace EnterpriseTester.API.Client
         /// Sends a POST to '/api/project/{projectId}/searchlinks'
         /// </summary>
         /// <param name="projectId">a path parameter (no description)</param>
-        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <returns></returns>
-        public static RestOperation SearchProjectExternalLinksByPartialNameUsingPostMethod(string projectId, string valuesqry = null, string query = null)
+        public static RestOperation SearchProjectExternalLinksByPartialNameUsingPostMethod(string projectId, string query = null, string valuesqry = null)
         {
             return new RestOperation("POST", "api/project/" + projectId + "/searchlinks")
                 { 
                     FormParams = 
                         {
-                             {"valuesqry", valuesqry},
                              {"query", query},
+                             {"valuesqry", valuesqry},
                         }
                 };
         }
@@ -2932,6 +2985,20 @@ namespace EnterpriseTester.API.Client
                         {
                              {"$expand", expand},
                         }
+                };
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/requirement/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public static RestOperation UpdateExistingRequirementFields(string id, Operation operationModel)
+        {
+            return new RestOperation("PATCH", "api/requirement/" + id + "")
+                { 
+					Content = operationModel
                 };
         }
 
@@ -3276,6 +3343,20 @@ namespace EnterpriseTester.API.Client
                         {
                              {"$expand", expand},
                         }
+                };
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/script/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public static RestOperation UpdateScriptCustomField(string id, Operation operationModel)
+        {
+            return new RestOperation("PATCH", "api/script/" + id + "")
+                { 
+					Content = operationModel
                 };
         }
 
@@ -3732,6 +3813,20 @@ namespace EnterpriseTester.API.Client
                         {
                              {"$expand", expand},
                         }
+                };
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/scriptrun/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public static RestOperation UpdateScriptRunFields(string id, Operation operationModel)
+        {
+            return new RestOperation("PATCH", "api/scriptrun/" + id + "")
+                { 
+					Content = operationModel
                 };
         }
 
@@ -4760,10 +4855,10 @@ namespace EnterpriseTester.API.Client
         /// Sends a POST to '/api/userssearch'
         /// </summary>
         /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
-        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <returns></returns>
-        public static RestOperation SearchUsersByPartialNameUsingPostMethod(string valuesqry = null, string query = null, string expand = null)
+        public static RestOperation SearchUsersByPartialNameUsingPostMethod(string query = null, string valuesqry = null, string expand = null)
         {
             return new RestOperation("POST", "api/userssearch")
                 { 
@@ -4773,8 +4868,8 @@ namespace EnterpriseTester.API.Client
                         }
  ,                     FormParams = 
                         {
-                             {"valuesqry", valuesqry},
                              {"query", query},
+                             {"valuesqry", valuesqry},
                         }
                 };
         }

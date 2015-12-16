@@ -1834,6 +1834,61 @@ namespace EnterpriseTester.API.Client
 						
 		}
 
+        /// <summary>
+        /// Sends a PATCH to '/api/customfield/{name}'
+        /// </summary>
+        /// <param name="name">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage UpdateCustomField(string name, Operation operationModel)
+        {
+            var operation = Operations.UpdateCustomField(name, operationModel);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			return response;
+		}
+
+		/// <summary>
+        /// Sends a PATCH to '/api/customfield/{name}'  (asynchronous)
+        /// </summary>
+        /// <param name="name">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> UpdateCustomFieldAsync(string name, Operation operationModel)
+        {
+            var operation = Operations.UpdateCustomField(name, operationModel);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			return response;
+						
+		}
+
+        /// <summary>
+        /// Sends a DELETE to '/api/customfield/{name}'
+        /// </summary>
+        /// <param name="name">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteCustomField(string name)
+        {
+            var operation = Operations.DeleteCustomField(name);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			
+		}
+
+		/// <summary>
+        /// Sends a DELETE to '/api/customfield/{name}'  (asynchronous)
+        /// </summary>
+        /// <param name="name">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteCustomFieldAsync(string name)
+        {
+            var operation = Operations.DeleteCustomField(name);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+						
+		}
+
 
         /// <summary>
         /// Sends a GET to '/api/customfields'
@@ -1870,6 +1925,33 @@ namespace EnterpriseTester.API.Client
 			EnsureSuccess(response);
 			var result = await response.Content.ReadAsAsync<QueryResults<CustomField>>();
 			return result;
+						
+		}
+
+        /// <summary>
+        /// Sends a POST to '/api/customfields'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage AddCustomField(CreateCustomField model)
+        {
+            var operation = Operations.AddCustomField(model);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			return response;
+		}
+
+		/// <summary>
+        /// Sends a POST to '/api/customfields'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> AddCustomFieldAsync(CreateCustomField model)
+        {
+            var operation = Operations.AddCustomField(model);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			return response;
 						
 		}
 
@@ -3563,12 +3645,12 @@ namespace EnterpriseTester.API.Client
         /// Sends a POST to '/api/groupssearch'
         /// </summary>
         /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
-        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <returns></returns>
-        public virtual HttpResponseMessage SearchGroupsByPartialNameUsingPostMethod(string valuesqry = null, string query = null, string expand = null)
+        public virtual HttpResponseMessage SearchGroupsByPartialNameUsingPostMethod(string query = null, string valuesqry = null, string expand = null)
         {
-            var operation = Operations.SearchGroupsByPartialNameUsingPostMethod(valuesqry, query, expand);
+            var operation = Operations.SearchGroupsByPartialNameUsingPostMethod(query, valuesqry, expand);
 			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
 			EnsureSuccess(response);
 			return response;
@@ -3578,12 +3660,12 @@ namespace EnterpriseTester.API.Client
         /// Sends a POST to '/api/groupssearch'  (asynchronous)
         /// </summary>
         /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
-        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <returns></returns>
-        public virtual async Task<HttpResponseMessage> SearchGroupsByPartialNameUsingPostMethodAsync(string valuesqry = null, string query = null, string expand = null)
+        public virtual async Task<HttpResponseMessage> SearchGroupsByPartialNameUsingPostMethodAsync(string query = null, string valuesqry = null, string expand = null)
         {
-            var operation = Operations.SearchGroupsByPartialNameUsingPostMethod(valuesqry, query, expand);
+            var operation = Operations.SearchGroupsByPartialNameUsingPostMethod(query, valuesqry, expand);
 			var response = await _client.SendAsync(operation.BuildRequest(_client));
 			EnsureSuccess(response);
 			return response;
@@ -3620,6 +3702,35 @@ namespace EnterpriseTester.API.Client
 			EnsureSuccess(response);
 			var result = await response.Content.ReadAsAsync<Incident>();
 			return result;
+						
+		}
+
+        /// <summary>
+        /// Sends a PATCH to '/api/incident/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage UpdateIncidentFields(string id, Operation operationModel)
+        {
+            var operation = Operations.UpdateIncidentFields(id, operationModel);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			return response;
+		}
+
+		/// <summary>
+        /// Sends a PATCH to '/api/incident/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> UpdateIncidentFieldsAsync(string id, Operation operationModel)
+        {
+            var operation = Operations.UpdateIncidentFields(id, operationModel);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			return response;
 						
 		}
 
@@ -4826,12 +4937,12 @@ namespace EnterpriseTester.API.Client
         /// </summary>
         /// <param name="projectId">a path parameter (no description)</param>
         /// <param name="type">a path parameter (no description)</param>
-        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <returns></returns>
-        public virtual HttpResponseMessage SearchProjectPicklistValuesUsingPostMethod(string projectId, string type, string valuesqry = null, string query = null)
+        public virtual HttpResponseMessage SearchProjectPicklistValuesUsingPostMethod(string projectId, string type, string query = null, string valuesqry = null)
         {
-            var operation = Operations.SearchProjectPicklistValuesUsingPostMethod(projectId, type, valuesqry, query);
+            var operation = Operations.SearchProjectPicklistValuesUsingPostMethod(projectId, type, query, valuesqry);
 			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
 			EnsureSuccess(response);
 			return response;
@@ -4842,12 +4953,12 @@ namespace EnterpriseTester.API.Client
         /// </summary>
         /// <param name="projectId">a path parameter (no description)</param>
         /// <param name="type">a path parameter (no description)</param>
-        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <returns></returns>
-        public virtual async Task<HttpResponseMessage> SearchProjectPicklistValuesUsingPostMethodAsync(string projectId, string type, string valuesqry = null, string query = null)
+        public virtual async Task<HttpResponseMessage> SearchProjectPicklistValuesUsingPostMethodAsync(string projectId, string type, string query = null, string valuesqry = null)
         {
-            var operation = Operations.SearchProjectPicklistValuesUsingPostMethod(projectId, type, valuesqry, query);
+            var operation = Operations.SearchProjectPicklistValuesUsingPostMethod(projectId, type, query, valuesqry);
 			var response = await _client.SendAsync(operation.BuildRequest(_client));
 			EnsureSuccess(response);
 			return response;
@@ -4893,12 +5004,12 @@ namespace EnterpriseTester.API.Client
         /// Sends a POST to '/api/project/{projectId}/searchlinks'
         /// </summary>
         /// <param name="projectId">a path parameter (no description)</param>
-        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <returns></returns>
-        public virtual HttpResponseMessage SearchProjectExternalLinksByPartialNameUsingPostMethod(string projectId, string valuesqry = null, string query = null)
+        public virtual HttpResponseMessage SearchProjectExternalLinksByPartialNameUsingPostMethod(string projectId, string query = null, string valuesqry = null)
         {
-            var operation = Operations.SearchProjectExternalLinksByPartialNameUsingPostMethod(projectId, valuesqry, query);
+            var operation = Operations.SearchProjectExternalLinksByPartialNameUsingPostMethod(projectId, query, valuesqry);
 			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
 			EnsureSuccess(response);
 			return response;
@@ -4908,12 +5019,12 @@ namespace EnterpriseTester.API.Client
         /// Sends a POST to '/api/project/{projectId}/searchlinks'  (asynchronous)
         /// </summary>
         /// <param name="projectId">a path parameter (no description)</param>
-        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <returns></returns>
-        public virtual async Task<HttpResponseMessage> SearchProjectExternalLinksByPartialNameUsingPostMethodAsync(string projectId, string valuesqry = null, string query = null)
+        public virtual async Task<HttpResponseMessage> SearchProjectExternalLinksByPartialNameUsingPostMethodAsync(string projectId, string query = null, string valuesqry = null)
         {
-            var operation = Operations.SearchProjectExternalLinksByPartialNameUsingPostMethod(projectId, valuesqry, query);
+            var operation = Operations.SearchProjectExternalLinksByPartialNameUsingPostMethod(projectId, query, valuesqry);
 			var response = await _client.SendAsync(operation.BuildRequest(_client));
 			EnsureSuccess(response);
 			return response;
@@ -5444,6 +5555,35 @@ namespace EnterpriseTester.API.Client
 			EnsureSuccess(response);
 			var result = await response.Content.ReadAsAsync<Requirement>();
 			return result;
+						
+		}
+
+        /// <summary>
+        /// Sends a PATCH to '/api/requirement/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage UpdateExistingRequirementFields(string id, Operation operationModel)
+        {
+            var operation = Operations.UpdateExistingRequirementFields(id, operationModel);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			return response;
+		}
+
+		/// <summary>
+        /// Sends a PATCH to '/api/requirement/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> UpdateExistingRequirementFieldsAsync(string id, Operation operationModel)
+        {
+            var operation = Operations.UpdateExistingRequirementFields(id, operationModel);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			return response;
 						
 		}
 
@@ -6065,6 +6205,35 @@ namespace EnterpriseTester.API.Client
 			EnsureSuccess(response);
 			var result = await response.Content.ReadAsAsync<Script>();
 			return result;
+						
+		}
+
+        /// <summary>
+        /// Sends a PATCH to '/api/script/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage UpdateScriptCustomField(string id, Operation operationModel)
+        {
+            var operation = Operations.UpdateScriptCustomField(id, operationModel);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			return response;
+		}
+
+		/// <summary>
+        /// Sends a PATCH to '/api/script/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> UpdateScriptCustomFieldAsync(string id, Operation operationModel)
+        {
+            var operation = Operations.UpdateScriptCustomField(id, operationModel);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			return response;
 						
 		}
 
@@ -6911,6 +7080,35 @@ namespace EnterpriseTester.API.Client
 			EnsureSuccess(response);
 			var result = await response.Content.ReadAsAsync<ScriptRun>();
 			return result;
+						
+		}
+
+        /// <summary>
+        /// Sends a PATCH to '/api/scriptrun/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage UpdateScriptRunFields(string id, Operation operationModel)
+        {
+            var operation = Operations.UpdateScriptRunFields(id, operationModel);
+			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+			EnsureSuccess(response);
+			return response;
+		}
+
+		/// <summary>
+        /// Sends a PATCH to '/api/scriptrun/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> UpdateScriptRunFieldsAsync(string id, Operation operationModel)
+        {
+            var operation = Operations.UpdateScriptRunFields(id, operationModel);
+			var response = await _client.SendAsync(operation.BuildRequest(_client));
+			EnsureSuccess(response);
+			return response;
 						
 		}
 
@@ -8890,12 +9088,12 @@ namespace EnterpriseTester.API.Client
         /// Sends a POST to '/api/userssearch'
         /// </summary>
         /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
-        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <returns></returns>
-        public virtual HttpResponseMessage SearchUsersByPartialNameUsingPostMethod(string valuesqry = null, string query = null, string expand = null)
+        public virtual HttpResponseMessage SearchUsersByPartialNameUsingPostMethod(string query = null, string valuesqry = null, string expand = null)
         {
-            var operation = Operations.SearchUsersByPartialNameUsingPostMethod(valuesqry, query, expand);
+            var operation = Operations.SearchUsersByPartialNameUsingPostMethod(query, valuesqry, expand);
 			var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
 			EnsureSuccess(response);
 			return response;
@@ -8905,12 +9103,12 @@ namespace EnterpriseTester.API.Client
         /// Sends a POST to '/api/userssearch'  (asynchronous)
         /// </summary>
         /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
-        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
         /// <returns></returns>
-        public virtual async Task<HttpResponseMessage> SearchUsersByPartialNameUsingPostMethodAsync(string valuesqry = null, string query = null, string expand = null)
+        public virtual async Task<HttpResponseMessage> SearchUsersByPartialNameUsingPostMethodAsync(string query = null, string valuesqry = null, string expand = null)
         {
-            var operation = Operations.SearchUsersByPartialNameUsingPostMethod(valuesqry, query, expand);
+            var operation = Operations.SearchUsersByPartialNameUsingPostMethod(query, valuesqry, expand);
 			var response = await _client.SendAsync(operation.BuildRequest(_client));
 			EnsureSuccess(response);
 			return response;

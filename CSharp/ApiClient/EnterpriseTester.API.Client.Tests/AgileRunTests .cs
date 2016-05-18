@@ -78,7 +78,7 @@ namespace EnterpriseTester.API.Client.Tests
             }
             catch (HttpRequestException e)
             {
-                Assert.Equal("System.Net.Http.HttpRequestException status code does not indicate success: 403 (Forbidden).\n{\r\n  \"Message\": \"You must specify a valid PackageId which the agile run can be added to.\"\r\n}", e.Message);
+                Assert.Equal("System.Net.Http.HttpRequestException status code does not indicate success: 403 (Forbidden).\n{\"Message\":\"You must specify a valid PackageId which the agile run can be added to.\"}", e.Message);
             }
 
         }

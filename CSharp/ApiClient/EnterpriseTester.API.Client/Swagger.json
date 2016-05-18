@@ -1,8 +1,32 @@
 {
-  "apiVersion": "6.1.1946.0",
+  "apiVersion": "6.2.1955.0",
   "swaggerVersion": "1.1",
   "basePath": "http://etstaging01.catchsoftware.net/EnterpriseTesterMaster/",
   "apis": [
+    {
+      "path": "/{id}/rest/gadgets/1.0/g/feed",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "nickname": "getGadgetFeed",
+          "responseClass": "void",
+          "summary": "Retrieves the feed of shared gadgets for Jira and Confluence",
+          "notes": "<strong>Nickname:</strong> getGadgetFeed (Method Name in swagger code-gen clients)",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "dataType": "string",
+              "required": false,
+              "allowMultiple": false
+            }
+          ],
+          "statusCodes": {
+            "200": "Returned if the request was completed successfully."
+          }
+        }
+      ]
+    },
     {
       "path": "/api/",
       "description": "Returns root-level response listing available resources.",
@@ -11675,6 +11699,10 @@
         "SortOrder": {
           "required": true,
           "type": "integer"
+        },
+        "IsEnable": {
+          "required": true,
+          "type": "boolean"
         }
       }
     },
@@ -16288,6 +16316,10 @@
           "required": true,
           "type": "string"
         },
+        "IsEnable": {
+          "required": false,
+          "type": "boolean"
+        },
         "Icon": {
           "type": "string"
         },
@@ -16862,10 +16894,10 @@
       "id": "AutomatedTestRunAttachment",
       "type": "object",
       "properties": {
-				"RunId": {
-					"required": true,
-					"type": "string"
-				},
+        "RunId": {
+          "required": true,
+          "type": "string"
+        },
         "Id": {
           "required": true,
           "type": "string"

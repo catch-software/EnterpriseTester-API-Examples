@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>EnterpriseTester.API.Client</id>
-        <version>6.1.1946</version>
+        <version>6.2.1956.0</version>
 		<summary>Enterprise Tester is quality and test management platform, used by some the world's most recognised organisations.  Complete coverage and traceability, powerful reporting for management, simplified functions and re-use operations for testers. Built for integration with Atlassian to give full line of sight between DevOps, quality teams and customer results.</summary>
         <title>Enterprise Tester API Client</title>
         <authors>Catch Software</authors>
@@ -11,8 +11,8 @@
         <iconUrl>http://catchsoftware.com/images/logo.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Enterprise Tester API Client</description>
-        <releaseNotes>API version updated to v6.1</releaseNotes>
-        <copyright>Copyright 2015</copyright>
+        <releaseNotes>API version updated to v6.2</releaseNotes>
+        <copyright>Copyright 2016</copyright>
         <tags>Enterprise Tester Catch Software</tags>
 <dependencies>
   <dependency id="System.Net.Http" version="2.0.0.0" />

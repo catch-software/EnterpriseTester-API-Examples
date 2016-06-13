@@ -42,8 +42,8 @@ For general support questions about Enterprise Tester, please contact [support@c
 
   [1]: http://i.stack.imgur.com/Jmgo8.png
   [2]: mailto:support@catchlimited.com
-  [3]: http://dev.enterprisetester.com/help/#API
-  [4]: http://dev.enterprisetester.com/help/#API_Resources
-  [5]: http://dev.enterprisetester.com/help/#API_Permissions
-  [6]: http://www.enterprisetester.com/
+  [3]: http://help.catchsoftware.com/display/ET/API
+  [4]: http://help.catchsoftware.com/display/ET/Resources
+  [5]: http://help.catchsoftware.com/pages/viewpage.action?pageId=11796878
+  [6]: http://catchsoftware.com/Enterprise-Tester
   [7]: http://catch-software.github.com/EnterpriseTester-API-Examples/CORS/SimpleDashboard/example.html

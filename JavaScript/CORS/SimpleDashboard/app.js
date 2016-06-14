@@ -2,7 +2,7 @@ $(document).ready(function(){
 	$.ajaxSetup({ accepts: "application/json" });						   
 });
 
-etUrl = "http://ettrial.catchsoftware.net";
+etUrl = "http://etstaging01.catchsoftware.net/EnterpriseTesterMaster";
 apiUrl = etUrl + "/api";
 searchUrl = apiUrl + "/search";
 login = "viewonly";

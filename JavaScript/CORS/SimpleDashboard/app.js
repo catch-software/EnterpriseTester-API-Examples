@@ -116,7 +116,7 @@ function drawChart(projectName, group) {
 
 	if (data.length == 0) return;
 
-	var dataTable = google.visualization.arrayToDataTable(data);
+	var dataTable = google.visualization.arrayToDataTable(data, true);
 
 	var options = {
   		title:  projectName + ' Stats'

@@ -1,0 +1,10878 @@
+﻿
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+using EnterpriseTester.API.Client.Core.Models;
+using Newtonsoft.Json;
+
+namespace EnterpriseTester.API.Client.Core
+{
+    public partial class Client
+    {
+
+
+        /// <summary>
+        /// Sends a GET to '/{id}/rest/gadgets/1.0/g/feed'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage GetGadgetFeed(string id)
+        {
+            var operation = Operations.GetGadgetFeed(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a GET to '/{id}/rest/gadgets/1.0/g/feed'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> GetGadgetFeedAsync(string id)
+        {
+            var operation = Operations.GetGadgetFeed(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/'
+        /// </summary>
+        /// <returns></returns>
+        public virtual Resources ListRootResources()
+        {
+            var operation = Operations.ListRootResources();
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Resources>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Resources>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/'  (asynchronous)
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task<Resources> ListRootResourcesAsync()
+        {
+            var operation = Operations.ListRootResources();
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Resources>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Resources>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/agilerun/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual AgileRun GetAgileRun(string id, string expand = null)
+        {
+            var operation = Operations.GetAgileRun(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<AgileRun>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AgileRun>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/agilerun/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<AgileRun> GetAgileRunAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetAgileRun(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<AgileRun>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AgileRun>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/agilerun/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual AgileRun UpdateAgileRun(string id, CreateOrUpdateAgileRun model, string expand = null)
+        {
+            var operation = Operations.UpdateAgileRun(id, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<AgileRun>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AgileRun>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/agilerun/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<AgileRun> UpdateAgileRunAsync(string id, CreateOrUpdateAgileRun model, string expand = null)
+        {
+            var operation = Operations.UpdateAgileRun(id, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<AgileRun>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AgileRun>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/agilerun/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteAgileRun(string id)
+        {
+            var operation = Operations.DeleteAgileRun(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/agilerun/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteAgileRunAsync(string id)
+        {
+            var operation = Operations.DeleteAgileRun(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/agilerun/{id}/allrelationships'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Relationship GetAgileRunAllRelationships(string id)
+        {
+            var operation = Operations.GetAgileRunAllRelationships(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/agilerun/{id}/allrelationships'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Relationship> GetAgileRunAllRelationshipsAsync(string id)
+        {
+            var operation = Operations.GetAgileRunAllRelationships(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/agilerun/{id}/relationships'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Relationship GetAgileRunRelationships(string id)
+        {
+            var operation = Operations.GetAgileRunRelationships(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/agilerun/{id}/relationships'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Relationship> GetAgileRunRelationshipsAsync(string id)
+        {
+            var operation = Operations.GetAgileRunRelationships(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a DELETE to '/api/agilerun/{runId}/step/{stepId}/attachment/{attachmentId}'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="attachmentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteAgileRunStepAttachment(string runId, string stepId, string attachmentId)
+        {
+            var operation = Operations.DeleteAgileRunStepAttachment(runId, stepId, attachmentId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/agilerun/{runId}/step/{stepId}/attachment/{attachmentId}'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="attachmentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteAgileRunStepAttachmentAsync(string runId, string stepId, string attachmentId)
+        {
+            var operation = Operations.DeleteAgileRunStepAttachment(runId, stepId, attachmentId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/agilerun/{runId}/step/{stepId}/attachments'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<AgileRunStepAttachment> GetAgileRunStepAttachments(string runId, string stepId, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetAgileRunStepAttachments(runId, stepId, top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<AgileRunStepAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<AgileRunStepAttachment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/agilerun/{runId}/step/{stepId}/attachments'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<AgileRunStepAttachment>> GetAgileRunStepAttachmentsAsync(string runId, string stepId, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetAgileRunStepAttachments(runId, stepId, top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<AgileRunStepAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<AgileRunStepAttachment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/agilerun/{runId}/step/{stepId}/attachments'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<AgileRunStepAttachment> CreateAgileRunStepAttachment(string runId, string stepId)
+        {
+            var operation = Operations.CreateAgileRunStepAttachment(runId, stepId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<AgileRunStepAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<AgileRunStepAttachment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/agilerun/{runId}/step/{stepId}/attachments'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<AgileRunStepAttachment>> CreateAgileRunStepAttachmentAsync(string runId, string stepId)
+        {
+            var operation = Operations.CreateAgileRunStepAttachment(runId, stepId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<AgileRunStepAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<AgileRunStepAttachment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/agilerun/{runId}/step/{stepId}/incident/{incidentId}'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual AgileRunStepIncident GetAgileRunStepIncidentLink(string runId, string stepId, string incidentId)
+        {
+            var operation = Operations.GetAgileRunStepIncidentLink(runId, stepId, incidentId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<AgileRunStepIncident>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AgileRunStepIncident>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/agilerun/{runId}/step/{stepId}/incident/{incidentId}'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<AgileRunStepIncident> GetAgileRunStepIncidentLinkAsync(string runId, string stepId, string incidentId)
+        {
+            var operation = Operations.GetAgileRunStepIncidentLink(runId, stepId, incidentId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<AgileRunStepIncident>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AgileRunStepIncident>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/agilerun/{runId}/step/{stepId}/incident/{incidentId}'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteAgileRunStepIncidentLink(string runId, string stepId, string incidentId)
+        {
+            var operation = Operations.DeleteAgileRunStepIncidentLink(runId, stepId, incidentId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/agilerun/{runId}/step/{stepId}/incident/{incidentId}'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteAgileRunStepIncidentLinkAsync(string runId, string stepId, string incidentId)
+        {
+            var operation = Operations.DeleteAgileRunStepIncidentLink(runId, stepId, incidentId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/agilerun/{runId}/step/{stepId}/incidents'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<AgileRunStepIncident> GetAgileRunStepIncidentLinks(string runId, string stepId, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetAgileRunStepIncidentLinks(runId, stepId, top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<AgileRunStepIncident>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<AgileRunStepIncident>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/agilerun/{runId}/step/{stepId}/incidents'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<AgileRunStepIncident>> GetAgileRunStepIncidentLinksAsync(string runId, string stepId, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetAgileRunStepIncidentLinks(runId, stepId, top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<AgileRunStepIncident>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<AgileRunStepIncident>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/agilerun/{runId}/step/{stepId}/incidents'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual AgileRunStepIncident CreateAgileRunStepIncidentLink(string runId, string stepId, CreateAgileRunStepIncident model)
+        {
+            var operation = Operations.CreateAgileRunStepIncidentLink(runId, stepId, model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<AgileRunStepIncident>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AgileRunStepIncident>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/agilerun/{runId}/step/{stepId}/incidents'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="stepId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<AgileRunStepIncident> CreateAgileRunStepIncidentLinkAsync(string runId, string stepId, CreateAgileRunStepIncident model)
+        {
+            var operation = Operations.CreateAgileRunStepIncidentLink(runId, stepId, model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<AgileRunStepIncident>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AgileRunStepIncident>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/agileruns'
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<AgileRun> SearchAgileRuns(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchAgileRuns(tql, timeZone, top, skip, inlinecount, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<AgileRun>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<AgileRun>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/agileruns'  (asynchronous)
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<AgileRun>> SearchAgileRunsAsync(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchAgileRuns(tql, timeZone, top, skip, inlinecount, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<AgileRun>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<AgileRun>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/agileruns'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual AgileRun CreateAgileRun(CreateOrUpdateAgileRun model, string expand = null)
+        {
+            var operation = Operations.CreateAgileRun(model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<AgileRun>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AgileRun>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/agileruns'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<AgileRun> CreateAgileRunAsync(CreateOrUpdateAgileRun model, string expand = null)
+        {
+            var operation = Operations.CreateAgileRun(model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<AgileRun>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AgileRun>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/assignedtosearch'
+        /// </summary>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual QueryResults<AssignedTo> SearchForUsersGroupsAndSpecialUsers(string query = null, bool? valuesqry = null)
+        {
+            var operation = Operations.SearchForUsersGroupsAndSpecialUsers(query, valuesqry);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<AssignedTo>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<AssignedTo>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/assignedtosearch'  (asynchronous)
+        /// </summary>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<AssignedTo>> SearchForUsersGroupsAndSpecialUsersAsync(string query = null, bool? valuesqry = null)
+        {
+            var operation = Operations.SearchForUsersGroupsAndSpecialUsers(query, valuesqry);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<AssignedTo>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<AssignedTo>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/assignedtosearch'
+        /// </summary>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage SearchForUsersGroupsAndSpecialUsersUsingPostMethod(string query = null, string valuesqry = null)
+        {
+            var operation = Operations.SearchForUsersGroupsAndSpecialUsersUsingPostMethod(query, valuesqry);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/assignedtosearch'  (asynchronous)
+        /// </summary>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> SearchForUsersGroupsAndSpecialUsersUsingPostMethodAsync(string query = null, string valuesqry = null)
+        {
+            var operation = Operations.SearchForUsersGroupsAndSpecialUsersUsingPostMethod(query, valuesqry);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/attachment/{id}/contents'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage RetrieveAttachmentContents(string id)
+        {
+            var operation = Operations.RetrieveAttachmentContents(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/attachment/{id}/contents'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> RetrieveAttachmentContentsAsync(string id)
+        {
+            var operation = Operations.RetrieveAttachmentContents(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtest/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual AutomatedTest GetAutomatedTest(string id, string expand = null)
+        {
+            var operation = Operations.GetAutomatedTest(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTest>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTest>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtest/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<AutomatedTest> GetAutomatedTestAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetAutomatedTest(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTest>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTest>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/automatedtest/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual AutomatedTest UpdateAutomatedTest(string id, CreateOrUpdateAutomatedTest model, string expand = null)
+        {
+            var operation = Operations.UpdateAutomatedTest(id, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTest>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTest>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/automatedtest/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<AutomatedTest> UpdateAutomatedTestAsync(string id, CreateOrUpdateAutomatedTest model, string expand = null)
+        {
+            var operation = Operations.UpdateAutomatedTest(id, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTest>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTest>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/automatedtest/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteAutomatedTest(string id)
+        {
+            var operation = Operations.DeleteAutomatedTest(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/automatedtest/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteAutomatedTestAsync(string id)
+        {
+            var operation = Operations.DeleteAutomatedTest(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtest/{id}/allrelationships'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Relationship GetAutomatedTestAllRelationships(string id)
+        {
+            var operation = Operations.GetAutomatedTestAllRelationships(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtest/{id}/allrelationships'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Relationship> GetAutomatedTestAllRelationshipsAsync(string id)
+        {
+            var operation = Operations.GetAutomatedTestAllRelationships(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtest/{id}/relationships'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Relationship GetAutomatedTestRelationships(string id)
+        {
+            var operation = Operations.GetAutomatedTestRelationships(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtest/{id}/relationships'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Relationship> GetAutomatedTestRelationshipsAsync(string id)
+        {
+            var operation = Operations.GetAutomatedTestRelationships(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtest/{testId}/assignments'
+        /// </summary>
+        /// <param name="testId">a path parameter (no description)</param>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<AutomatedTestAssignment> SearchAutomatedTestAssignmentsForAutomatedTest(string testId, string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchAutomatedTestAssignmentsForAutomatedTest(testId, tql, timeZone, top, skip, inlinecount, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<AutomatedTestAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<AutomatedTestAssignment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtest/{testId}/assignments'  (asynchronous)
+        /// </summary>
+        /// <param name="testId">a path parameter (no description)</param>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<AutomatedTestAssignment>> SearchAutomatedTestAssignmentsForAutomatedTestAsync(string testId, string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchAutomatedTestAssignmentsForAutomatedTest(testId, tql, timeZone, top, skip, inlinecount, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<AutomatedTestAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<AutomatedTestAssignment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/automatedtest/{testId}/assignments'
+        /// </summary>
+        /// <param name="testId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual AutomatedTestAssignment CreateAssignmentForAutomatedTest(string testId, CreateOrUpdateAutomatedTestAssignment model, string expand = null)
+        {
+            var operation = Operations.CreateAssignmentForAutomatedTest(testId, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTestAssignment>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTestAssignment>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/automatedtest/{testId}/assignments'  (asynchronous)
+        /// </summary>
+        /// <param name="testId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<AutomatedTestAssignment> CreateAssignmentForAutomatedTestAsync(string testId, CreateOrUpdateAutomatedTestAssignment model, string expand = null)
+        {
+            var operation = Operations.CreateAssignmentForAutomatedTest(testId, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTestAssignment>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTestAssignment>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestassignment/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual AutomatedTestAssignment GetAutomatedTestAssignment(string id, string expand = null)
+        {
+            var operation = Operations.GetAutomatedTestAssignment(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTestAssignment>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTestAssignment>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestassignment/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<AutomatedTestAssignment> GetAutomatedTestAssignmentAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetAutomatedTestAssignment(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTestAssignment>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTestAssignment>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/automatedtestassignment/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual AutomatedTestAssignment UpdateAutomatedTestAssignment(string id, CreateOrUpdateAutomatedTestAssignment model, string expand = null)
+        {
+            var operation = Operations.UpdateAutomatedTestAssignment(id, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTestAssignment>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTestAssignment>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/automatedtestassignment/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<AutomatedTestAssignment> UpdateAutomatedTestAssignmentAsync(string id, CreateOrUpdateAutomatedTestAssignment model, string expand = null)
+        {
+            var operation = Operations.UpdateAutomatedTestAssignment(id, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTestAssignment>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTestAssignment>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/automatedtestassignment/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteAutomatedTestAssignment(string id)
+        {
+            var operation = Operations.DeleteAutomatedTestAssignment(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/automatedtestassignment/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteAutomatedTestAssignmentAsync(string id)
+        {
+            var operation = Operations.DeleteAutomatedTestAssignment(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestassignment/{id}/allrelationships'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Relationship GetAutomatedTestAssignmentAllRelationships(string id)
+        {
+            var operation = Operations.GetAutomatedTestAssignmentAllRelationships(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestassignment/{id}/allrelationships'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Relationship> GetAutomatedTestAssignmentAllRelationshipsAsync(string id)
+        {
+            var operation = Operations.GetAutomatedTestAssignmentAllRelationships(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestassignment/{id}/relationships'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Relationship GetAutomatedTestAssignmentRelationships(string id)
+        {
+            var operation = Operations.GetAutomatedTestAssignmentRelationships(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestassignment/{id}/relationships'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Relationship> GetAutomatedTestAssignmentRelationshipsAsync(string id)
+        {
+            var operation = Operations.GetAutomatedTestAssignmentRelationships(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestassignments'
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<AutomatedTestAssignment> SearchAutomatedTestAssignments(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchAutomatedTestAssignments(tql, timeZone, top, skip, inlinecount, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<AutomatedTestAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<AutomatedTestAssignment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestassignments'  (asynchronous)
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<AutomatedTestAssignment>> SearchAutomatedTestAssignmentsAsync(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchAutomatedTestAssignments(tql, timeZone, top, skip, inlinecount, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<AutomatedTestAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<AutomatedTestAssignment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/automatedtestassignments'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual AutomatedTestAssignment CreateAutomatedTestAssignment(CreateOrUpdateAutomatedTestAssignment model, string expand = null)
+        {
+            var operation = Operations.CreateAutomatedTestAssignment(model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTestAssignment>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTestAssignment>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/automatedtestassignments'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<AutomatedTestAssignment> CreateAutomatedTestAssignmentAsync(CreateOrUpdateAutomatedTestAssignment model, string expand = null)
+        {
+            var operation = Operations.CreateAutomatedTestAssignment(model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTestAssignment>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTestAssignment>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestrun/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <returns></returns>
+        public virtual AutomatedTestRun GetAutomatedTestRun(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string tql = null, string timeZone = null)
+        {
+            var operation = Operations.GetAutomatedTestRun(id, top, skip, inlinecount, expand, tql, timeZone);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTestRun>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTestRun>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestrun/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <returns></returns>
+        public virtual async Task<AutomatedTestRun> GetAutomatedTestRunAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string tql = null, string timeZone = null)
+        {
+            var operation = Operations.GetAutomatedTestRun(id, top, skip, inlinecount, expand, tql, timeZone);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTestRun>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTestRun>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/automatedtestrun/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteAutomatedTestRun(string id)
+        {
+            var operation = Operations.DeleteAutomatedTestRun(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/automatedtestrun/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteAutomatedTestRunAsync(string id)
+        {
+            var operation = Operations.DeleteAutomatedTestRun(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestrun/{id}/testdata'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual AutomatedTestRunDataTables GetAutomatedTestRunData(string id)
+        {
+            var operation = Operations.GetAutomatedTestRunData(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTestRunDataTables>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTestRunDataTables>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestrun/{id}/testdata'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<AutomatedTestRunDataTables> GetAutomatedTestRunDataAsync(string id)
+        {
+            var operation = Operations.GetAutomatedTestRunData(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTestRunDataTables>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTestRunDataTables>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a DELETE to '/api/automatedtestrun/{runId}/attachment/{attachmentId}'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="attachmentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteAutomatedTestRunAttachment(string runId, string attachmentId)
+        {
+            var operation = Operations.DeleteAutomatedTestRunAttachment(runId, attachmentId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/automatedtestrun/{runId}/attachment/{attachmentId}'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="attachmentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteAutomatedTestRunAttachmentAsync(string runId, string attachmentId)
+        {
+            var operation = Operations.DeleteAutomatedTestRunAttachment(runId, attachmentId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestrun/{runId}/attachments'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<AutomatedTestRunAttachment> GetAutomatedTestRunAttachments(string runId)
+        {
+            var operation = Operations.GetAutomatedTestRunAttachments(runId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<AutomatedTestRunAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<AutomatedTestRunAttachment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestrun/{runId}/attachments'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<AutomatedTestRunAttachment>> GetAutomatedTestRunAttachmentsAsync(string runId)
+        {
+            var operation = Operations.GetAutomatedTestRunAttachments(runId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<AutomatedTestRunAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<AutomatedTestRunAttachment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/automatedtestrun/{runId}/attachments'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<AutomatedTestRunAttachment> CreateAutomatedTestRunAttachments(string runId)
+        {
+            var operation = Operations.CreateAutomatedTestRunAttachments(runId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<AutomatedTestRunAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<AutomatedTestRunAttachment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/automatedtestrun/{runId}/attachments'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<AutomatedTestRunAttachment>> CreateAutomatedTestRunAttachmentsAsync(string runId)
+        {
+            var operation = Operations.CreateAutomatedTestRunAttachments(runId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<AutomatedTestRunAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<AutomatedTestRunAttachment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestrun/{runId}/node/{nodeId}'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ResultNode GetAutomatedTestRunNode(string runId, string nodeId, string expand = null)
+        {
+            var operation = Operations.GetAutomatedTestRunNode(runId, nodeId, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ResultNode>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ResultNode>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestrun/{runId}/node/{nodeId}'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ResultNode> GetAutomatedTestRunNodeAsync(string runId, string nodeId, string expand = null)
+        {
+            var operation = Operations.GetAutomatedTestRunNode(runId, nodeId, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ResultNode>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ResultNode>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/automatedtestrun/{runId}/node/{nodeId}'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ResultNode PatchAutomatedTestRunNode(string runId, string nodeId, EditResultNode model, string expand = null)
+        {
+            var operation = Operations.PatchAutomatedTestRunNode(runId, nodeId, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ResultNode>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ResultNode>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/automatedtestrun/{runId}/node/{nodeId}'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ResultNode> PatchAutomatedTestRunNodeAsync(string runId, string nodeId, EditResultNode model, string expand = null)
+        {
+            var operation = Operations.PatchAutomatedTestRunNode(runId, nodeId, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ResultNode>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ResultNode>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a DELETE to '/api/automatedtestrun/{runId}/node/{nodeId}/attachment/{attachmentId}'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <param name="attachmentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteAutomatedTestRunNodeAttachment(string runId, string nodeId, string attachmentId)
+        {
+            var operation = Operations.DeleteAutomatedTestRunNodeAttachment(runId, nodeId, attachmentId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/automatedtestrun/{runId}/node/{nodeId}/attachment/{attachmentId}'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <param name="attachmentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteAutomatedTestRunNodeAttachmentAsync(string runId, string nodeId, string attachmentId)
+        {
+            var operation = Operations.DeleteAutomatedTestRunNodeAttachment(runId, nodeId, attachmentId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestrun/{runId}/node/{nodeId}/attachments'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<AutomatedTestRunNodeAttachment> GetAutomatedTestRunNodeAttachments(string runId, string nodeId)
+        {
+            var operation = Operations.GetAutomatedTestRunNodeAttachments(runId, nodeId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<AutomatedTestRunNodeAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<AutomatedTestRunNodeAttachment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestrun/{runId}/node/{nodeId}/attachments'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<AutomatedTestRunNodeAttachment>> GetAutomatedTestRunNodeAttachmentsAsync(string runId, string nodeId)
+        {
+            var operation = Operations.GetAutomatedTestRunNodeAttachments(runId, nodeId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<AutomatedTestRunNodeAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<AutomatedTestRunNodeAttachment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/automatedtestrun/{runId}/node/{nodeId}/attachments'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<AutomatedTestRunNodeAttachment> CreateAutomatedTestRunNodeAttachments(string runId, string nodeId)
+        {
+            var operation = Operations.CreateAutomatedTestRunNodeAttachments(runId, nodeId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<AutomatedTestRunNodeAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<AutomatedTestRunNodeAttachment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/automatedtestrun/{runId}/node/{nodeId}/attachments'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<AutomatedTestRunNodeAttachment>> CreateAutomatedTestRunNodeAttachmentsAsync(string runId, string nodeId)
+        {
+            var operation = Operations.CreateAutomatedTestRunNodeAttachments(runId, nodeId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<AutomatedTestRunNodeAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<AutomatedTestRunNodeAttachment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestrun/{runId}/node/{nodeId}/children'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <param name="statuses">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual List<ResultNode> GetAutomatedTestRunNodeChildren(string runId, string nodeId, string statuses, string expand = null)
+        {
+            var operation = Operations.GetAutomatedTestRunNodeChildren(runId, nodeId, statuses, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<ResultNode>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<ResultNode>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestrun/{runId}/node/{nodeId}/children'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <param name="statuses">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<List<ResultNode>> GetAutomatedTestRunNodeChildrenAsync(string runId, string nodeId, string statuses, string expand = null)
+        {
+            var operation = Operations.GetAutomatedTestRunNodeChildren(runId, nodeId, statuses, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<ResultNode>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<ResultNode>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestrun/{runId}/node/{nodeId}/incident/{incidentId}'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual AutomatedTestRunIncident GetAutomatedTestRunNodeIncident(string runId, string nodeId, string incidentId, string expand = null)
+        {
+            var operation = Operations.GetAutomatedTestRunNodeIncident(runId, nodeId, incidentId, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTestRunIncident>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTestRunIncident>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestrun/{runId}/node/{nodeId}/incident/{incidentId}'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<AutomatedTestRunIncident> GetAutomatedTestRunNodeIncidentAsync(string runId, string nodeId, string incidentId, string expand = null)
+        {
+            var operation = Operations.GetAutomatedTestRunNodeIncident(runId, nodeId, incidentId, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTestRunIncident>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTestRunIncident>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/automatedtestrun/{runId}/node/{nodeId}/incident/{incidentId}'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteAutomatedTestRunNodeIncident(string runId, string nodeId, string incidentId)
+        {
+            var operation = Operations.DeleteAutomatedTestRunNodeIncident(runId, nodeId, incidentId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/automatedtestrun/{runId}/node/{nodeId}/incident/{incidentId}'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteAutomatedTestRunNodeIncidentAsync(string runId, string nodeId, string incidentId)
+        {
+            var operation = Operations.DeleteAutomatedTestRunNodeIncident(runId, nodeId, incidentId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestrun/{runId}/node/{nodeId}/incidents'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<AutomatedTestRunIncident> GetAutomatedTestRunNodeIncidents(string runId, string nodeId, string expand = null)
+        {
+            var operation = Operations.GetAutomatedTestRunNodeIncidents(runId, nodeId, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<AutomatedTestRunIncident>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<AutomatedTestRunIncident>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestrun/{runId}/node/{nodeId}/incidents'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<AutomatedTestRunIncident>> GetAutomatedTestRunNodeIncidentsAsync(string runId, string nodeId, string expand = null)
+        {
+            var operation = Operations.GetAutomatedTestRunNodeIncidents(runId, nodeId, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<AutomatedTestRunIncident>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<AutomatedTestRunIncident>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/automatedtestrun/{runId}/node/{nodeId}/incidents'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual AutomatedTestRunIncident CreateAutomatedTestRunNodeIncident(string runId, string nodeId, CreateAutomatedTestRunResultNodeIncident model)
+        {
+            var operation = Operations.CreateAutomatedTestRunNodeIncident(runId, nodeId, model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTestRunIncident>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTestRunIncident>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/automatedtestrun/{runId}/node/{nodeId}/incidents'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="nodeId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<AutomatedTestRunIncident> CreateAutomatedTestRunNodeIncidentAsync(string runId, string nodeId, CreateAutomatedTestRunResultNodeIncident model)
+        {
+            var operation = Operations.CreateAutomatedTestRunNodeIncident(runId, nodeId, model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTestRunIncident>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTestRunIncident>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestrun/{runId}/nodes'
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual List<ResultNode> GetAutomatedTestRunRootNodes(string runId, string expand = null)
+        {
+            var operation = Operations.GetAutomatedTestRunRootNodes(runId, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<ResultNode>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<ResultNode>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestrun/{runId}/nodes'  (asynchronous)
+        /// </summary>
+        /// <param name="runId">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<List<ResultNode>> GetAutomatedTestRunRootNodesAsync(string runId, string expand = null)
+        {
+            var operation = Operations.GetAutomatedTestRunRootNodes(runId, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<ResultNode>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<ResultNode>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestruns'
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<AutomatedTestRun> SearchAutomatedTestRuns(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchAutomatedTestRuns(tql, timeZone, top, skip, inlinecount, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<AutomatedTestRun>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<AutomatedTestRun>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtestruns'  (asynchronous)
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<AutomatedTestRun>> SearchAutomatedTestRunsAsync(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchAutomatedTestRuns(tql, timeZone, top, skip, inlinecount, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<AutomatedTestRun>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<AutomatedTestRun>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtests'
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<AutomatedTest> SearchAutomatedTests(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchAutomatedTests(tql, timeZone, top, skip, inlinecount, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<AutomatedTest>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<AutomatedTest>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/automatedtests'  (asynchronous)
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<AutomatedTest>> SearchAutomatedTestsAsync(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchAutomatedTests(tql, timeZone, top, skip, inlinecount, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<AutomatedTest>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<AutomatedTest>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/automatedtests'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual AutomatedTest CreateAutomatedTest(CreateOrUpdateAutomatedTest model, string expand = null)
+        {
+            var operation = Operations.CreateAutomatedTest(model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTest>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTest>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/automatedtests'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<AutomatedTest> CreateAutomatedTestAsync(CreateOrUpdateAutomatedTest model, string expand = null)
+        {
+            var operation = Operations.CreateAutomatedTest(model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<AutomatedTest>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<AutomatedTest>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/backgroundtask/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual BackgroundTask GetBackgroundTaskStatus(string id)
+        {
+            var operation = Operations.GetBackgroundTaskStatus(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<BackgroundTask>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<BackgroundTask>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/backgroundtask/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<BackgroundTask> GetBackgroundTaskStatusAsync(string id)
+        {
+            var operation = Operations.GetBackgroundTaskStatus(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<BackgroundTask>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<BackgroundTask>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a POST to '/api/backgroundtasks'
+        /// </summary>
+        /// <param name="dto">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual BackgroundTask StartBackgroundTask(CreateBackgroundTask dto)
+        {
+            var operation = Operations.StartBackgroundTask(dto);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<BackgroundTask>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<BackgroundTask>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/backgroundtasks'  (asynchronous)
+        /// </summary>
+        /// <param name="dto">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<BackgroundTask> StartBackgroundTaskAsync(CreateBackgroundTask dto)
+        {
+            var operation = Operations.StartBackgroundTask(dto);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<BackgroundTask>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<BackgroundTask>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/customfield/{name}'
+        /// </summary>
+        /// <param name="name">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual CustomField GetCustomField(string name)
+        {
+            var operation = Operations.GetCustomField(name);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<CustomField>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<CustomField>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/customfield/{name}'  (asynchronous)
+        /// </summary>
+        /// <param name="name">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<CustomField> GetCustomFieldAsync(string name)
+        {
+            var operation = Operations.GetCustomField(name);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<CustomField>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<CustomField>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/customfield/{name}'
+        /// </summary>
+        /// <param name="name">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage UpdateCustomField(string name, Operation operationModel)
+        {
+            var operation = Operations.UpdateCustomField(name, operationModel);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/customfield/{name}'  (asynchronous)
+        /// </summary>
+        /// <param name="name">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> UpdateCustomFieldAsync(string name, Operation operationModel)
+        {
+            var operation = Operations.UpdateCustomField(name, operationModel);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/customfield/{name}'
+        /// </summary>
+        /// <param name="name">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteCustomField(string name)
+        {
+            var operation = Operations.DeleteCustomField(name);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/customfield/{name}'  (asynchronous)
+        /// </summary>
+        /// <param name="name">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteCustomFieldAsync(string name)
+        {
+            var operation = Operations.DeleteCustomField(name);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/customfields'
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<CustomField> SearchCustomFields(int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchCustomFields(top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<CustomField>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<CustomField>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/customfields'  (asynchronous)
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<CustomField>> SearchCustomFieldsAsync(int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchCustomFields(top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<CustomField>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<CustomField>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/customfields'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage AddCustomField(CreateCustomField model)
+        {
+            var operation = Operations.AddCustomField(model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/customfields'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> AddCustomFieldAsync(CreateCustomField model)
+        {
+            var operation = Operations.AddCustomField(model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/customfieldtype/{name}'
+        /// </summary>
+        /// <param name="name">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual CustomFieldType GetCustomFieldType(string name)
+        {
+            var operation = Operations.GetCustomFieldType(name);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<CustomFieldType>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<CustomFieldType>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/customfieldtype/{name}'  (asynchronous)
+        /// </summary>
+        /// <param name="name">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<CustomFieldType> GetCustomFieldTypeAsync(string name)
+        {
+            var operation = Operations.GetCustomFieldType(name);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<CustomFieldType>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<CustomFieldType>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/customfieldtypes'
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<CustomFieldType> SearchCustomFieldTypes(int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchCustomFieldTypes(top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<CustomFieldType>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<CustomFieldType>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/customfieldtypes'  (asynchronous)
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<CustomFieldType>> SearchCustomFieldTypesAsync(int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchCustomFieldTypes(top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<CustomFieldType>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<CustomFieldType>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/diagnostics/performancemeasurement/latest'
+        /// </summary>
+        /// <param name="export">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage GetLastPerformanceTestResults(bool? export = null)
+        {
+            var operation = Operations.GetLastPerformanceTestResults(export);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/diagnostics/performancemeasurement/latest'  (asynchronous)
+        /// </summary>
+        /// <param name="export">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> GetLastPerformanceTestResultsAsync(bool? export = null)
+        {
+            var operation = Operations.GetLastPerformanceTestResults(export);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/entitytypes'
+        /// </summary>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual List<Object> GetNotificationEntityTypes(string expand = null)
+        {
+            var operation = Operations.GetNotificationEntityTypes(expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<Object>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<Object>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/entitytypes'  (asynchronous)
+        /// </summary>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<List<Object>> GetNotificationEntityTypesAsync(string expand = null)
+        {
+            var operation = Operations.GetNotificationEntityTypes(expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<Object>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<Object>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/eventtypes'
+        /// </summary>
+        /// <returns></returns>
+        public virtual List<Object> GetEventTypes()
+        {
+            var operation = Operations.GetEventTypes();
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<Object>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<Object>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/eventtypes'  (asynchronous)
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task<List<Object>> GetEventTypesAsync()
+        {
+            var operation = Operations.GetEventTypes();
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<Object>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<Object>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/executionpackage/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ExecutionPackage GetExecutionPackage(string id, string expand = null)
+        {
+            var operation = Operations.GetExecutionPackage(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ExecutionPackage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExecutionPackage>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/executionpackage/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ExecutionPackage> GetExecutionPackageAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetExecutionPackage(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ExecutionPackage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExecutionPackage>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/executionpackage/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ExecutionPackage UpdateExecutionPackage(string id, CreateOrUpdateExecutionPackage model, string expand = null)
+        {
+            var operation = Operations.UpdateExecutionPackage(id, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ExecutionPackage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExecutionPackage>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/executionpackage/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ExecutionPackage> UpdateExecutionPackageAsync(string id, CreateOrUpdateExecutionPackage model, string expand = null)
+        {
+            var operation = Operations.UpdateExecutionPackage(id, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ExecutionPackage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExecutionPackage>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/executionpackage/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteExecutionPackage(string id)
+        {
+            var operation = Operations.DeleteExecutionPackage(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/executionpackage/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteExecutionPackageAsync(string id)
+        {
+            var operation = Operations.DeleteExecutionPackage(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/executionpackage/{id}/children'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ExecutionPackage> GetExecutionPackageChildren(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetExecutionPackageChildren(id, top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ExecutionPackage>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ExecutionPackage>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/executionpackage/{id}/children'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ExecutionPackage>> GetExecutionPackageChildrenAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetExecutionPackageChildren(id, top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ExecutionPackage>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ExecutionPackage>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/executionpackages'
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ExecutionPackage> SearchExecutionPackages(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchExecutionPackages(tql, timeZone, top, skip, inlinecount, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ExecutionPackage>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ExecutionPackage>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/executionpackages'  (asynchronous)
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ExecutionPackage>> SearchExecutionPackagesAsync(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchExecutionPackages(tql, timeZone, top, skip, inlinecount, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ExecutionPackage>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ExecutionPackage>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/executionpackages'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ExecutionPackage CreateExecutionPackage(CreateOrUpdateExecutionPackage model, string expand = null)
+        {
+            var operation = Operations.CreateExecutionPackage(model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ExecutionPackage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExecutionPackage>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/executionpackages'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ExecutionPackage> CreateExecutionPackageAsync(CreateOrUpdateExecutionPackage model, string expand = null)
+        {
+            var operation = Operations.CreateExecutionPackage(model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ExecutionPackage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExecutionPackage>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/exportfile/{filename}'
+        /// </summary>
+        /// <param name="filename">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage GetExportedFileContents(string filename)
+        {
+            var operation = Operations.GetExportedFileContents(filename);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/exportfile/{filename}'  (asynchronous)
+        /// </summary>
+        /// <param name="filename">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> GetExportedFileContentsAsync(string filename)
+        {
+            var operation = Operations.GetExportedFileContents(filename);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsourcemetadata'
+        /// </summary>
+        /// <param name="end">a query parameter (no description)</param>
+        /// <param name="key">a query parameter (no description)</param>
+        /// <param name="id">a query parameter (no description)</param>
+        /// <param name="projectId">a query parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ExternalSourceMetadata GetExternalSourceByAttributes(string end = null, string key = null, string id = null, string projectId = null, string expand = null)
+        {
+            var operation = Operations.GetExternalSourceByAttributes(end, key, id, projectId, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSourceMetadata>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSourceMetadata>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsourcemetadata'  (asynchronous)
+        /// </summary>
+        /// <param name="end">a query parameter (no description)</param>
+        /// <param name="key">a query parameter (no description)</param>
+        /// <param name="id">a query parameter (no description)</param>
+        /// <param name="projectId">a query parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ExternalSourceMetadata> GetExternalSourceByAttributesAsync(string end = null, string key = null, string id = null, string projectId = null, string expand = null)
+        {
+            var operation = Operations.GetExternalSourceByAttributes(end, key, id, projectId, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSourceMetadata>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSourceMetadata>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsourcesmetadata'
+        /// </summary>
+        /// <param name="compatibleWithKey">a query parameter (no description)</param>
+        /// <param name="end">a query parameter (no description)</param>
+        /// <param name="compatibleWithId">a query parameter (no description)</param>
+        /// <param name="projectId">a query parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ExternalSourceMetadata> SearchExternalSources(string compatibleWithKey = null, string end = null, string compatibleWithId = null, string projectId = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchExternalSources(compatibleWithKey, end, compatibleWithId, projectId, top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ExternalSourceMetadata>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ExternalSourceMetadata>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsourcesmetadata'  (asynchronous)
+        /// </summary>
+        /// <param name="compatibleWithKey">a query parameter (no description)</param>
+        /// <param name="end">a query parameter (no description)</param>
+        /// <param name="compatibleWithId">a query parameter (no description)</param>
+        /// <param name="projectId">a query parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ExternalSourceMetadata>> SearchExternalSourcesAsync(string compatibleWithKey = null, string end = null, string compatibleWithId = null, string projectId = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchExternalSources(compatibleWithKey, end, compatibleWithId, projectId, top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ExternalSourceMetadata>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ExternalSourceMetadata>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsystem/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ExternalSystem GetExternalSystem(string id, string expand = null)
+        {
+            var operation = Operations.GetExternalSystem(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSystem>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSystem>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsystem/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ExternalSystem> GetExternalSystemAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetExternalSystem(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSystem>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSystem>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/externalsystem/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ExternalSystem PatchExternalSystem(string id, CreateOrUpdateExternalSystem model, string expand = null)
+        {
+            var operation = Operations.PatchExternalSystem(id, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSystem>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSystem>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/externalsystem/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ExternalSystem> PatchExternalSystemAsync(string id, CreateOrUpdateExternalSystem model, string expand = null)
+        {
+            var operation = Operations.PatchExternalSystem(id, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSystem>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSystem>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/externalsystem/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ExternalSystem UpdateExternalSystem(string id, CreateOrUpdateExternalSystem model, string expand = null)
+        {
+            var operation = Operations.UpdateExternalSystem(id, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSystem>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSystem>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/externalsystem/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ExternalSystem> UpdateExternalSystemAsync(string id, CreateOrUpdateExternalSystem model, string expand = null)
+        {
+            var operation = Operations.UpdateExternalSystem(id, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSystem>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSystem>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/externalsystem/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="keepReferences">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteExternalSystem(string id, bool? keepReferences = null)
+        {
+            var operation = Operations.DeleteExternalSystem(id, keepReferences);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/externalsystem/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="keepReferences">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteExternalSystemAsync(string id, bool? keepReferences = null)
+        {
+            var operation = Operations.DeleteExternalSystem(id, keepReferences);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsystem/{systemId}/links'
+        /// </summary>
+        /// <param name="systemId">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ExternalSystemLink> GetExternalSystemLinksForSystem(string systemId, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetExternalSystemLinksForSystem(systemId, top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ExternalSystemLink>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ExternalSystemLink>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsystem/{systemId}/links'  (asynchronous)
+        /// </summary>
+        /// <param name="systemId">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ExternalSystemLink>> GetExternalSystemLinksForSystemAsync(string systemId, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetExternalSystemLinksForSystem(systemId, top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ExternalSystemLink>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ExternalSystemLink>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsystemlink/{externalSystemLinkId}/ticket/{ticketId}'
+        /// </summary>
+        /// <param name="ticketId">a path parameter (no description)</param>
+        /// <param name="externalSystemLinkId">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual TicketSearchResult GetTicket(string ticketId, string externalSystemLinkId, string expand = null)
+        {
+            var operation = Operations.GetTicket(ticketId, externalSystemLinkId, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<TicketSearchResult>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<TicketSearchResult>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsystemlink/{externalSystemLinkId}/ticket/{ticketId}'  (asynchronous)
+        /// </summary>
+        /// <param name="ticketId">a path parameter (no description)</param>
+        /// <param name="externalSystemLinkId">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<TicketSearchResult> GetTicketAsync(string ticketId, string externalSystemLinkId, string expand = null)
+        {
+            var operation = Operations.GetTicket(ticketId, externalSystemLinkId, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<TicketSearchResult>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<TicketSearchResult>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a POST to '/api/externalsystemlink/{externalSystemLinkId}/ticket/{ticketId}/link'
+        /// </summary>
+        /// <param name="ticketId">a path parameter (no description)</param>
+        /// <param name="externalSystemLinkId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual BackgroundTask StartCreateIncidentFromTicket(string ticketId, string externalSystemLinkId)
+        {
+            var operation = Operations.StartCreateIncidentFromTicket(ticketId, externalSystemLinkId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<BackgroundTask>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<BackgroundTask>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/externalsystemlink/{externalSystemLinkId}/ticket/{ticketId}/link'  (asynchronous)
+        /// </summary>
+        /// <param name="ticketId">a path parameter (no description)</param>
+        /// <param name="externalSystemLinkId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<BackgroundTask> StartCreateIncidentFromTicketAsync(string ticketId, string externalSystemLinkId)
+        {
+            var operation = Operations.StartCreateIncidentFromTicket(ticketId, externalSystemLinkId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<BackgroundTask>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<BackgroundTask>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsystemlink/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ExternalSystemLink GetExternalSystemLink(string id, string expand = null)
+        {
+            var operation = Operations.GetExternalSystemLink(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSystemLink>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSystemLink>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsystemlink/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ExternalSystemLink> GetExternalSystemLinkAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetExternalSystemLink(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSystemLink>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSystemLink>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/externalsystemlink/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual ExternalSystemLink PatchExternalSystemLink(string id, EditExternalSystemLink model)
+        {
+            var operation = Operations.PatchExternalSystemLink(id, model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSystemLink>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSystemLink>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/externalsystemlink/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<ExternalSystemLink> PatchExternalSystemLinkAsync(string id, EditExternalSystemLink model)
+        {
+            var operation = Operations.PatchExternalSystemLink(id, model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSystemLink>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSystemLink>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/externalsystemlink/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="keepReferences">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteExternalSystemLink(string id, bool? keepReferences = null)
+        {
+            var operation = Operations.DeleteExternalSystemLink(id, keepReferences);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/externalsystemlink/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="keepReferences">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteExternalSystemLinkAsync(string id, bool? keepReferences = null)
+        {
+            var operation = Operations.DeleteExternalSystemLink(id, keepReferences);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a POST to '/api/externalsystemlink/{linkId}/copy'
+        /// </summary>
+        /// <param name="linkId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ExternalSystemLink CopyExternalSystemLink(string linkId, CopyExternalSystemLink model, string expand = null)
+        {
+            var operation = Operations.CopyExternalSystemLink(linkId, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSystemLink>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSystemLink>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/externalsystemlink/{linkId}/copy'  (asynchronous)
+        /// </summary>
+        /// <param name="linkId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ExternalSystemLink> CopyExternalSystemLinkAsync(string linkId, CopyExternalSystemLink model, string expand = null)
+        {
+            var operation = Operations.CopyExternalSystemLink(linkId, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSystemLink>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSystemLink>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsystemlink/{linkId}/field/{fieldName}'
+        /// </summary>
+        /// <param name="linkId">a path parameter (no description)</param>
+        /// <param name="fieldName">a path parameter (no description)</param>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual QueryResults<IValue> GetOptionsForExternalSystemLinksField(string linkId, string fieldName, string query = null, bool? valuesqry = null)
+        {
+            var operation = Operations.GetOptionsForExternalSystemLinksField(linkId, fieldName, query, valuesqry);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<IValue>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<IValue>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsystemlink/{linkId}/field/{fieldName}'  (asynchronous)
+        /// </summary>
+        /// <param name="linkId">a path parameter (no description)</param>
+        /// <param name="fieldName">a path parameter (no description)</param>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<IValue>> GetOptionsForExternalSystemLinksFieldAsync(string linkId, string fieldName, string query = null, bool? valuesqry = null)
+        {
+            var operation = Operations.GetOptionsForExternalSystemLinksField(linkId, fieldName, query, valuesqry);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<IValue>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<IValue>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsystemlinks'
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ExternalSystemLink> SearchExternalSystemLinks(int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchExternalSystemLinks(top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ExternalSystemLink>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ExternalSystemLink>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsystemlinks'  (asynchronous)
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ExternalSystemLink>> SearchExternalSystemLinksAsync(int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchExternalSystemLinks(top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ExternalSystemLink>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ExternalSystemLink>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/externalsystemlinks'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ExternalSystemLink CreateExternalSystemLink(CreateExternalSystemLink model, string expand = null)
+        {
+            var operation = Operations.CreateExternalSystemLink(model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSystemLink>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSystemLink>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/externalsystemlinks'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ExternalSystemLink> CreateExternalSystemLinkAsync(CreateExternalSystemLink model, string expand = null)
+        {
+            var operation = Operations.CreateExternalSystemLink(model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSystemLink>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSystemLink>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsystems'
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ExternalSystem> SearchExternalSystems(int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchExternalSystems(top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ExternalSystem>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ExternalSystem>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsystems'  (asynchronous)
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ExternalSystem>> SearchExternalSystemsAsync(int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchExternalSystems(top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ExternalSystem>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ExternalSystem>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/externalsystems'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ExternalSystem CreateExternalSystem(CreateOrUpdateExternalSystem model, string expand = null)
+        {
+            var operation = Operations.CreateExternalSystem(model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSystem>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSystem>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/externalsystems'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ExternalSystem> CreateExternalSystemAsync(CreateOrUpdateExternalSystem model, string expand = null)
+        {
+            var operation = Operations.CreateExternalSystem(model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSystem>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSystem>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsystemtype/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual ExternalSystemType GetExternalSystemType(string id)
+        {
+            var operation = Operations.GetExternalSystemType(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSystemType>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSystemType>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsystemtype/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<ExternalSystemType> GetExternalSystemTypeAsync(string id)
+        {
+            var operation = Operations.GetExternalSystemType(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ExternalSystemType>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ExternalSystemType>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsystemtypes'
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ExternalSystemType> SearchExternalSystemTypes(int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchExternalSystemTypes(top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ExternalSystemType>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ExternalSystemType>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/externalsystemtypes'  (asynchronous)
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ExternalSystemType>> SearchExternalSystemTypesAsync(int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchExternalSystemTypes(top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ExternalSystemType>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ExternalSystemType>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a POST to '/api/gridwidget/{widgetType}/data/{dataName}'
+        /// </summary>
+        /// <param name="widgetType">a path parameter (no description)</param>
+        /// <param name="dataName">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual GridWidgetData GetGridWidgetData(string widgetType, string dataName, GridWidgetContext model)
+        {
+            var operation = Operations.GetGridWidgetData(widgetType, dataName, model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<GridWidgetData>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<GridWidgetData>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/gridwidget/{widgetType}/data/{dataName}'  (asynchronous)
+        /// </summary>
+        /// <param name="widgetType">a path parameter (no description)</param>
+        /// <param name="dataName">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<GridWidgetData> GetGridWidgetDataAsync(string widgetType, string dataName, GridWidgetContext model)
+        {
+            var operation = Operations.GetGridWidgetData(widgetType, dataName, model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<GridWidgetData>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<GridWidgetData>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/gridwidgethost/{hostId}/project/{projectId}/position/{position}'
+        /// </summary>
+        /// <param name="hostId">a path parameter (no description)</param>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="position">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual GridWidgetState GetGridWidgetState(string hostId, string projectId, string position)
+        {
+            var operation = Operations.GetGridWidgetState(hostId, projectId, position);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<GridWidgetState>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<GridWidgetState>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/gridwidgethost/{hostId}/project/{projectId}/position/{position}'  (asynchronous)
+        /// </summary>
+        /// <param name="hostId">a path parameter (no description)</param>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="position">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<GridWidgetState> GetGridWidgetStateAsync(string hostId, string projectId, string position)
+        {
+            var operation = Operations.GetGridWidgetState(hostId, projectId, position);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<GridWidgetState>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<GridWidgetState>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/gridwidgethost/{hostId}/project/{projectId}/position/{position}'
+        /// </summary>
+        /// <param name="hostId">a path parameter (no description)</param>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="position">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual GridWidgetState UpdateGridWidgetState(string hostId, string projectId, string position, EditGridWidgetState model)
+        {
+            var operation = Operations.UpdateGridWidgetState(hostId, projectId, position, model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<GridWidgetState>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<GridWidgetState>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/gridwidgethost/{hostId}/project/{projectId}/position/{position}'  (asynchronous)
+        /// </summary>
+        /// <param name="hostId">a path parameter (no description)</param>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="position">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<GridWidgetState> UpdateGridWidgetStateAsync(string hostId, string projectId, string position, EditGridWidgetState model)
+        {
+            var operation = Operations.UpdateGridWidgetState(hostId, projectId, position, model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<GridWidgetState>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<GridWidgetState>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/gridwidgethost/{hostId}/project/{projectId}/positions'
+        /// </summary>
+        /// <param name="hostId">a path parameter (no description)</param>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual GridWidgetStateSet GetGridWidgetStatesForHost(string hostId, string projectId)
+        {
+            var operation = Operations.GetGridWidgetStatesForHost(hostId, projectId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<GridWidgetStateSet>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<GridWidgetStateSet>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/gridwidgethost/{hostId}/project/{projectId}/positions'  (asynchronous)
+        /// </summary>
+        /// <param name="hostId">a path parameter (no description)</param>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<GridWidgetStateSet> GetGridWidgetStatesForHostAsync(string hostId, string projectId)
+        {
+            var operation = Operations.GetGridWidgetStatesForHost(hostId, projectId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<GridWidgetStateSet>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<GridWidgetStateSet>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/group/{groupId}/permissions/project/{projectId}'
+        /// </summary>
+        /// <param name="groupId">a path parameter (no description)</param>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<PermissionAssignment> GetGroupProjectPermissions(string groupId, string projectId)
+        {
+            var operation = Operations.GetGroupProjectPermissions(groupId, projectId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<PermissionAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<PermissionAssignment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/group/{groupId}/permissions/project/{projectId}'  (asynchronous)
+        /// </summary>
+        /// <param name="groupId">a path parameter (no description)</param>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<PermissionAssignment>> GetGroupProjectPermissionsAsync(string groupId, string projectId)
+        {
+            var operation = Operations.GetGroupProjectPermissions(groupId, projectId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<PermissionAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<PermissionAssignment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/group/{groupId}/permissions/project/{projectId}'
+        /// </summary>
+        /// <param name="groupId">a path parameter (no description)</param>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="assignments">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<PermissionAssignment> UpdateGroupProjectPermissions(string groupId, string projectId, List<CreateOrUpdatePermissionAssignment> assignments)
+        {
+            var operation = Operations.UpdateGroupProjectPermissions(groupId, projectId, assignments);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<PermissionAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<PermissionAssignment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/group/{groupId}/permissions/project/{projectId}'  (asynchronous)
+        /// </summary>
+        /// <param name="groupId">a path parameter (no description)</param>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="assignments">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<PermissionAssignment>> UpdateGroupProjectPermissionsAsync(string groupId, string projectId, List<CreateOrUpdatePermissionAssignment> assignments)
+        {
+            var operation = Operations.UpdateGroupProjectPermissions(groupId, projectId, assignments);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<PermissionAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<PermissionAssignment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/group/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual Group GetGroup(string id, string expand = null)
+        {
+            var operation = Operations.GetGroup(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Group>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Group>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/group/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<Group> GetGroupAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetGroup(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Group>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Group>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/group/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Group UpdateGroup(string id, CreateOrUpdateGroup model)
+        {
+            var operation = Operations.UpdateGroup(id, model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Group>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Group>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/group/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Group> UpdateGroupAsync(string id, CreateOrUpdateGroup model)
+        {
+            var operation = Operations.UpdateGroup(id, model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Group>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Group>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/group/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteGroup(string id)
+        {
+            var operation = Operations.DeleteGroup(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/group/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteGroupAsync(string id)
+        {
+            var operation = Operations.DeleteGroup(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/group/{id}/permissions/global'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<PermissionAssignment> GetGlobalGroupPermissions(string id)
+        {
+            var operation = Operations.GetGlobalGroupPermissions(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<PermissionAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<PermissionAssignment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/group/{id}/permissions/global'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<PermissionAssignment>> GetGlobalGroupPermissionsAsync(string id)
+        {
+            var operation = Operations.GetGlobalGroupPermissions(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<PermissionAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<PermissionAssignment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/group/{id}/permissions/global'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="assignments">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<PermissionAssignment> UpdateGlobalGroupPermissions(string id, List<CreateOrUpdatePermissionAssignment> assignments)
+        {
+            var operation = Operations.UpdateGlobalGroupPermissions(id, assignments);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<PermissionAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<PermissionAssignment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/group/{id}/permissions/global'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="assignments">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<PermissionAssignment>> UpdateGlobalGroupPermissionsAsync(string id, List<CreateOrUpdatePermissionAssignment> assignments)
+        {
+            var operation = Operations.UpdateGlobalGroupPermissions(id, assignments);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<PermissionAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<PermissionAssignment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/group/{id}/permissions/projects'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual GroupPermissionProjects GetProjectGroupPermissionLinks(string id)
+        {
+            var operation = Operations.GetProjectGroupPermissionLinks(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<GroupPermissionProjects>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<GroupPermissionProjects>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/group/{id}/permissions/projects'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<GroupPermissionProjects> GetProjectGroupPermissionLinksAsync(string id)
+        {
+            var operation = Operations.GetProjectGroupPermissionLinks(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<GroupPermissionProjects>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<GroupPermissionProjects>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/group/{id}/users'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<User> GetGroupMembers(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetGroupMembers(id, top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<User>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<User>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/group/{id}/users'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<User>> GetGroupMembersAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetGroupMembers(id, top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<User>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<User>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/group/{id}/users'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<User> SetGroupMembers(string id, GroupMemberships model, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SetGroupMembers(id, model, top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<User>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<User>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/group/{id}/users'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<User>> SetGroupMembersAsync(string id, GroupMemberships model, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SetGroupMembers(id, model, top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<User>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<User>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/groups'
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<Group> SearchGroups(int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchGroups(top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Group>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Group>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/groups'  (asynchronous)
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<Group>> SearchGroupsAsync(int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchGroups(top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Group>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Group>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/groups'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Group CreateGroup(CreateOrUpdateGroup model)
+        {
+            var operation = Operations.CreateGroup(model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Group>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Group>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/groups'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Group> CreateGroupAsync(CreateOrUpdateGroup model)
+        {
+            var operation = Operations.CreateGroup(model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Group>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Group>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/groupssearch'
+        /// </summary>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<Group> SearchGroupsByPartialName(string query = null, bool? valuesqry = null, string expand = null)
+        {
+            var operation = Operations.SearchGroupsByPartialName(query, valuesqry, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Group>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Group>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/groupssearch'  (asynchronous)
+        /// </summary>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<Group>> SearchGroupsByPartialNameAsync(string query = null, bool? valuesqry = null, string expand = null)
+        {
+            var operation = Operations.SearchGroupsByPartialName(query, valuesqry, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Group>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Group>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/groupssearch'
+        /// </summary>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage SearchGroupsByPartialNameUsingPostMethod(string query = null, string valuesqry = null, string expand = null)
+        {
+            var operation = Operations.SearchGroupsByPartialNameUsingPostMethod(query, valuesqry, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/groupssearch'  (asynchronous)
+        /// </summary>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> SearchGroupsByPartialNameUsingPostMethodAsync(string query = null, string valuesqry = null, string expand = null)
+        {
+            var operation = Operations.SearchGroupsByPartialNameUsingPostMethod(query, valuesqry, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/incident/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual Incident GetIncident(string id, string expand = null)
+        {
+            var operation = Operations.GetIncident(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Incident>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Incident>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/incident/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<Incident> GetIncidentAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetIncident(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Incident>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Incident>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/incident/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage UpdateIncidentFields(string id, Operation operationModel)
+        {
+            var operation = Operations.UpdateIncidentFields(id, operationModel);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/incident/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> UpdateIncidentFieldsAsync(string id, Operation operationModel)
+        {
+            var operation = Operations.UpdateIncidentFields(id, operationModel);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/incident/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual Incident UpdateIncident(string id, CreateOrUpdateIncident model, string expand = null)
+        {
+            var operation = Operations.UpdateIncident(id, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Incident>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Incident>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/incident/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<Incident> UpdateIncidentAsync(string id, CreateOrUpdateIncident model, string expand = null)
+        {
+            var operation = Operations.UpdateIncident(id, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Incident>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Incident>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/incident/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteIncident(string id)
+        {
+            var operation = Operations.DeleteIncident(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/incident/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteIncidentAsync(string id)
+        {
+            var operation = Operations.DeleteIncident(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/incident/{id}/allrelationships'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Relationship GetIncidentAllRelationships(string id)
+        {
+            var operation = Operations.GetIncidentAllRelationships(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/incident/{id}/allrelationships'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Relationship> GetIncidentAllRelationshipsAsync(string id)
+        {
+            var operation = Operations.GetIncidentAllRelationships(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/incident/{id}/attachments'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<IncidentAttachment> GetIncidentAttachments(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetIncidentAttachments(id, top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<IncidentAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<IncidentAttachment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/incident/{id}/attachments'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<IncidentAttachment>> GetIncidentAttachmentsAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetIncidentAttachments(id, top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<IncidentAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<IncidentAttachment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/incident/{id}/attachments'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<IncidentAttachment> CreateIncidentAttachment(string id)
+        {
+            var operation = Operations.CreateIncidentAttachment(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<IncidentAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<IncidentAttachment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/incident/{id}/attachments'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<IncidentAttachment>> CreateIncidentAttachmentAsync(string id)
+        {
+            var operation = Operations.CreateIncidentAttachment(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<IncidentAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<IncidentAttachment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/incident/{id}/comments'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<IncidentComment> GetIncidentComments(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetIncidentComments(id, top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<IncidentComment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<IncidentComment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/incident/{id}/comments'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<IncidentComment>> GetIncidentCommentsAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetIncidentComments(id, top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<IncidentComment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<IncidentComment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/incident/{id}/relationships'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Relationship GetIncidentRelationships(string id)
+        {
+            var operation = Operations.GetIncidentRelationships(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/incident/{id}/relationships'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Relationship> GetIncidentRelationshipsAsync(string id)
+        {
+            var operation = Operations.GetIncidentRelationships(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a DELETE to '/api/incident/{incidentId}/attachment/{id}'
+        /// </summary>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteIncidentAttachment(string incidentId, string id)
+        {
+            var operation = Operations.DeleteIncidentAttachment(incidentId, id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/incident/{incidentId}/attachment/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="incidentId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteIncidentAttachmentAsync(string incidentId, string id)
+        {
+            var operation = Operations.DeleteIncidentAttachment(incidentId, id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/incidents'
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<Incident> SearchIncidents(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchIncidents(tql, timeZone, top, skip, inlinecount, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Incident>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Incident>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/incidents'  (asynchronous)
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<Incident>> SearchIncidentsAsync(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchIncidents(tql, timeZone, top, skip, inlinecount, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Incident>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Incident>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/incidents'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual Incident CreateIncident(CreateOrUpdateIncident model, string expand = null)
+        {
+            var operation = Operations.CreateIncident(model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Incident>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Incident>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/incidents'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<Incident> CreateIncidentAsync(CreateOrUpdateIncident model, string expand = null)
+        {
+            var operation = Operations.CreateIncident(model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Incident>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Incident>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/mailqueue/messages'
+        /// </summary>
+        /// <returns></returns>
+        public virtual QueryResults<QueuedMessage> GetQueuedMailMessages()
+        {
+            var operation = Operations.GetQueuedMailMessages();
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<QueuedMessage>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<QueuedMessage>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/mailqueue/messages'  (asynchronous)
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<QueuedMessage>> GetQueuedMailMessagesAsync()
+        {
+            var operation = Operations.GetQueuedMailMessages();
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<QueuedMessage>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<QueuedMessage>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/mailsender/default/settings'
+        /// </summary>
+        /// <returns></returns>
+        public virtual MailSenderSettings GetMailSenderSettings()
+        {
+            var operation = Operations.GetMailSenderSettings();
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<MailSenderSettings>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<MailSenderSettings>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/mailsender/default/settings'  (asynchronous)
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task<MailSenderSettings> GetMailSenderSettingsAsync()
+        {
+            var operation = Operations.GetMailSenderSettings();
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<MailSenderSettings>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<MailSenderSettings>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/mailsender/default/settings'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual MailSenderSettings UpdateMailSenderSettings(CreateMailSenderSettings model)
+        {
+            var operation = Operations.UpdateMailSenderSettings(model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<MailSenderSettings>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<MailSenderSettings>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/mailsender/default/settings'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<MailSenderSettings> UpdateMailSenderSettingsAsync(CreateMailSenderSettings model)
+        {
+            var operation = Operations.UpdateMailSenderSettings(model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<MailSenderSettings>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<MailSenderSettings>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/organisation/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual Organisation GetOrganisation(string id, string expand = null)
+        {
+            var operation = Operations.GetOrganisation(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Organisation>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Organisation>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/organisation/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<Organisation> GetOrganisationAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetOrganisation(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Organisation>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Organisation>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/organisation/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual Organisation UpdateOrganisation(string id, CreateOrUpdateOrganisation model, string expand = null)
+        {
+            var operation = Operations.UpdateOrganisation(id, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Organisation>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Organisation>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/organisation/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<Organisation> UpdateOrganisationAsync(string id, CreateOrUpdateOrganisation model, string expand = null)
+        {
+            var operation = Operations.UpdateOrganisation(id, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Organisation>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Organisation>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/organisation/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void StartDeleteOrganisation(string id)
+        {
+            var operation = Operations.StartDeleteOrganisation(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/organisation/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task StartDeleteOrganisationAsync(string id)
+        {
+            var operation = Operations.StartDeleteOrganisation(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/organisation/{id}/relationshiptype/{key}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="key">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual RelationshipType GetRelationshipTypesByKey(string id, string key, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetRelationshipTypesByKey(id, key, top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<RelationshipType>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<RelationshipType>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/organisation/{id}/relationshiptype/{key}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="key">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<RelationshipType> GetRelationshipTypesByKeyAsync(string id, string key, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetRelationshipTypesByKey(id, key, top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<RelationshipType>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<RelationshipType>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a POST to '/api/organisation/{id}/relationshiptype/{key}/relationships'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="key">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual Relationship CreateRelationship(string id, string key, CreateRelationship model, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.CreateRelationship(id, key, model, top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/organisation/{id}/relationshiptype/{key}/relationships'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="key">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<Relationship> CreateRelationshipAsync(string id, string key, CreateRelationship model, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.CreateRelationship(id, key, model, top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/organisation/{id}/relationshiptypes'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<RelationshipType> GetRelationshipTypes(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetRelationshipTypes(id, top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<RelationshipType>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<RelationshipType>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/organisation/{id}/relationshiptypes'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<RelationshipType>> GetRelationshipTypesAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetRelationshipTypes(id, top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<RelationshipType>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<RelationshipType>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/organisation/{organisationId}/picklist/{type}'
+        /// </summary>
+        /// <param name="organisationId">a path parameter (no description)</param>
+        /// <param name="type">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual QueryResults<Picklist> GetOrganisationPicklistValues(string organisationId, string type)
+        {
+            var operation = Operations.GetOrganisationPicklistValues(organisationId, type);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Picklist>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Picklist>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/organisation/{organisationId}/picklist/{type}'  (asynchronous)
+        /// </summary>
+        /// <param name="organisationId">a path parameter (no description)</param>
+        /// <param name="type">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<Picklist>> GetOrganisationPicklistValuesAsync(string organisationId, string type)
+        {
+            var operation = Operations.GetOrganisationPicklistValues(organisationId, type);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Picklist>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Picklist>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/organisation/{organisationId}/picklistsearch/{type}'
+        /// </summary>
+        /// <param name="organisationId">a path parameter (no description)</param>
+        /// <param name="type">a path parameter (no description)</param>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual QueryResults<Picklist> SearchOrganisationPicklistValues(string organisationId, string type, string query = null, bool? valuesqry = null)
+        {
+            var operation = Operations.SearchOrganisationPicklistValues(organisationId, type, query, valuesqry);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Picklist>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Picklist>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/organisation/{organisationId}/picklistsearch/{type}'  (asynchronous)
+        /// </summary>
+        /// <param name="organisationId">a path parameter (no description)</param>
+        /// <param name="type">a path parameter (no description)</param>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<Picklist>> SearchOrganisationPicklistValuesAsync(string organisationId, string type, string query = null, bool? valuesqry = null)
+        {
+            var operation = Operations.SearchOrganisationPicklistValues(organisationId, type, query, valuesqry);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Picklist>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Picklist>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/organisation/{organisationId}/picklistsearch/{type}'
+        /// </summary>
+        /// <param name="organisationId">a path parameter (no description)</param>
+        /// <param name="type">a path parameter (no description)</param>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage SearchOrganisationPicklistValuesUsingPostMethod(string organisationId, string type, string query = null, string valuesqry = null)
+        {
+            var operation = Operations.SearchOrganisationPicklistValuesUsingPostMethod(organisationId, type, query, valuesqry);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/organisation/{organisationId}/picklistsearch/{type}'  (asynchronous)
+        /// </summary>
+        /// <param name="organisationId">a path parameter (no description)</param>
+        /// <param name="type">a path parameter (no description)</param>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> SearchOrganisationPicklistValuesUsingPostMethodAsync(string organisationId, string type, string query = null, string valuesqry = null)
+        {
+            var operation = Operations.SearchOrganisationPicklistValuesUsingPostMethod(organisationId, type, query, valuesqry);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/organisation/{organisationId}/relationshiptype/{key}/relationship/{id}'
+        /// </summary>
+        /// <param name="organisationId">a path parameter (no description)</param>
+        /// <param name="key">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Relationship GetRelationship(string organisationId, string key, string id)
+        {
+            var operation = Operations.GetRelationship(organisationId, key, id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/organisation/{organisationId}/relationshiptype/{key}/relationship/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="organisationId">a path parameter (no description)</param>
+        /// <param name="key">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Relationship> GetRelationshipAsync(string organisationId, string key, string id)
+        {
+            var operation = Operations.GetRelationship(organisationId, key, id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/organisation/{organisationId}/relationshiptype/{key}/relationship/{id}'
+        /// </summary>
+        /// <param name="organisationId">a path parameter (no description)</param>
+        /// <param name="key">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Relationship UpdateRelationship(string organisationId, string key, string id, UpdateRelationship model)
+        {
+            var operation = Operations.UpdateRelationship(organisationId, key, id, model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/organisation/{organisationId}/relationshiptype/{key}/relationship/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="organisationId">a path parameter (no description)</param>
+        /// <param name="key">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Relationship> UpdateRelationshipAsync(string organisationId, string key, string id, UpdateRelationship model)
+        {
+            var operation = Operations.UpdateRelationship(organisationId, key, id, model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/organisation/{organisationId}/relationshiptype/{key}/relationship/{id}'
+        /// </summary>
+        /// <param name="organisationId">a path parameter (no description)</param>
+        /// <param name="key">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteRelationship(string organisationId, string key, string id)
+        {
+            var operation = Operations.DeleteRelationship(organisationId, key, id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/organisation/{organisationId}/relationshiptype/{key}/relationship/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="organisationId">a path parameter (no description)</param>
+        /// <param name="key">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteRelationshipAsync(string organisationId, string key, string id)
+        {
+            var operation = Operations.DeleteRelationship(organisationId, key, id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/organisations'
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<Organisation> SearchOrganisations(int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchOrganisations(top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Organisation>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Organisation>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/organisations'  (asynchronous)
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<Organisation>> SearchOrganisationsAsync(int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchOrganisations(top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Organisation>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Organisation>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/organisations'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage CreateOrganisation(CreateOrUpdateOrganisation model, string expand = null)
+        {
+            var operation = Operations.CreateOrganisation(model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/organisations'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> CreateOrganisationAsync(CreateOrUpdateOrganisation model, string expand = null)
+        {
+            var operation = Operations.CreateOrganisation(model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/permission/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Permission GetPermission(string id)
+        {
+            var operation = Operations.GetPermission(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Permission>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Permission>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/permission/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Permission> GetPermissionAsync(string id)
+        {
+            var operation = Operations.GetPermission(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Permission>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Permission>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/permissions'
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<Permission> GetAllPermissions(int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetAllPermissions(top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Permission>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Permission>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/permissions'  (asynchronous)
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<Permission>> GetAllPermissionsAsync(int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetAllPermissions(top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Permission>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Permission>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/project/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual Project GetProject(string id, string expand = null)
+        {
+            var operation = Operations.GetProject(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Project>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Project>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/project/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<Project> GetProjectAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetProject(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Project>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Project>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/project/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual Project UpdateProject(string id, CreateOrUpdateProject model, string expand = null)
+        {
+            var operation = Operations.UpdateProject(id, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Project>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Project>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/project/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<Project> UpdateProjectAsync(string id, CreateOrUpdateProject model, string expand = null)
+        {
+            var operation = Operations.UpdateProject(id, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Project>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Project>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/project/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void StartProjectDelete(string id)
+        {
+            var operation = Operations.StartProjectDelete(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/project/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task StartProjectDeleteAsync(string id)
+        {
+            var operation = Operations.StartProjectDelete(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/project/{projectId}/assignees'
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<User> SearchProjectAssignees(string projectId, string query = null, string expand = null)
+        {
+            var operation = Operations.SearchProjectAssignees(projectId, query, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<User>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<User>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/project/{projectId}/assignees'  (asynchronous)
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<User>> SearchProjectAssigneesAsync(string projectId, string query = null, string expand = null)
+        {
+            var operation = Operations.SearchProjectAssignees(projectId, query, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<User>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<User>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/project/{projectId}/picklist/{type}'
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="type">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<Picklist> GetProjectPicklistValues(string projectId, string type, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetProjectPicklistValues(projectId, type, top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Picklist>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Picklist>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/project/{projectId}/picklist/{type}'  (asynchronous)
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="type">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<Picklist>> GetProjectPicklistValuesAsync(string projectId, string type, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetProjectPicklistValues(projectId, type, top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Picklist>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Picklist>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/project/{projectId}/picklistsearch/{type}'
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="type">a path parameter (no description)</param>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual QueryResults<Picklist> SearchProjectPicklistValues(string projectId, string type, string query = null, bool? valuesqry = null)
+        {
+            var operation = Operations.SearchProjectPicklistValues(projectId, type, query, valuesqry);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Picklist>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Picklist>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/project/{projectId}/picklistsearch/{type}'  (asynchronous)
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="type">a path parameter (no description)</param>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<Picklist>> SearchProjectPicklistValuesAsync(string projectId, string type, string query = null, bool? valuesqry = null)
+        {
+            var operation = Operations.SearchProjectPicklistValues(projectId, type, query, valuesqry);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Picklist>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Picklist>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/project/{projectId}/picklistsearch/{type}'
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="type">a path parameter (no description)</param>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage SearchProjectPicklistValuesUsingPostMethod(string projectId, string type, string query = null, string valuesqry = null)
+        {
+            var operation = Operations.SearchProjectPicklistValuesUsingPostMethod(projectId, type, query, valuesqry);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/project/{projectId}/picklistsearch/{type}'  (asynchronous)
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="type">a path parameter (no description)</param>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> SearchProjectPicklistValuesUsingPostMethodAsync(string projectId, string type, string query = null, string valuesqry = null)
+        {
+            var operation = Operations.SearchProjectPicklistValuesUsingPostMethod(projectId, type, query, valuesqry);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/project/{projectId}/searchlinks'
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ExternalSystemLink> SearchProjectExternalLinksByPartialName(string projectId, string query = null, bool? valuesqry = null)
+        {
+            var operation = Operations.SearchProjectExternalLinksByPartialName(projectId, query, valuesqry);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ExternalSystemLink>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ExternalSystemLink>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/project/{projectId}/searchlinks'  (asynchronous)
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ExternalSystemLink>> SearchProjectExternalLinksByPartialNameAsync(string projectId, string query = null, bool? valuesqry = null)
+        {
+            var operation = Operations.SearchProjectExternalLinksByPartialName(projectId, query, valuesqry);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ExternalSystemLink>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ExternalSystemLink>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/project/{projectId}/searchlinks'
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage SearchProjectExternalLinksByPartialNameUsingPostMethod(string projectId, string query = null, string valuesqry = null)
+        {
+            var operation = Operations.SearchProjectExternalLinksByPartialNameUsingPostMethod(projectId, query, valuesqry);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/project/{projectId}/searchlinks'  (asynchronous)
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> SearchProjectExternalLinksByPartialNameUsingPostMethodAsync(string projectId, string query = null, string valuesqry = null)
+        {
+            var operation = Operations.SearchProjectExternalLinksByPartialNameUsingPostMethod(projectId, query, valuesqry);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/project/{projectId}/tickets'
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="q">a query parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<TicketSearchResult> SearchTickets(string projectId, string q = null, string expand = null)
+        {
+            var operation = Operations.SearchTickets(projectId, q, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<TicketSearchResult>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<TicketSearchResult>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/project/{projectId}/tickets'  (asynchronous)
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="q">a query parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<TicketSearchResult>> SearchTicketsAsync(string projectId, string q = null, string expand = null)
+        {
+            var operation = Operations.SearchTickets(projectId, q, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<TicketSearchResult>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<TicketSearchResult>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/project/{projectId}/widgets'
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual EntityTypeWidgets GetWidgetsForProject(string projectId, string expand = null)
+        {
+            var operation = Operations.GetWidgetsForProject(projectId, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<EntityTypeWidgets>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<EntityTypeWidgets>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/project/{projectId}/widgets'  (asynchronous)
+        /// </summary>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<EntityTypeWidgets> GetWidgetsForProjectAsync(string projectId, string expand = null)
+        {
+            var operation = Operations.GetWidgetsForProject(projectId, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<EntityTypeWidgets>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<EntityTypeWidgets>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/projectcategories'
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ProjectCategory> SearchAllProjectCategories(int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchAllProjectCategories(top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ProjectCategory>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ProjectCategory>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/projectcategories'  (asynchronous)
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ProjectCategory>> SearchAllProjectCategoriesAsync(int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchAllProjectCategories(top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ProjectCategory>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ProjectCategory>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/projectcategories'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ProjectCategory CreateProjectCategory(CreateOrUpdateProjectCategory model, string expand = null)
+        {
+            var operation = Operations.CreateProjectCategory(model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ProjectCategory>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ProjectCategory>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/projectcategories'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ProjectCategory> CreateProjectCategoryAsync(CreateOrUpdateProjectCategory model, string expand = null)
+        {
+            var operation = Operations.CreateProjectCategory(model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ProjectCategory>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ProjectCategory>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/projectcategory/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ProjectCategory GetProjectCategory(string id, string expand = null)
+        {
+            var operation = Operations.GetProjectCategory(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ProjectCategory>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ProjectCategory>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/projectcategory/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ProjectCategory> GetProjectCategoryAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetProjectCategory(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ProjectCategory>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ProjectCategory>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/projectcategory/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ProjectCategory UpdateProjectCategory(string id, CreateOrUpdateProjectCategory model, string expand = null)
+        {
+            var operation = Operations.UpdateProjectCategory(id, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ProjectCategory>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ProjectCategory>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/projectcategory/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ProjectCategory> UpdateProjectCategoryAsync(string id, CreateOrUpdateProjectCategory model, string expand = null)
+        {
+            var operation = Operations.UpdateProjectCategory(id, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ProjectCategory>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ProjectCategory>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/projectcategory/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteProjectCategory(string id)
+        {
+            var operation = Operations.DeleteProjectCategory(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/projectcategory/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteProjectCategoryAsync(string id)
+        {
+            var operation = Operations.DeleteProjectCategory(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/projectcategory/{id}/children'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ProjectCategory> GetProjectCategoriesChildren(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetProjectCategoriesChildren(id, top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ProjectCategory>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ProjectCategory>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/projectcategory/{id}/children'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ProjectCategory>> GetProjectCategoriesChildrenAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetProjectCategoriesChildren(id, top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ProjectCategory>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ProjectCategory>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/projects'
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<Project> SearchProjects(int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchProjects(top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Project>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Project>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/projects'  (asynchronous)
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<Project>> SearchProjectsAsync(int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchProjects(top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Project>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Project>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/projects'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual Project CreateProject(CreateOrUpdateProject model, string expand = null)
+        {
+            var operation = Operations.CreateProject(model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Project>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Project>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/projects'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<Project> CreateProjectAsync(CreateOrUpdateProject model, string expand = null)
+        {
+            var operation = Operations.CreateProject(model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Project>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Project>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/projectssearch'
+        /// </summary>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <param name="projectType">a query parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<Project> SearchProjectsByPartialName(string query = null, bool? valuesqry = null, string projectType = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchProjectsByPartialName(query, valuesqry, projectType, top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Project>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Project>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/projectssearch'  (asynchronous)
+        /// </summary>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <param name="projectType">a query parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<Project>> SearchProjectsByPartialNameAsync(string query = null, bool? valuesqry = null, string projectType = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchProjectsByPartialName(query, valuesqry, projectType, top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Project>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Project>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/projectssearch'
+        /// </summary>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage SearchProjectsByPartialNameUsingPostMethod(string query = null, string valuesqry = null, string expand = null)
+        {
+            var operation = Operations.SearchProjectsByPartialNameUsingPostMethod(query, valuesqry, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/projectssearch'  (asynchronous)
+        /// </summary>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> SearchProjectsByPartialNameUsingPostMethodAsync(string query = null, string valuesqry = null, string expand = null)
+        {
+            var operation = Operations.SearchProjectsByPartialNameUsingPostMethod(query, valuesqry, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/projecttemplates'
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ProjectTemplate> SearchProjectTemplates(int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchProjectTemplates(top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ProjectTemplate>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ProjectTemplate>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/projecttemplates'  (asynchronous)
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ProjectTemplate>> SearchProjectTemplatesAsync(int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchProjectTemplates(top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ProjectTemplate>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ProjectTemplate>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/relationshiptypes'
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<RelationshipType> GetAllRelationshipTypes(int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetAllRelationshipTypes(top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<RelationshipType>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<RelationshipType>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/relationshiptypes'  (asynchronous)
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<RelationshipType>> GetAllRelationshipTypesAsync(int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetAllRelationshipTypes(top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<RelationshipType>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<RelationshipType>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/requirement/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual Requirement GetRequirement(string id, string expand = null)
+        {
+            var operation = Operations.GetRequirement(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Requirement>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Requirement>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/requirement/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<Requirement> GetRequirementAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetRequirement(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Requirement>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Requirement>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/requirement/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage UpdateExistingRequirementFields(string id, Operation operationModel)
+        {
+            var operation = Operations.UpdateExistingRequirementFields(id, operationModel);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/requirement/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> UpdateExistingRequirementFieldsAsync(string id, Operation operationModel)
+        {
+            var operation = Operations.UpdateExistingRequirementFields(id, operationModel);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/requirement/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual Requirement UpdateExistingRequirement(string id, CreateOrUpdateRequirement model, string expand = null)
+        {
+            var operation = Operations.UpdateExistingRequirement(id, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Requirement>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Requirement>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/requirement/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<Requirement> UpdateExistingRequirementAsync(string id, CreateOrUpdateRequirement model, string expand = null)
+        {
+            var operation = Operations.UpdateExistingRequirement(id, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Requirement>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Requirement>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/requirement/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteRequirement(string id)
+        {
+            var operation = Operations.DeleteRequirement(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/requirement/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteRequirementAsync(string id)
+        {
+            var operation = Operations.DeleteRequirement(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/requirement/{id}/allrelationships'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Relationship GetRequirementAllRelationships(string id)
+        {
+            var operation = Operations.GetRequirementAllRelationships(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/requirement/{id}/allrelationships'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Relationship> GetRequirementAllRelationshipsAsync(string id)
+        {
+            var operation = Operations.GetRequirementAllRelationships(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/requirement/{id}/attachments'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<RequirementAttachment> GetRequirementAttachments(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetRequirementAttachments(id, top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<RequirementAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<RequirementAttachment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/requirement/{id}/attachments'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<RequirementAttachment>> GetRequirementAttachmentsAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetRequirementAttachments(id, top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<RequirementAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<RequirementAttachment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/requirement/{id}/attachments'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<RequirementAttachment> CreateRequirementAttachment(string id)
+        {
+            var operation = Operations.CreateRequirementAttachment(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<RequirementAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<RequirementAttachment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/requirement/{id}/attachments'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<RequirementAttachment>> CreateRequirementAttachmentAsync(string id)
+        {
+            var operation = Operations.CreateRequirementAttachment(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<RequirementAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<RequirementAttachment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/requirement/{id}/children'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<Requirement> GetRequirementsChildren(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetRequirementsChildren(id, top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Requirement>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Requirement>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/requirement/{id}/children'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<Requirement>> GetRequirementsChildrenAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetRequirementsChildren(id, top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Requirement>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Requirement>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/requirement/{id}/comments'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ExternalSystemComment> GetExternalTicketComments(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetExternalTicketComments(id, top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ExternalSystemComment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ExternalSystemComment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/requirement/{id}/comments'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ExternalSystemComment>> GetExternalTicketCommentsAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetExternalTicketComments(id, top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ExternalSystemComment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ExternalSystemComment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/requirement/{id}/relationships'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Relationship GetRequirementRelationships(string id)
+        {
+            var operation = Operations.GetRequirementRelationships(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/requirement/{id}/relationships'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Relationship> GetRequirementRelationshipsAsync(string id)
+        {
+            var operation = Operations.GetRequirementRelationships(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a DELETE to '/api/requirement/{requirementId}/attachment/{id}'
+        /// </summary>
+        /// <param name="requirementId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteRequirementAttachment(string requirementId, string id)
+        {
+            var operation = Operations.DeleteRequirementAttachment(requirementId, id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/requirement/{requirementId}/attachment/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="requirementId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteRequirementAttachmentAsync(string requirementId, string id)
+        {
+            var operation = Operations.DeleteRequirementAttachment(requirementId, id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/requirementpackage/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual RequirementPackage GetRequirementPackage(string id, string expand = null)
+        {
+            var operation = Operations.GetRequirementPackage(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<RequirementPackage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<RequirementPackage>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/requirementpackage/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<RequirementPackage> GetRequirementPackageAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetRequirementPackage(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<RequirementPackage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<RequirementPackage>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/requirementpackage/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual RequirementPackage UpdateRequirementPackage(string id, CreateOrUpdateRequirementPackage model, string expand = null)
+        {
+            var operation = Operations.UpdateRequirementPackage(id, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<RequirementPackage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<RequirementPackage>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/requirementpackage/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<RequirementPackage> UpdateRequirementPackageAsync(string id, CreateOrUpdateRequirementPackage model, string expand = null)
+        {
+            var operation = Operations.UpdateRequirementPackage(id, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<RequirementPackage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<RequirementPackage>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/requirementpackage/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteRequirementPackage(string id)
+        {
+            var operation = Operations.DeleteRequirementPackage(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/requirementpackage/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteRequirementPackageAsync(string id)
+        {
+            var operation = Operations.DeleteRequirementPackage(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/requirementpackage/{id}/children'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<RequirementPackage> GetRequirementPackageChildren(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetRequirementPackageChildren(id, top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<RequirementPackage>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<RequirementPackage>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/requirementpackage/{id}/children'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<RequirementPackage>> GetRequirementPackageChildrenAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetRequirementPackageChildren(id, top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<RequirementPackage>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<RequirementPackage>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/requirementpackages'
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<RequirementPackage> GetRequirementPackages(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.GetRequirementPackages(tql, timeZone, top, skip, inlinecount, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<RequirementPackage>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<RequirementPackage>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/requirementpackages'  (asynchronous)
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<RequirementPackage>> GetRequirementPackagesAsync(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.GetRequirementPackages(tql, timeZone, top, skip, inlinecount, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<RequirementPackage>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<RequirementPackage>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/requirementpackages'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual RequirementPackage CreateRequirementPackage(CreateOrUpdateRequirementPackage model, string expand = null)
+        {
+            var operation = Operations.CreateRequirementPackage(model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<RequirementPackage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<RequirementPackage>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/requirementpackages'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<RequirementPackage> CreateRequirementPackageAsync(CreateOrUpdateRequirementPackage model, string expand = null)
+        {
+            var operation = Operations.CreateRequirementPackage(model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<RequirementPackage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<RequirementPackage>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/requirements'
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<Requirement> SearchRequirements(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchRequirements(tql, timeZone, top, skip, inlinecount, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Requirement>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Requirement>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/requirements'  (asynchronous)
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<Requirement>> SearchRequirementsAsync(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchRequirements(tql, timeZone, top, skip, inlinecount, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Requirement>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Requirement>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/requirements'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual Requirement CreateRequirement(CreateOrUpdateRequirement model, string expand = null)
+        {
+            var operation = Operations.CreateRequirement(model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Requirement>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Requirement>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/requirements'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<Requirement> CreateRequirementAsync(CreateOrUpdateRequirement model, string expand = null)
+        {
+            var operation = Operations.CreateRequirement(model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Requirement>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Requirement>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/script/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual Script GetScript(string id, string expand = null)
+        {
+            var operation = Operations.GetScript(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Script>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Script>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/script/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<Script> GetScriptAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetScript(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Script>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Script>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/script/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage UpdateScriptCustomField(string id, Operation operationModel)
+        {
+            var operation = Operations.UpdateScriptCustomField(id, operationModel);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/script/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> UpdateScriptCustomFieldAsync(string id, Operation operationModel)
+        {
+            var operation = Operations.UpdateScriptCustomField(id, operationModel);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/script/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual Script UpdateScript(string id, CreateOrUpdateScript model, string expand = null)
+        {
+            var operation = Operations.UpdateScript(id, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Script>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Script>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/script/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<Script> UpdateScriptAsync(string id, CreateOrUpdateScript model, string expand = null)
+        {
+            var operation = Operations.UpdateScript(id, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Script>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Script>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/script/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteScript(string id)
+        {
+            var operation = Operations.DeleteScript(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/script/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteScriptAsync(string id)
+        {
+            var operation = Operations.DeleteScript(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/script/{id}/allrelationships'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Relationship GetScriptAllRelationships(string id)
+        {
+            var operation = Operations.GetScriptAllRelationships(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/script/{id}/allrelationships'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Relationship> GetScriptAllRelationshipsAsync(string id)
+        {
+            var operation = Operations.GetScriptAllRelationships(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/script/{id}/attachments'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ScriptAttachment> GetScriptAttachments(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetScriptAttachments(id, top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ScriptAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ScriptAttachment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/script/{id}/attachments'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ScriptAttachment>> GetScriptAttachmentsAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetScriptAttachments(id, top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ScriptAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ScriptAttachment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/script/{id}/attachments'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<ScriptAttachment> CreateScriptAttachment(string id)
+        {
+            var operation = Operations.CreateScriptAttachment(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<ScriptAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<ScriptAttachment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/script/{id}/attachments'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<ScriptAttachment>> CreateScriptAttachmentAsync(string id)
+        {
+            var operation = Operations.CreateScriptAttachment(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<ScriptAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<ScriptAttachment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/script/{id}/relationships'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Relationship GetScriptRelationships(string id)
+        {
+            var operation = Operations.GetScriptRelationships(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/script/{id}/relationships'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Relationship> GetScriptRelationshipsAsync(string id)
+        {
+            var operation = Operations.GetScriptRelationships(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/script/{scriptId}/assignments'
+        /// </summary>
+        /// <param name="scriptId">a path parameter (no description)</param>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ScriptAssignment> GetAssignmentsForScript(string scriptId, string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.GetAssignmentsForScript(scriptId, tql, timeZone, top, skip, inlinecount, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ScriptAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ScriptAssignment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/script/{scriptId}/assignments'  (asynchronous)
+        /// </summary>
+        /// <param name="scriptId">a path parameter (no description)</param>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ScriptAssignment>> GetAssignmentsForScriptAsync(string scriptId, string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.GetAssignmentsForScript(scriptId, tql, timeZone, top, skip, inlinecount, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ScriptAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ScriptAssignment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/script/{scriptId}/assignments'
+        /// </summary>
+        /// <param name="scriptId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ScriptAssignment CreateAssignmentForScript(string scriptId, CreateOrUpdateScriptAssignment model, string expand = null)
+        {
+            var operation = Operations.CreateAssignmentForScript(scriptId, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptAssignment>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptAssignment>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/script/{scriptId}/assignments'  (asynchronous)
+        /// </summary>
+        /// <param name="scriptId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ScriptAssignment> CreateAssignmentForScriptAsync(string scriptId, CreateOrUpdateScriptAssignment model, string expand = null)
+        {
+            var operation = Operations.CreateAssignmentForScript(scriptId, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptAssignment>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptAssignment>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a DELETE to '/api/script/{scriptId}/attachment/{id}'
+        /// </summary>
+        /// <param name="scriptId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteScriptAttachment(string scriptId, string id)
+        {
+            var operation = Operations.DeleteScriptAttachment(scriptId, id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/script/{scriptId}/attachment/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="scriptId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteScriptAttachmentAsync(string scriptId, string id)
+        {
+            var operation = Operations.DeleteScriptAttachment(scriptId, id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptassignment/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ScriptAssignment GetScriptAssignment(string id, string expand = null)
+        {
+            var operation = Operations.GetScriptAssignment(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptAssignment>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptAssignment>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptassignment/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ScriptAssignment> GetScriptAssignmentAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetScriptAssignment(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptAssignment>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptAssignment>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/scriptassignment/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ScriptAssignment UpdateScriptAssignment(string id, CreateOrUpdateScriptAssignment model, string expand = null)
+        {
+            var operation = Operations.UpdateScriptAssignment(id, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptAssignment>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptAssignment>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/scriptassignment/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ScriptAssignment> UpdateScriptAssignmentAsync(string id, CreateOrUpdateScriptAssignment model, string expand = null)
+        {
+            var operation = Operations.UpdateScriptAssignment(id, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptAssignment>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptAssignment>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/scriptassignment/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteScriptAssignment(string id)
+        {
+            var operation = Operations.DeleteScriptAssignment(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/scriptassignment/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteScriptAssignmentAsync(string id)
+        {
+            var operation = Operations.DeleteScriptAssignment(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptassignment/{id}/allrelationships'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Relationship GetScriptAssignmentAllRelationships(string id)
+        {
+            var operation = Operations.GetScriptAssignmentAllRelationships(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptassignment/{id}/allrelationships'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Relationship> GetScriptAssignmentAllRelationshipsAsync(string id)
+        {
+            var operation = Operations.GetScriptAssignmentAllRelationships(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptassignment/{id}/relationships'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual Relationship GetScriptAssignmentRelationships(string id)
+        {
+            var operation = Operations.GetScriptAssignmentRelationships(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptassignment/{id}/relationships'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<Relationship> GetScriptAssignmentRelationshipsAsync(string id)
+        {
+            var operation = Operations.GetScriptAssignmentRelationships(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Relationship>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Relationship>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptassignment/{id}/runs'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ScriptRun> SearchScriptRunsForScriptAssignment(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchScriptRunsForScriptAssignment(id, top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ScriptRun>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ScriptRun>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptassignment/{id}/runs'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ScriptRun>> SearchScriptRunsForScriptAssignmentAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchScriptRunsForScriptAssignment(id, top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ScriptRun>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ScriptRun>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/scriptassignment/{id}/runs'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ScriptRun CreateScriptRunForScriptAssignment(string id, CreateNewRun model, string expand = null)
+        {
+            var operation = Operations.CreateScriptRunForScriptAssignment(id, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptRun>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptRun>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/scriptassignment/{id}/runs'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ScriptRun> CreateScriptRunForScriptAssignmentAsync(string id, CreateNewRun model, string expand = null)
+        {
+            var operation = Operations.CreateScriptRunForScriptAssignment(id, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptRun>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptRun>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptassignments'
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ScriptAssignment> SearchScriptAssignments(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchScriptAssignments(tql, timeZone, top, skip, inlinecount, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ScriptAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ScriptAssignment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptassignments'  (asynchronous)
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ScriptAssignment>> SearchScriptAssignmentsAsync(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchScriptAssignments(tql, timeZone, top, skip, inlinecount, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ScriptAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ScriptAssignment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/scriptassignments'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ScriptAssignment CreateScriptAssignment(CreateOrUpdateScriptAssignment model, string expand = null)
+        {
+            var operation = Operations.CreateScriptAssignment(model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptAssignment>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptAssignment>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/scriptassignments'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ScriptAssignment> CreateScriptAssignmentAsync(CreateOrUpdateScriptAssignment model, string expand = null)
+        {
+            var operation = Operations.CreateScriptAssignment(model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptAssignment>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptAssignment>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptpackage/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ScriptPackage GetScriptPackage(string id, string expand = null)
+        {
+            var operation = Operations.GetScriptPackage(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptPackage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptPackage>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptpackage/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ScriptPackage> GetScriptPackageAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetScriptPackage(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptPackage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptPackage>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/scriptpackage/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ScriptPackage UpdateScriptPackage(string id, CreateOrUpdateScriptPackage model, string expand = null)
+        {
+            var operation = Operations.UpdateScriptPackage(id, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptPackage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptPackage>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/scriptpackage/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ScriptPackage> UpdateScriptPackageAsync(string id, CreateOrUpdateScriptPackage model, string expand = null)
+        {
+            var operation = Operations.UpdateScriptPackage(id, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptPackage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptPackage>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/scriptpackage/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteScriptPackage(string id)
+        {
+            var operation = Operations.DeleteScriptPackage(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/scriptpackage/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteScriptPackageAsync(string id)
+        {
+            var operation = Operations.DeleteScriptPackage(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptpackage/{id}/children'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ScriptPackage> GetScriptPackagesChildren(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetScriptPackagesChildren(id, top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ScriptPackage>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ScriptPackage>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptpackage/{id}/children'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ScriptPackage>> GetScriptPackagesChildrenAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetScriptPackagesChildren(id, top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ScriptPackage>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ScriptPackage>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptpackages'
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ScriptPackage> SearchScriptPackages(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchScriptPackages(tql, timeZone, top, skip, inlinecount, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ScriptPackage>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ScriptPackage>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptpackages'  (asynchronous)
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ScriptPackage>> SearchScriptPackagesAsync(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchScriptPackages(tql, timeZone, top, skip, inlinecount, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ScriptPackage>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ScriptPackage>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/scriptpackages'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ScriptPackage CreateScriptPackage(CreateOrUpdateScriptPackage model, string expand = null)
+        {
+            var operation = Operations.CreateScriptPackage(model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptPackage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptPackage>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/scriptpackages'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ScriptPackage> CreateScriptPackageAsync(CreateOrUpdateScriptPackage model, string expand = null)
+        {
+            var operation = Operations.CreateScriptPackage(model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptPackage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptPackage>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptrun/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ScriptRun GetScriptRun(string id, string expand = null)
+        {
+            var operation = Operations.GetScriptRun(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptRun>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptRun>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptrun/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ScriptRun> GetScriptRunAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetScriptRun(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptRun>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptRun>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/scriptrun/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage UpdateScriptRunFields(string id, Operation operationModel)
+        {
+            var operation = Operations.UpdateScriptRunFields(id, operationModel);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/scriptrun/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="operationModel">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> UpdateScriptRunFieldsAsync(string id, Operation operationModel)
+        {
+            var operation = Operations.UpdateScriptRunFields(id, operationModel);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/scriptrun/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual ScriptRun UpdateScriptRun(string id, UpdateScriptRun model, string expand = null)
+        {
+            var operation = Operations.UpdateScriptRun(id, model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptRun>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptRun>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/scriptrun/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<ScriptRun> UpdateScriptRunAsync(string id, UpdateScriptRun model, string expand = null)
+        {
+            var operation = Operations.UpdateScriptRun(id, model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<ScriptRun>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<ScriptRun>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/scriptrun/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteScriptRun(string id)
+        {
+            var operation = Operations.DeleteScriptRun(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/scriptrun/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteScriptRunAsync(string id)
+        {
+            var operation = Operations.DeleteScriptRun(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptruns'
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<ScriptRun> SearchScriptRuns(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchScriptRuns(tql, timeZone, top, skip, inlinecount, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ScriptRun>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ScriptRun>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/scriptruns'  (asynchronous)
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<ScriptRun>> SearchScriptRunsAsync(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchScriptRuns(tql, timeZone, top, skip, inlinecount, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<ScriptRun>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<ScriptRun>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/scripts'
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<Script> SearchScripts(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchScripts(tql, timeZone, top, skip, inlinecount, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Script>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Script>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/scripts'  (asynchronous)
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<Script>> SearchScriptsAsync(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null)
+        {
+            var operation = Operations.SearchScripts(tql, timeZone, top, skip, inlinecount, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Script>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Script>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/scripts'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual Script CreateScript(CreateOrUpdateScript model, string expand = null)
+        {
+            var operation = Operations.CreateScript(model, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<Script>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Script>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/scripts'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<Script> CreateScriptAsync(CreateOrUpdateScript model, string expand = null)
+        {
+            var operation = Operations.CreateScript(model, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<Script>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<Script>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/search'
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="indexName">a query parameter (no description)</param>
+        /// <param name="format">a query parameter (no description)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage Search(string tql = null, string indexName = null, string format = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null)
+        {
+            var operation = Operations.Search(tql, indexName, format, timeZone, top, skip, inlinecount);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/search'  (asynchronous)
+        /// </summary>
+        /// <param name="tql">a query parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="indexName">a query parameter (no description)</param>
+        /// <param name="format">a query parameter (no description)</param>
+        /// <param name="timeZone">a query parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> SearchAsync(string tql = null, string indexName = null, string format = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null)
+        {
+            var operation = Operations.Search(tql, indexName, format, timeZone, top, skip, inlinecount);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/search'
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="tql">a form parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a form parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage SearchUsingPostMethod(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null)
+        {
+            var operation = Operations.SearchUsingPostMethod(tql, timeZone, top, skip, inlinecount);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/search'  (asynchronous)
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="tql">a form parameter (TQL query to execute, including an optional ORDER BY statement to sort the results (see TQL API feature topic in Knowledgebase for more details).)</param>
+        /// <param name="timeZone">a form parameter (Time Zone in which date and time values and calculates should be evaluated (see TimeZone API feature topic in Knowledgebase for more details).)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> SearchUsingPostMethodAsync(string tql = null, string timeZone = null, int? top = null, int? skip = null, string inlinecount = null)
+        {
+            var operation = Operations.SearchUsingPostMethod(tql, timeZone, top, skip, inlinecount);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/search/index/{indexName}'
+        /// </summary>
+        /// <param name="indexName">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual IndexMetadata GetSearchIndex(string indexName)
+        {
+            var operation = Operations.GetSearchIndex(indexName);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<IndexMetadata>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<IndexMetadata>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/search/index/{indexName}'  (asynchronous)
+        /// </summary>
+        /// <param name="indexName">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<IndexMetadata> GetSearchIndexAsync(string indexName)
+        {
+            var operation = Operations.GetSearchIndex(indexName);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<IndexMetadata>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<IndexMetadata>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/search/indexes'
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<IndexMetadata> GetSearchIndexes(int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetSearchIndexes(top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<IndexMetadata>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<IndexMetadata>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/search/indexes'  (asynchronous)
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<IndexMetadata>> GetSearchIndexesAsync(int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetSearchIndexes(top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<IndexMetadata>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<IndexMetadata>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/stepresult/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual StepResult GetStepResult(string id, string expand = null)
+        {
+            var operation = Operations.GetStepResult(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<StepResult>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<StepResult>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/stepresult/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<StepResult> GetStepResultAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetStepResult(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<StepResult>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<StepResult>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/stepresult/{id}/attachments'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<StepResultAttachment> GetStepResultAttachments(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetStepResultAttachments(id, top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<StepResultAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<StepResultAttachment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/stepresult/{id}/attachments'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<StepResultAttachment>> GetStepResultAttachmentsAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetStepResultAttachments(id, top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<StepResultAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<StepResultAttachment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/stepresult/{id}/attachments'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<StepResultAttachment> CreateStepResultAttachment(string id)
+        {
+            var operation = Operations.CreateStepResultAttachment(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<StepResultAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<StepResultAttachment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/stepresult/{id}/attachments'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<StepResultAttachment>> CreateStepResultAttachmentAsync(string id)
+        {
+            var operation = Operations.CreateStepResultAttachment(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<StepResultAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<StepResultAttachment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/stepresult/{id}/incidents'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<StepRunResultIncident> GetStepResultIncidentLinks(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetStepResultIncidentLinks(id, top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<StepRunResultIncident>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<StepRunResultIncident>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/stepresult/{id}/incidents'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<StepRunResultIncident>> GetStepResultIncidentLinksAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetStepResultIncidentLinks(id, top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<StepRunResultIncident>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<StepRunResultIncident>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/stepresult/{id}/incidents'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual StepRunResultIncident CreateStepResultIncidentLink(string id, CreateStepRunResultIncident model)
+        {
+            var operation = Operations.CreateStepResultIncidentLink(id, model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<StepRunResultIncident>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<StepRunResultIncident>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/stepresult/{id}/incidents'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<StepRunResultIncident> CreateStepResultIncidentLinkAsync(string id, CreateStepRunResultIncident model)
+        {
+            var operation = Operations.CreateStepResultIncidentLink(id, model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<StepRunResultIncident>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<StepRunResultIncident>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a DELETE to '/api/stepresult/{stepResultId}/attachment/{id}'
+        /// </summary>
+        /// <param name="stepResultId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteStepResultAttachment(string stepResultId, string id)
+        {
+            var operation = Operations.DeleteStepResultAttachment(stepResultId, id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/stepresult/{stepResultId}/attachment/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="stepResultId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteStepResultAttachmentAsync(string stepResultId, string id)
+        {
+            var operation = Operations.DeleteStepResultAttachment(stepResultId, id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/stepresult/{stepResultId}/incident/{id}'
+        /// </summary>
+        /// <param name="stepResultId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual StepRunResultIncident GetStepResultIncidentLink(string stepResultId, string id)
+        {
+            var operation = Operations.GetStepResultIncidentLink(stepResultId, id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<StepRunResultIncident>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<StepRunResultIncident>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/stepresult/{stepResultId}/incident/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="stepResultId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<StepRunResultIncident> GetStepResultIncidentLinkAsync(string stepResultId, string id)
+        {
+            var operation = Operations.GetStepResultIncidentLink(stepResultId, id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<StepRunResultIncident>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<StepRunResultIncident>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/stepresult/{stepResultId}/incident/{id}'
+        /// </summary>
+        /// <param name="stepResultId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteStepResultIncidentLink(string stepResultId, string id)
+        {
+            var operation = Operations.DeleteStepResultIncidentLink(stepResultId, id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/stepresult/{stepResultId}/incident/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="stepResultId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteStepResultIncidentLinkAsync(string stepResultId, string id)
+        {
+            var operation = Operations.DeleteStepResultIncidentLink(stepResultId, id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/swagger'
+        /// </summary>
+        /// <returns></returns>
+        public virtual SwaggerResourceListing GetSwaggerAPIList()
+        {
+            var operation = Operations.GetSwaggerAPIList();
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<SwaggerResourceListing>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<SwaggerResourceListing>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/swagger'  (asynchronous)
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task<SwaggerResourceListing> GetSwaggerAPIListAsync()
+        {
+            var operation = Operations.GetSwaggerAPIList();
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<SwaggerResourceListing>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<SwaggerResourceListing>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/swagger/api'
+        /// </summary>
+        /// <returns></returns>
+        public virtual HttpResponseMessage GetSwaggerForCoreAPI()
+        {
+            var operation = Operations.GetSwaggerForCoreAPI();
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/swagger/api'  (asynchronous)
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> GetSwaggerForCoreAPIAsync()
+        {
+            var operation = Operations.GetSwaggerForCoreAPI();
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/swagger/v2'
+        /// </summary>
+        /// <returns></returns>
+        //      public virtual HttpResponseMessage GetSwaggerAPIList()
+        //      {
+        //          var operation = Operations.GetSwaggerAPIList();
+        //	var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+        //	EnsureSuccess(response);
+        //	return response;
+        //}
+
+        ///// <summary>
+        //      /// Sends a GET to '/api/swagger/v2'  (asynchronous)
+        //      /// </summary>
+        //      /// <returns></returns>
+        //      public virtual async Task<HttpResponseMessage> GetSwaggerAPIListAsync()
+        //      {
+        //          var operation = Operations.GetSwaggerAPIList();
+        //	var response = await _client.SendAsync(operation.BuildRequest(_client));
+        //	EnsureSuccess(response);
+        //	return response;
+
+        //}
+
+
+        /// <summary>
+        /// Sends a GET to '/api/synchronizer/{id}/schedules'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<SynchronizationScheduleInfo> GetSynchronizerSchedules(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetSynchronizerSchedules(id, top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<SynchronizationScheduleInfo>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<SynchronizationScheduleInfo>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/synchronizer/{id}/schedules'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<SynchronizationScheduleInfo>> GetSynchronizerSchedulesAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetSynchronizerSchedules(id, top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<SynchronizationScheduleInfo>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<SynchronizationScheduleInfo>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/synchronizer/{id}/schedules'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual SynchronizationScheduleInfo CreateSynchronizerSchedule(string id, CreateOrUpdateSynchronizationScheduleInfo model)
+        {
+            var operation = Operations.CreateSynchronizerSchedule(id, model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<SynchronizationScheduleInfo>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<SynchronizationScheduleInfo>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/synchronizer/{id}/schedules'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<SynchronizationScheduleInfo> CreateSynchronizerScheduleAsync(string id, CreateOrUpdateSynchronizationScheduleInfo model)
+        {
+            var operation = Operations.CreateSynchronizerSchedule(id, model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<SynchronizationScheduleInfo>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<SynchronizationScheduleInfo>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/synchronizer/{linkId}/schedule/{id}'
+        /// </summary>
+        /// <param name="linkId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual SynchronizationScheduleInfo GetLinkSynchronizationSchedule(string linkId, string id)
+        {
+            var operation = Operations.GetLinkSynchronizationSchedule(linkId, id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<SynchronizationScheduleInfo>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<SynchronizationScheduleInfo>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/synchronizer/{linkId}/schedule/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="linkId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<SynchronizationScheduleInfo> GetLinkSynchronizationScheduleAsync(string linkId, string id)
+        {
+            var operation = Operations.GetLinkSynchronizationSchedule(linkId, id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<SynchronizationScheduleInfo>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<SynchronizationScheduleInfo>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/synchronizer/{linkId}/schedule/{id}'
+        /// </summary>
+        /// <param name="linkId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual SynchronizationScheduleInfo PatchLinkSynchronizationSchedule(string linkId, string id, CreateOrUpdateSynchronizationScheduleInfo model)
+        {
+            var operation = Operations.PatchLinkSynchronizationSchedule(linkId, id, model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<SynchronizationScheduleInfo>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<SynchronizationScheduleInfo>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/synchronizer/{linkId}/schedule/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="linkId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<SynchronizationScheduleInfo> PatchLinkSynchronizationScheduleAsync(string linkId, string id, CreateOrUpdateSynchronizationScheduleInfo model)
+        {
+            var operation = Operations.PatchLinkSynchronizationSchedule(linkId, id, model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<SynchronizationScheduleInfo>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<SynchronizationScheduleInfo>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/synchronizer/{linkId}/schedule/{id}'
+        /// </summary>
+        /// <param name="linkId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual SynchronizationScheduleInfo UpdateLinkSynchronizationSchedule(string linkId, string id, CreateOrUpdateSynchronizationScheduleInfo model)
+        {
+            var operation = Operations.UpdateLinkSynchronizationSchedule(linkId, id, model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<SynchronizationScheduleInfo>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<SynchronizationScheduleInfo>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/synchronizer/{linkId}/schedule/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="linkId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<SynchronizationScheduleInfo> UpdateLinkSynchronizationScheduleAsync(string linkId, string id, CreateOrUpdateSynchronizationScheduleInfo model)
+        {
+            var operation = Operations.UpdateLinkSynchronizationSchedule(linkId, id, model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<SynchronizationScheduleInfo>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<SynchronizationScheduleInfo>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/synchronizer/{linkId}/schedule/{id}'
+        /// </summary>
+        /// <param name="linkId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteLinkSynchronizationSchedule(string linkId, string id)
+        {
+            var operation = Operations.DeleteLinkSynchronizationSchedule(linkId, id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/synchronizer/{linkId}/schedule/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="linkId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteLinkSynchronizationScheduleAsync(string linkId, string id)
+        {
+            var operation = Operations.DeleteLinkSynchronizationSchedule(linkId, id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a POST to '/api/synchronizer/{linkId}/schedule/{id}/run'
+        /// </summary>
+        /// <param name="linkId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage StartScheduleSynchronizing(string linkId, string id)
+        {
+            var operation = Operations.StartScheduleSynchronizing(linkId, id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/synchronizer/{linkId}/schedule/{id}/run'  (asynchronous)
+        /// </summary>
+        /// <param name="linkId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> StartScheduleSynchronizingAsync(string linkId, string id)
+        {
+            var operation = Operations.StartScheduleSynchronizing(linkId, id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/systemevent/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual SystemEvent GetSystemEvent(string id)
+        {
+            var operation = Operations.GetSystemEvent(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<SystemEvent>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<SystemEvent>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/systemevent/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<SystemEvent> GetSystemEventAsync(string id)
+        {
+            var operation = Operations.GetSystemEvent(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<SystemEvent>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<SystemEvent>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/systemevent/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteSystemEvent(string id)
+        {
+            var operation = Operations.DeleteSystemEvent(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/systemevent/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteSystemEventAsync(string id)
+        {
+            var operation = Operations.DeleteSystemEvent(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/systemevents'
+        /// </summary>
+        /// <param name="fileName">a query parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<SystemEvent> GetSystemEvents(string fileName = null, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetSystemEvents(fileName, top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<SystemEvent>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<SystemEvent>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/systemevents'  (asynchronous)
+        /// </summary>
+        /// <param name="fileName">a query parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<SystemEvent>> GetSystemEventsAsync(string fileName = null, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetSystemEvents(fileName, top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<SystemEvent>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<SystemEvent>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/systemevents'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual SystemEvent AddSystemEvent(CreateOrUpdateSystemEvent model)
+        {
+            var operation = Operations.AddSystemEvent(model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<SystemEvent>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<SystemEvent>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/systemevents'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<SystemEvent> AddSystemEventAsync(CreateOrUpdateSystemEvent model)
+        {
+            var operation = Operations.AddSystemEvent(model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<SystemEvent>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<SystemEvent>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/systemevents'
+        /// </summary>
+        /// <param name="linkId">a query parameter (no description)</param>
+        /// <param name="documentId">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteSystemEventsForLink(string linkId = null, string documentId = null)
+        {
+            var operation = Operations.DeleteSystemEventsForLink(linkId, documentId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/systemevents'  (asynchronous)
+        /// </summary>
+        /// <param name="linkId">a query parameter (no description)</param>
+        /// <param name="documentId">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteSystemEventsForLinkAsync(string linkId = null, string documentId = null)
+        {
+            var operation = Operations.DeleteSystemEventsForLink(linkId, documentId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/systeminfo'
+        /// </summary>
+        /// <returns></returns>
+        public virtual SystemInfo GetSystemInformation()
+        {
+            var operation = Operations.GetSystemInformation();
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<SystemInfo>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<SystemInfo>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/systeminfo'  (asynchronous)
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task<SystemInfo> GetSystemInformationAsync()
+        {
+            var operation = Operations.GetSystemInformation();
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<SystemInfo>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<SystemInfo>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/temporaryattachmentset/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<TemporaryAttachment> GetTemporaryAttachmentsForSet(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetTemporaryAttachmentsForSet(id, top, skip, inlinecount, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<TemporaryAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<TemporaryAttachment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/temporaryattachmentset/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<TemporaryAttachment>> GetTemporaryAttachmentsForSetAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetTemporaryAttachmentsForSet(id, top, skip, inlinecount, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<TemporaryAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<TemporaryAttachment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/temporaryattachmentset/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<TemporaryAttachment> UploadAttachments(string id)
+        {
+            var operation = Operations.UploadAttachments(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<TemporaryAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<TemporaryAttachment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/temporaryattachmentset/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<TemporaryAttachment>> UploadAttachmentsAsync(string id)
+        {
+            var operation = Operations.UploadAttachments(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<TemporaryAttachment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<TemporaryAttachment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a DELETE to '/api/temporaryattachmentset/{setId}/attachment/{id}'
+        /// </summary>
+        /// <param name="setId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteTemporaryAttachmentFromSet(string setId, string id)
+        {
+            var operation = Operations.DeleteTemporaryAttachmentFromSet(setId, id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/temporaryattachmentset/{setId}/attachment/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="setId">a path parameter (no description)</param>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteTemporaryAttachmentFromSetAsync(string setId, string id)
+        {
+            var operation = Operations.DeleteTemporaryAttachmentFromSet(setId, id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a POST to '/api/temporaryattachmentsets'
+        /// </summary>
+        /// <returns></returns>
+        public virtual TemporaryAttachmentSets CreateTemporaryAttachmentSet()
+        {
+            var operation = Operations.CreateTemporaryAttachmentSet();
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<TemporaryAttachmentSets>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<TemporaryAttachmentSets>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/temporaryattachmentsets'  (asynchronous)
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task<TemporaryAttachmentSets> CreateTemporaryAttachmentSetAsync()
+        {
+            var operation = Operations.CreateTemporaryAttachmentSet();
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<TemporaryAttachmentSets>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<TemporaryAttachmentSets>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/timezone'
+        /// </summary>
+        /// <param name="id">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual TimeZoneInfo GetTimezoneInformation(string id = null)
+        {
+            var operation = Operations.GetTimezoneInformation(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<TimeZoneInfo>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<TimeZoneInfo>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/timezone'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<TimeZoneInfo> GetTimezoneInformationAsync(string id = null)
+        {
+            var operation = Operations.GetTimezoneInformation(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<TimeZoneInfo>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<TimeZoneInfo>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/user/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual User GetUser(string id, string expand = null)
+        {
+            var operation = Operations.GetUser(id, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<User>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<User>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/user/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<User> GetUserAsync(string id, string expand = null)
+        {
+            var operation = Operations.GetUser(id, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<User>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<User>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/user/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual User UpdateUser(string id, CreateOrUpdateUser model)
+        {
+            var operation = Operations.UpdateUser(id, model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<User>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<User>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/user/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<User> UpdateUserAsync(string id, CreateOrUpdateUser model)
+        {
+            var operation = Operations.UpdateUser(id, model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<User>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<User>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/user/{id}'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteUser(string id)
+        {
+            var operation = Operations.DeleteUser(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/user/{id}'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteUserAsync(string id)
+        {
+            var operation = Operations.DeleteUser(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/user/{id}/groups'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<Group> GetUsersGroups(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetUsersGroups(id, top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Group>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Group>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/user/{id}/groups'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<Group>> GetUsersGroupsAsync(string id, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.GetUsersGroups(id, top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Group>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Group>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/user/{id}/groups'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<Group> SetGroupMembershipsForUser(string id, GroupMemberships model, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SetGroupMembershipsForUser(id, model, top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Group>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Group>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/user/{id}/groups'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<Group>> SetGroupMembershipsForUserAsync(string id, GroupMemberships model, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SetGroupMembershipsForUser(id, model, top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<Group>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<Group>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a PUT to '/api/user/{id}/password'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage SetUserPassword(string id, SetPassword model)
+        {
+            var operation = Operations.SetUserPassword(id, model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/user/{id}/password'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> SetUserPasswordAsync(string id, SetPassword model)
+        {
+            var operation = Operations.SetUserPassword(id, model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/user/{id}/permissions/global'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<PermissionAssignment> GetGlobalUserPermissions(string id)
+        {
+            var operation = Operations.GetGlobalUserPermissions(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<PermissionAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<PermissionAssignment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/user/{id}/permissions/global'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<PermissionAssignment>> GetGlobalUserPermissionsAsync(string id)
+        {
+            var operation = Operations.GetGlobalUserPermissions(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<PermissionAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<PermissionAssignment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/user/{id}/permissions/global'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="assignments">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<PermissionAssignment> SetGlobalPermissionsForUser(string id, List<CreateOrUpdatePermissionAssignment> assignments)
+        {
+            var operation = Operations.SetGlobalPermissionsForUser(id, assignments);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<PermissionAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<PermissionAssignment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/user/{id}/permissions/global'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <param name="assignments">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<PermissionAssignment>> SetGlobalPermissionsForUserAsync(string id, List<CreateOrUpdatePermissionAssignment> assignments)
+        {
+            var operation = Operations.SetGlobalPermissionsForUser(id, assignments);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<PermissionAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<PermissionAssignment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/user/{id}/permissions/projects'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual UserPermissionProjects GetProjectUserPermissionLinks(string id)
+        {
+            var operation = Operations.GetProjectUserPermissionLinks(id);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<UserPermissionProjects>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<UserPermissionProjects>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/user/{id}/permissions/projects'  (asynchronous)
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<UserPermissionProjects> GetProjectUserPermissionLinksAsync(string id)
+        {
+            var operation = Operations.GetProjectUserPermissionLinks(id);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<UserPermissionProjects>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<UserPermissionProjects>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a POST to '/api/user/{userId}/mailmessages'
+        /// </summary>
+        /// <param name="userId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual QueuedMessage EnqueueMailMessage(string userId, Message model)
+        {
+            var operation = Operations.EnqueueMailMessage(userId, model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueuedMessage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueuedMessage>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/user/{userId}/mailmessages'  (asynchronous)
+        /// </summary>
+        /// <param name="userId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<QueuedMessage> EnqueueMailMessageAsync(string userId, Message model)
+        {
+            var operation = Operations.EnqueueMailMessage(userId, model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueuedMessage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueuedMessage>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/user/{userId}/notification/{notificationId}'
+        /// </summary>
+        /// <param name="userId">a path parameter (no description)</param>
+        /// <param name="notificationId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual NotificationMessage GetNotificationMessage(string userId, string notificationId)
+        {
+            var operation = Operations.GetNotificationMessage(userId, notificationId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<NotificationMessage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<NotificationMessage>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/user/{userId}/notification/{notificationId}'  (asynchronous)
+        /// </summary>
+        /// <param name="userId">a path parameter (no description)</param>
+        /// <param name="notificationId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<NotificationMessage> GetNotificationMessageAsync(string userId, string notificationId)
+        {
+            var operation = Operations.GetNotificationMessage(userId, notificationId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<NotificationMessage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<NotificationMessage>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/user/{userId}/notification/{notificationId}'
+        /// </summary>
+        /// <param name="userId">a path parameter (no description)</param>
+        /// <param name="notificationId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual NotificationMessage PatchNotificationMessage(string userId, string notificationId, UpdateNotification model)
+        {
+            var operation = Operations.PatchNotificationMessage(userId, notificationId, model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<NotificationMessage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<NotificationMessage>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PATCH to '/api/user/{userId}/notification/{notificationId}'  (asynchronous)
+        /// </summary>
+        /// <param name="userId">a path parameter (no description)</param>
+        /// <param name="notificationId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<NotificationMessage> PatchNotificationMessageAsync(string userId, string notificationId, UpdateNotification model)
+        {
+            var operation = Operations.PatchNotificationMessage(userId, notificationId, model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<NotificationMessage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<NotificationMessage>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/user/{userId}/notification/{notificationId}'
+        /// </summary>
+        /// <param name="userId">a path parameter (no description)</param>
+        /// <param name="notificationId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void DeleteNotificationMessage(string userId, string notificationId)
+        {
+            var operation = Operations.DeleteNotificationMessage(userId, notificationId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/user/{userId}/notification/{notificationId}'  (asynchronous)
+        /// </summary>
+        /// <param name="userId">a path parameter (no description)</param>
+        /// <param name="notificationId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task DeleteNotificationMessageAsync(string userId, string notificationId)
+        {
+            var operation = Operations.DeleteNotificationMessage(userId, notificationId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/user/{userId}/notifications'
+        /// </summary>
+        /// <param name="userId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual QueryResults<NotificationMessage> GetNotificationsMessagesForUser(string userId)
+        {
+            var operation = Operations.GetNotificationsMessagesForUser(userId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<NotificationMessage>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<NotificationMessage>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/user/{userId}/notifications'  (asynchronous)
+        /// </summary>
+        /// <param name="userId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<NotificationMessage>> GetNotificationsMessagesForUserAsync(string userId)
+        {
+            var operation = Operations.GetNotificationsMessagesForUser(userId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<NotificationMessage>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<NotificationMessage>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/user/{userId}/notifications'
+        /// </summary>
+        /// <param name="userId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual NotificationMessage CreateNotificationMessage(string userId, CreateNotification model)
+        {
+            var operation = Operations.CreateNotificationMessage(userId, model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<NotificationMessage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<NotificationMessage>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/user/{userId}/notifications'  (asynchronous)
+        /// </summary>
+        /// <param name="userId">a path parameter (no description)</param>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<NotificationMessage> CreateNotificationMessageAsync(string userId, CreateNotification model)
+        {
+            var operation = Operations.CreateNotificationMessage(userId, model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<NotificationMessage>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<NotificationMessage>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/user/{userId}/notifications'
+        /// </summary>
+        /// <param name="userId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual void ClearNotificationMessagesForUser(string userId)
+        {
+            var operation = Operations.ClearNotificationMessagesForUser(userId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+
+        }
+
+        /// <summary>
+        /// Sends a DELETE to '/api/user/{userId}/notifications'  (asynchronous)
+        /// </summary>
+        /// <param name="userId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task ClearNotificationMessagesForUserAsync(string userId)
+        {
+            var operation = Operations.ClearNotificationMessagesForUser(userId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/user/{userId}/permissions/project/{projectId}'
+        /// </summary>
+        /// <param name="userId">a path parameter (no description)</param>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<PermissionAssignment> GetUserProjectPermissions(string userId, string projectId)
+        {
+            var operation = Operations.GetUserProjectPermissions(userId, projectId);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<PermissionAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<PermissionAssignment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/user/{userId}/permissions/project/{projectId}'  (asynchronous)
+        /// </summary>
+        /// <param name="userId">a path parameter (no description)</param>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<PermissionAssignment>> GetUserProjectPermissionsAsync(string userId, string projectId)
+        {
+            var operation = Operations.GetUserProjectPermissions(userId, projectId);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<PermissionAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<PermissionAssignment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/user/{userId}/permissions/project/{projectId}'
+        /// </summary>
+        /// <param name="userId">a path parameter (no description)</param>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="assignments">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual List<PermissionAssignment> SetUserProjectPermissions(string userId, string projectId, List<CreateOrUpdatePermissionAssignment> assignments)
+        {
+            var operation = Operations.SetUserProjectPermissions(userId, projectId, assignments);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<List<PermissionAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<PermissionAssignment>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a PUT to '/api/user/{userId}/permissions/project/{projectId}'  (asynchronous)
+        /// </summary>
+        /// <param name="userId">a path parameter (no description)</param>
+        /// <param name="projectId">a path parameter (no description)</param>
+        /// <param name="assignments">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<List<PermissionAssignment>> SetUserProjectPermissionsAsync(string userId, string projectId, List<CreateOrUpdatePermissionAssignment> assignments)
+        {
+            var operation = Operations.SetUserProjectPermissions(userId, projectId, assignments);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<List<PermissionAssignment>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<List<PermissionAssignment>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/usergroupsearch'
+        /// </summary>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual QueryResults<UserGroup> SearchUserOrGroupByPartialName(string query = null, bool? valuesqry = null)
+        {
+            var operation = Operations.SearchUserOrGroupByPartialName(query, valuesqry);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<UserGroup>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<UserGroup>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/usergroupsearch'  (asynchronous)
+        /// </summary>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<UserGroup>> SearchUserOrGroupByPartialNameAsync(string query = null, bool? valuesqry = null)
+        {
+            var operation = Operations.SearchUserOrGroupByPartialName(query, valuesqry);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<UserGroup>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<UserGroup>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/usergroupsearch'
+        /// </summary>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage SearchUserOrGroupByPartialNameUsingPostMethod(string query = null, string valuesqry = null)
+        {
+            var operation = Operations.SearchUserOrGroupByPartialNameUsingPostMethod(query, valuesqry);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/usergroupsearch'  (asynchronous)
+        /// </summary>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> SearchUserOrGroupByPartialNameUsingPostMethodAsync(string query = null, string valuesqry = null)
+        {
+            var operation = Operations.SearchUserOrGroupByPartialNameUsingPostMethod(query, valuesqry);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/users'
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<User> SearchUsers(int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchUsers(top, skip, inlinecount, expand, filter, orderby);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<User>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<User>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/users'  (asynchronous)
+        /// </summary>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<User>> SearchUsersAsync(int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
+        {
+            var operation = Operations.SearchUsers(top, skip, inlinecount, expand, filter, orderby);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<User>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<User>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/users'
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual User CreateUser(CreateOrUpdateUser model)
+        {
+            var operation = Operations.CreateUser(model);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<User>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<User>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/users'  (asynchronous)
+        /// </summary>
+        /// <param name="model">a body parameter (no description)</param>
+        /// <returns></returns>
+        public virtual async Task<User> CreateUserAsync(CreateOrUpdateUser model)
+        {
+            var operation = Operations.CreateUser(model);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<User>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<User>(postTask.Result);
+                });
+            return result;
+
+        }
+
+
+        /// <summary>
+        /// Sends a GET to '/api/userssearch'
+        /// </summary>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual QueryResults<User> SearchUsersByPartialName(string query = null, bool? valuesqry = null, string expand = null)
+        {
+            var operation = Operations.SearchUsersByPartialName(query, valuesqry, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            var result = response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<User>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<User>>(postTask.Result);
+                });
+            return result.Result;
+
+        }
+
+        /// <summary>
+        /// Sends a GET to '/api/userssearch'  (asynchronous)
+        /// </summary>
+        /// <param name="query">a query parameter (no description)</param>
+        /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <returns></returns>
+        public virtual async Task<QueryResults<User>> SearchUsersByPartialNameAsync(string query = null, bool? valuesqry = null, string expand = null)
+        {
+            var operation = Operations.SearchUsersByPartialName(query, valuesqry, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            var result = await response.Content.ReadAsStringAsync()
+                .ContinueWith<QueryResults<User>>(postTask =>
+                {
+                    return JsonConvert.DeserializeObject<QueryResults<User>>(postTask.Result);
+                });
+            return result;
+
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/userssearch'
+        /// </summary>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <returns></returns>
+        public virtual HttpResponseMessage SearchUsersByPartialNameUsingPostMethod(string query = null, string valuesqry = null, string expand = null)
+        {
+            var operation = Operations.SearchUsersByPartialNameUsingPostMethod(query, valuesqry, expand);
+            var response = _client.SendAsync(operation.BuildRequest(_client)).Result;
+            EnsureSuccess(response);
+            return response;
+        }
+
+        /// <summary>
+        /// Sends a POST to '/api/userssearch'  (asynchronous)
+        /// </summary>
+        /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="query">a form parameter (Partial name to match on)</param>
+        /// <param name="valuesqry">a form parameter (Query to retreive a set of matches based on their values (values are separated by a pipe '|' character))</param>
+        /// <returns></returns>
+        public virtual async Task<HttpResponseMessage> SearchUsersByPartialNameUsingPostMethodAsync(string query = null, string valuesqry = null, string expand = null)
+        {
+            var operation = Operations.SearchUsersByPartialNameUsingPostMethod(query, valuesqry, expand);
+            var response = await _client.SendAsync(operation.BuildRequest(_client));
+            EnsureSuccess(response);
+            return response;
+
+        }
+
+
+    }
+}
+
+

@@ -24,3 +24,12 @@ CSharp/ApiClient/EnterpriseTester.API.Client.Tests/bin/*
 CSharp/ApiClient/EnterpriseTester.API.Client.Tests/obj/*
 CSharp/ApiClient/EnterpriseTester.API.Client/bin/*
 CSharp/ApiClient/EnterpriseTester.API.Client/obj/*
+CSharp/ApiClient/packages/System.Net.Http.2.0.20126.16343/System.Net.Http.2.0.20126.16343.nupkg
+CSharp/ApiClient/packages/System.Net.Http.2.0.20126.16343/lib/net40/System.Net.Http.WebRequest.dll
+CSharp/ApiClient/packages/System.Net.Http.2.0.20126.16343/lib/net40/System.Net.Http.WebRequest.xml
+CSharp/ApiClient/packages/System.Net.Http.2.0.20126.16343/lib/net40/System.Net.Http.dll
+CSharp/ApiClient/packages/System.Net.Http.2.0.20126.16343/lib/net40/System.Net.Http.xml
+CSharp/ApiClient/packages/System.Net.Http.Formatting.Extension.5.2.3.0/System.Net.Http.Formatting.Extension.5.2.3.0.nupkg
+CSharp/ApiClient/packages/System.Net.Http.Formatting.Extension.5.2.3.0/lib/System.Net.Http.Extensions.dll
+CSharp/ApiClient/packages/System.Net.Http.Formatting.Extension.5.2.3.0/lib/System.Net.Http.Formatting.dll
+CSharp/ApiClient/packages/System.Net.Http.Formatting.Extension.5.2.3.0/lib/System.Net.Http.Primitives.dll

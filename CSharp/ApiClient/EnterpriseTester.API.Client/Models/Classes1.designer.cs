@@ -1858,6 +1858,7 @@ namespace EnterpriseTester.API.Client.Models
         public List<string> ConfigurationProblems { get; set; }
         public string ConnectionString { get; set; }
         public string ConnectionType { get; set; }
+        public string DisplayUrl { get; set; }
         public bool Enabled { get; set; }
         public List<ExternalSystemLink> ExternalSystemLinks { get; set; }
         public object FieldValues { get; set; }
@@ -1880,6 +1881,7 @@ namespace EnterpriseTester.API.Client.Models
                         ConfigurationComplete = ConfigurationComplete,
                         ConnectionString = ConnectionString,
                         ConnectionType = ConnectionType,
+                        DisplayUrl = DisplayUrl,
                         Enabled = Enabled,
                         FieldValues = FieldValues,
                         HasPassword = HasPassword,
@@ -2535,6 +2537,7 @@ namespace EnterpriseTester.API.Client.Models
         public List<IValue> Children { get; set; }
         public string Icon { get; set; }
         public string Identifier { get; set; }
+        public bool? IsEnable { get; set; }
         public IValue Parent { get; set; }
         public string Text { get; set; }
         
@@ -2544,6 +2547,7 @@ namespace EnterpriseTester.API.Client.Models
                     {
                         Icon = Icon,
                         Identifier = Identifier,
+                        IsEnable = IsEnable,
                         Parent = Parent,
                         Text = Text,
                         Children = Children.Select(x=>x.Clone(includeLocalProperties)).ToList(),
@@ -2891,6 +2895,7 @@ namespace EnterpriseTester.API.Client.Models
     public partial class Picklist : EtRestEntityBase, IHasId 
     {
         public string Id { get; set; }
+        public bool IsEnable { get; set; }
         public int SortOrder { get; set; }
         public string Text { get; set; }
         
@@ -2899,6 +2904,7 @@ namespace EnterpriseTester.API.Client.Models
             var c = new Picklist
                     {
                         Id = Id,
+                        IsEnable = IsEnable,
                         SortOrder = SortOrder,
                         Text = Text,
                     };
@@ -3000,6 +3006,7 @@ namespace EnterpriseTester.API.Client.Models
         public ProjectCategory ProjectCategory { get; set; }
         public string ProjectCategoryId { get; set; }
         public string ProjectCategoryName { get; set; }
+        public string ProjectTypeId { get; set; }
         public List<Picklist> RequirementDifficulties { get; set; }
         public bool RequirementNumberReadOnly { get; set; }
         public List<RequirementPackage> RequirementPackages { get; set; }
@@ -3034,6 +3041,7 @@ namespace EnterpriseTester.API.Client.Models
                         ProjectCategory = ProjectCategory,
                         ProjectCategoryId = ProjectCategoryId,
                         ProjectCategoryName = ProjectCategoryName,
+                        ProjectTypeId = ProjectTypeId,
                         RequirementNumberReadOnly = RequirementNumberReadOnly,
                         ScriptNumberReadOnly = ScriptNumberReadOnly,
                         Slug = Slug,

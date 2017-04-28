@@ -1,7 +1,7 @@
 {
-  "apiVersion": "6.2.1956.0",
+  "apiVersion": "6.1.0.0",
   "swaggerVersion": "1.1",
-  "basePath": "http://etstaging01.catchsoftware.net/EnterpriseTesterMaster/",
+  "basePath": "http://localhost:8090/",
   "apis": [
     {
       "path": "/{id}/rest/gadgets/1.0/g/feed",
@@ -6491,8 +6491,62 @@
             },
             {
               "paramType": "query",
+              "name": "projectType",
+              "dataType": "string",
+              "required": false,
+              "allowMultiple": false
+            },
+            {
+              "paramType": "query",
+              "name": "$top",
+              "description": "Sets the maximum number of results to return",
+              "dataType": "integer",
+              "required": false,
+              "allowMultiple": false
+            },
+            {
+              "paramType": "query",
+              "name": "$skip",
+              "description": "Sets the number of results to skip, before return up the $top number of matching items.",
+              "dataType": "integer",
+              "required": false,
+              "allowMultiple": false
+            },
+            {
+              "paramType": "query",
+              "name": "$inlinecount",
+              "description": "Determines if the count and total number of results should be included as part of the result set",
+              "dataType": "string",
+              "required": false,
+              "allowMultiple": false,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "allpages",
+                  "none"
+                ]
+              }
+            },
+            {
+              "paramType": "query",
               "name": "$expand",
               "description": "Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.",
+              "dataType": "string",
+              "required": false,
+              "allowMultiple": false
+            },
+            {
+              "paramType": "query",
+              "name": "$filter",
+              "description": "OData filter identifying a subset of results to return.",
+              "dataType": "string",
+              "required": false,
+              "allowMultiple": false
+            },
+            {
+              "paramType": "query",
+              "name": "$orderby",
+              "description": "OData order-by syntax to order results by one or more fields in ascending or descending order.",
               "dataType": "string",
               "required": false,
               "allowMultiple": false
@@ -9444,6 +9498,22 @@
       ]
     },
     {
+      "path": "/api/swagger/v2",
+      "description": "Allows the retrieval of list of Swagger v2 compliant API's exposed by this Enterprise Tester server.",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "nickname": "getSwaggerAPIList",
+          "responseClass": "void",
+          "summary": "Retrieves the list of swagger-documented API's exposed by Enterprise Tester.",
+          "notes": "<strong>Nickname:</strong> getSwaggerAPIList (Method Name in swagger code-gen clients)",
+          "statusCodes": {
+            "200": "Returned if the request was completed successfully."
+          }
+        }
+      ]
+    },
+    {
       "path": "/api/synchronizer/{id}/schedules",
       "description": "Represents a collection of schedules associated with a synchronization configuration",
       "operations": [
@@ -11316,6 +11386,10 @@
           "type": "string",
           "format": "DateTime"
         },
+        "ProjectTypeId": {
+          "required": true,
+          "type": "string"
+        },
         "TimeTrackingConfiguration": {
           "$ref": "TimeTrackingConfiguration",
           "type": "TimeTrackingConfiguration"
@@ -13167,6 +13241,10 @@
           "type": "string"
         },
         "ConnectionString": {
+          "required": true,
+          "type": "string"
+        },
+        "DisplayUrl": {
           "required": true,
           "type": "string"
         },

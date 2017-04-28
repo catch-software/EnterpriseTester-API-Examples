@@ -10,6 +10,19 @@ namespace EnterpriseTester.API.Client
 
 
         /// <summary>
+        /// Sends a GET to '/{id}/rest/gadgets/1.0/g/feed'
+        /// </summary>
+        /// <param name="id">a path parameter (no description)</param>
+        /// <returns></returns>
+        public static RestOperation GetGadgetFeed(string id)
+        {
+            return new RestOperation("GET", "" + id + "/rest/gadgets/1.0/g/feed")
+                { 
+                };
+        }
+
+
+        /// <summary>
         /// Sends a GET to '/api/'
         /// </summary>
         /// <returns></returns>
@@ -2882,9 +2895,15 @@ namespace EnterpriseTester.API.Client
         /// </summary>
         /// <param name="query">a query parameter (no description)</param>
         /// <param name="valuesqry">a query parameter (no description)</param>
+        /// <param name="projectType">a query parameter (no description)</param>
+        /// <param name="top">a query parameter (Sets the maximum number of results to return)</param>
+        /// <param name="skip">a query parameter (Sets the number of results to skip, before return up the $top number of matching items.)</param>
+        /// <param name="inlinecount">a query parameter (Determines if the count and total number of results should be included as part of the result set)</param>
         /// <param name="expand">a query parameter (Allows the specifying of eager-loading of related data which is returned in-line within the results of the request.)</param>
+        /// <param name="filter">a query parameter (OData filter identifying a subset of results to return.)</param>
+        /// <param name="orderby">a query parameter (OData order-by syntax to order results by one or more fields in ascending or descending order.)</param>
         /// <returns></returns>
-        public static RestOperation SearchProjectsByPartialName(string query = null, bool? valuesqry = null, string expand = null)
+        public static RestOperation SearchProjectsByPartialName(string query = null, bool? valuesqry = null, string projectType = null, int? top = null, int? skip = null, string inlinecount = null, string expand = null, string filter = null, string orderby = null)
         {
             return new RestOperation("GET", "api/projectssearch")
                 { 
@@ -2892,7 +2911,13 @@ namespace EnterpriseTester.API.Client
                         {
                              {"query", query},
                              {"valuesqry", valuesqry},
+                             {"projectType", projectType},
+                             {"$top", top},
+                             {"$skip", skip},
+                             {"$inlinecount", inlinecount},
                              {"$expand", expand},
+                             {"$filter", filter},
+                             {"$orderby", orderby},
                         }
                 };
         }
@@ -4185,6 +4210,18 @@ namespace EnterpriseTester.API.Client
                 { 
                 };
         }
+
+
+        ///// <summary>
+        ///// Sends a GET to '/api/swagger/v2'
+        ///// </summary>
+        ///// <returns></returns>
+        //public static RestOperation GetSwaggerAPIList()
+        //{
+        //    return new RestOperation("GET", "api/swagger/v2")
+        //        { 
+        //        };
+        //}
 
 
         /// <summary>
